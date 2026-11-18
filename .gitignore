@@ -1,0 +1,7 @@
+# 生成物：node site/tools/build-dist.js
+dist/
+# 测试与样稿截图（可重新生成）
+site/shots/
+design-exploration/shots/
+# 本地工具配置
+.claude/

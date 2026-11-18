@@ -1,0 +1,47 @@
+/* S02-02 阅读体验：目录随滚动高亮当前一节、点目录平滑跳转并把焦点移到该节标题、顶部阅读进度条。
+ * 系统开启“减少动态效果”时，跳转不做平滑滚动。 */
+(function () {
+  'use strict';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const links = [...document.querySelectorAll('#toc a[href^="#"]')];
+  const items = links.map(a => ({ a, el: document.getElementById(a.getAttribute('href').slice(1)) })).filter(x => x.el);
+  const article = document.getElementById('lesson-body');
+  const bar = document.getElementById('rprog');
+  const OFFSET = 110; // 吸顶页头高度 + 余量
+
+  let current = null;
+  function update() {
+    // 当前一节：标题已经越过页头下沿的最后一节
+    let cur = items[0];
+    for (const it of items) { if (it.el.getBoundingClientRect().top - OFFSET <= 0) cur = it; else break; }
+    if (cur !== current) {
+      if (current) current.a.removeAttribute('aria-current');
+      if (cur) cur.a.setAttribute('aria-current', 'location');
+      current = cur;
+    }
+    if (bar && article) {
+      const r = article.getBoundingClientRect();
+      const total = r.height - window.innerHeight + OFFSET;
+      const p = total > 0 ? Math.min(1, Math.max(0, (OFFSET - r.top) / total)) : 0;
+      bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+    }
+  }
+  let ticking = false;
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); } };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+
+  // 点目录：平滑滚动（减少动态效果时直接跳），滚完把焦点交给该节标题，方便键盘和读屏用户接着读。
+  links.forEach(a => a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1), sec = document.getElementById(id);
+    if (!sec) return;
+    e.preventDefault();
+    const head = sec.querySelector('h2,h3') || sec;
+    if (!head.hasAttribute('tabindex')) head.setAttribute('tabindex', '-1');
+    sec.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'start' });
+    history.replaceState(null, '', '#' + id);
+    const focusIt = () => head.focus({ preventScroll: true });
+    if (reduce.matches) focusIt(); else setTimeout(focusIt, 450);
+  }));
+})();

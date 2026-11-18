@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>股价到底是谁决定的？ · S02-02 · MarketPilot</title>
+<meta name="description" content="MarketPilot S02-02：读懂一张简化的订单簿，解释成交价、最优买卖报价与最新价的区别。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2212%22 fill=%22%23D4FF3A%22 stroke=%22%23111827%22 stroke-width=%227%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="lesson.css">
+</head>
+<body>
+<a class="skip" href="#lesson-body">跳到正文</a>
+
+<header class="top"><div class="w">
+  <a class="logo" href="../../"><i></i>MarketPilot</a>
+  <nav class="mainnav" aria-label="主导航">
+    <a href="../../">首页</a>
+    <a href="../../#courses" aria-current="page">课程</a>
+    <a href="../../#stories">故事</a>
+  </nav>
+  <a class="sbtn" href="../../?search=" aria-label="搜索"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>搜索</span></a>
+</div>
+<div class="rprog" aria-hidden="true"><i id="rprog"></i></div>
+</header>
+
+<main class="w" id="main">
+  <div class="crumb"><a href="../../#courses">课程</a><span>/</span><a href="../../#layer-1">第一层 货币、市场与资产</a><span>/</span><a href="../../#S02">S02 市场如何运作</a><span>/</span>第 2 课</div>
+
+  <section class="lhero" aria-labelledby="lesson-title">
+    <div class="card l">
+      <div class="lab">MarketPilot · S02 市场如何运作 · 第 2 课</div>
+      <h1 id="lesson-title">股价到底是谁决定的？</h1>
+      <p class="q">没有人「定价」的市场里，价格是怎样产生的？</p>
+      <p class="goal"><b>学习目标</b>能读懂一张简化的订单簿，解释成交价、最优买卖报价与「最新价」的区别，并说明真实美股市场由多个交易场所共同构成</p>
+    </div>
+    <figure class="shot" style="margin:0">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Signalling_to_offices%2C_curb_market%2C_New_York_City_LCCN97517154.jpg/1280px-Signalling_to_offices%2C_curb_market%2C_New_York_City_LCCN97517154.jpg"
+           alt="1916 年纽约路边市场，街上的经纪人举手向楼上办公室打手势报价" style="object-position:50% 35%;transform:scale(1.08)">
+      <div class="hot" style="left:46%;top:24%"><span><small>1916 年</small>没有屏幕时，报价靠手势传到楼上</span></div>
+      <div class="hot l" style="left:76%;top:64%"><span><small>每一笔成交</small>都是一张买单遇上一张卖单</span></div>
+      <a class="credit" href="https://commons.wikimedia.org/wiki/File:Signalling_to_offices,_curb_market,_New_York_City_LCCN97517154.jpg">Bain News Service · 1916 · Public domain</a>
+      <figcaption class="sr">路边市场的经纪人向楼上的办公室打手势，纽约，1916 年。照片仅作开场氛围，与课文中的虚构公司无关。</figcaption>
+    </figure>
+  </section>
+
+  <div class="card reader">
+    <nav class="ltoc" aria-label="本课章节">
+      <div class="lab">本课 10 节</div>
+      <ol id="toc">
+        <li><a href="#s1"><span class="n">01</span>一个被自己改写的「股价」</a></li>
+        <li><a href="#s2"><span class="n">02</span>屏幕上其实有三个数字</a></li>
+        <li><a href="#s3"><span class="n">03</span>你提交的不是「一个价格」</a></li>
+        <li><a href="#s4"><span class="n">04</span>一张订单簿</a></li>
+        <li><a href="#s5"><span class="n">05</span>撮合</a></li>
+        <li><a href="#s6"><span class="n">06</span>不交易，报价也会变</a></li>
+        <li><a href="#s7"><span class="n">07</span>报价可以收回</a></li>
+        <li><a href="#s8"><span class="n">08</span>价格到底是谁决定的？</a></li>
+        <li class="x"><a href="#lab"><span class="n">▶</span>动手：订单簿沙盘</a></li>
+        <li><a href="#s9"><span class="n">09</span>现实比模型复杂在哪里</a></li>
+        <li><a href="#s10"><span class="n">10</span>回到小林</a></li>
+        <li><a href="#keys"><span class="n">··</span>本课要点</a></li>
+      </ol>
+    </nav>
+
+    <article id="lesson-body" tabindex="-1">
+
+<section id="s1" aria-labelledby="h-s1">
+<h2 id="h-s1">一个被自己改写的「股价」</h2>
+<p>上午十点整，小林打开交易软件，看一家叫北岭电池（股票代码 NRB）的公司。交易软件是他开户的券商提供的；券商替客户把订单送进市场，送到某个交易所，或者别的执行场所。屏幕最上方写着一个大号数字：<strong>$50.01</strong>。</p>
+<p>他决定买 600 股，心里算了一下：600 × $50.01，大约三万零六美元。他选了「市价买入」，点下确认。在他眼里，$50.01 就像超市的价签，写多少，付多少。</p>
+<p>不到一秒就成交了。他一共花了 <strong>$30,017</strong>，平均每股 <strong>$50.0283</strong>，比预想的多了十一美元。再看屏幕，那个大号数字已经变成了 <strong>$50.04</strong>。</p>
+<p>这几秒里，公司没有发布任何消息。唯一发生的事，是小林买了 600 股。</p>
+<p class="ask">那么，这个 $50.04 是谁定的？要回答它，得先弄清两件事：屏幕上的数字到底是什么，以及小林点下「市价买入」时，到底交出去了什么。</p>
+</section>
+
+<section id="s2" aria-labelledby="h-s2">
+<h2 id="h-s2">屏幕上其实有三个数字</h2>
+<p>小林的屏幕上，大号数字下面还有两行小字：</p>
+<ul class="quote2">
+<li><strong>买一：$50.00 × 300</strong></li>
+<li><strong>卖一：$50.02 × 200</strong></li>
+</ul>
+<p>要读懂这两行，先想象一个场景。所有想卖北岭电池的人排成一队，<strong>谁要价最低，谁排第一</strong>。排第一的人的要价，就是此刻能买到的最低价格，叫<strong>最优卖价</strong>（best ask）。行情软件通常把它标作「<strong>卖一</strong>」。不过要留意，卖一指的是一档<strong>价格</strong>，不是某一个人：同一个价格上可能挂着好几张订单。此刻卖一是 $50.02，这一档一共挂着 200 股。</p>
+<p>想买的人也排成一队，<strong>谁出价最高，谁排第一</strong>。排第一的人的出价，就是此刻能卖出的最高价格，叫<strong>最优买价</strong>（best bid），行情软件标作「<strong>买一</strong>」。此刻买一是 $50.00，这一档一共有 300 股想买，其实是两张订单加起来的。「× 300」「× 200」说的就是这个价格上所有订单加起来的股数。</p>
+<p>为什么只看第一名？本课先用一个简化模型：所有订单都在一本公开的订单簿里，后面会细说。在这个模型里，想马上成交，对手就是对面队伍的第一名：</p>
+<ul>
+<li>想<strong>马上买</strong>，就得接受卖一的要价：最便宜也要 <strong>$50.02</strong>。</li>
+<li>想<strong>马上卖</strong>，就得接受买一的出价：最多只能卖到 <strong>$50.00</strong>。</li>
+</ul>
+
+<figure class="pf" id="fig1" data-fig="queues" aria-labelledby="fig1-t">
+  <figcaption class="pf-hd"><span class="flab">图 1</span><span id="fig1-t">两支队伍：买一与卖一</span></figcaption>
+  <p class="pf-desc">一条横放的价格轴，左低右高。左边是买方队伍，右边是卖方队伍，两队的第一名都站在靠近中间的位置，中间留着一段空档。</p>
+  <div class="pf-stage"></div>
+  <div class="pf-ctrl"></div>
+  <ol class="pf-steps"></ol>
+  <details class="tbl">
+    <summary>表格视图</summary>
+    <div class="tblwrap"><table class="data">
+      <caption class="sr">两支队伍：买一与卖一</caption>
+      <thead><tr><th scope="col">买方队伍（出价高的排前面）</th><th scope="col"><span class="sr">中间</span></th><th scope="col">卖方队伍（要价低的排前面）</th></tr></thead>
+      <tbody><tr><td>…$49.95　$49.97　$49.99　<strong>$50.00 ← 买一</strong></td><td>空档 $0.02</td><td><strong>卖一 → $50.02</strong>　$50.03　$50.04　$50.06…</td></tr></tbody>
+    </table></div>
+  </details>
+</figure>
+
+<p>卖一和买一之间差了两美分，这叫<strong>买卖价差</strong>（bid-ask spread）。</p>
+<p>双方为什么不各让一步？因为一旦有人让步，比如某个买家把出价提到 $50.02，他的出价就够得着卖一的要价，两人会马上成交，成交掉的股数从队伍里消失。如果两边数量不一样多，多出来的那部分会留下来继续排队。所以，还在排队的都是暂时谈不拢的人，买一的出价总是低于卖一的要价。这是平时<strong>连续交易</strong>的情况：订单随到随配。开盘和收盘时的规则不同，见本课末尾的选读卡片。</p>
+<p>那最上面的 $50.01 呢？它是<strong>上一笔已经完成的交易</strong>的价格：九点五十九分五十八秒，有人以 $50.01 买走了 100 股。这个数字叫<strong>最新成交价</strong>（last price）。它像一张别人刚拿走的收银小票：告诉你刚才在哪里成交过，但那笔交易已经结束，你接不了。</p>
+<p>所以，三个数字的性质不同。买一和卖一是<strong>报价</strong>，是现在就能去接的价格；最新成交价是<strong>记录</strong>，只能看。在这本订单簿上，此刻没有人愿意以 $50.01 卖给小林，也没有人愿意以 $50.01 从他手里买。屏幕上最醒目的数字，恰恰是现在没人报的价格。</p>
+<p>最新成交价并非没用：它告诉你刚才真实的成交落在哪里。只是它回答的是「刚才」，而你下单时需要的是「现在」。</p>
+<p class="aside-note">（真实市场里还有不公开显示的订单，交易所之外的做市商有时也会给出略好于公开报价的价格，所以成交价落在买一和卖一之间是可能的。本课末尾再谈。）</p>
+
+<div class="quiz" id="q1" data-answer="2">
+  <p class="qq"><span class="qh">小题 1</span>屏幕显示：买一 $50.00 × 300，卖一 $50.02 × 200，最新成交价 $50.01。你想<strong>马上买</strong> 100 股，每股最少要付多少？</p>
+  <ul class="opts"><li>A. $50.00</li><li>B. $50.01</li><li>C. $50.02</li></ul>
+  <p class="qhint" hidden><b>提示：</b>「马上买」要找谁？是正在排队等着卖的人，还是刚才已经成交的那一笔？</p>
+  <p class="qans" hidden><b>答案：</b>C。马上买要接受卖一的要价 $50.02。$50.01 只是刚才那笔交易的记录。</p>
+</div>
+
+<div class="quiz" id="q2" data-answer="1">
+  <p class="qq"><span class="qh">小题 2</span>判断：屏幕上显示 $50.01，说明我现在能以 $50.01 卖出。</p>
+  <ul class="opts"><li class="add">对</li><li class="add">错</li></ul>
+  <p class="qhint" hidden><b>提示：</b>想马上卖，要和哪支队伍的第一名成交？</p>
+  <p class="qans" hidden><b>答案：</b>错。在本课的订单簿里，想马上卖，只能卖给买一，也就是 $50.00。</p>
+</div>
+</section>
+
+<section id="s3" aria-labelledby="h-s3">
+<h2 id="h-s3">你提交的不是「一个价格」，而是一个条件</h2>
+<p>市场上没有人宣布「今天北岭电池值 $50」。想买或想卖的人，交给市场的是一张<strong>订单</strong>，说清三件事：买还是卖，买卖多少股，在什么价格条件下成交。最基本的订单有两种，区别在第三件事上。</p>
+<p>第一种是给一个价格界限：「我要买 200 股，每股<strong>不超过</strong> $50.03。」这种订单叫<strong>限价单</strong>（limit order）。界限是你能接受的最差价格：买单不会以高于它的价格成交，卖单不会以低于它的价格成交。但它不保证成交，也不一定就是你实际付的价格。</p>
+<p>此刻卖一是 $50.02 × 200，所以这张单会立刻以 $50.02 买到全部 200 股，比界限还便宜。为什么按 $50.02，而不是你写的 $50.03？因为卖家 B 早就挂出了「$50.02 卖 200 股」。你的单一到，买方最多肯出 $50.03，卖方最少要 $50.02，条件对得上，按本课订单簿的规则，就以先挂在那里等着的那张单的价格成交。你写的界限只决定「能不能成交」，不决定「按多少成交」。</p>
+<p>如果界限定得太低，比如「不超过 $49.98」，没有卖家够得着，订单就只能先挂着等：可能很快等到，也可能永远等不到。</p>
+<p>第二种是不设界限：「我要买 600 股，按现在能拿到的最好价格，马上成交。」这种订单叫<strong>市价单</strong>（market order）。小林下的就是市价单。</p>
+<p class="pull">一句话：<strong>限价单控制最差价格，但不保证成交；市价单优先求马上成交，但既不保证成交价格，也不保证全部成交。</strong></p>
+<p>市价单为什么也可能成交不全？如果对面挂着的股数不够，比如卖方一共只挂了 1,500 股，一张买 2,500 股的市价单，在本课的简化模型里只能买到 1,500 股。真实市场还另有保护机制。例如美国有全市场的「涨跌限制」价格带（Limit Up–Limit Down），成交价不能超出这个范围，市价单也一样；没成交的部分怎么处理，各交易场所和券商的规则不同，这里不展开。</p>
+<p class="try add"><a href="#lab" data-scenario="S7">在沙盘里买 2,500 股，看对手方不够时会怎样 → 场景 7</a></p>
+<p>下限价单的人愿意<strong>等</strong>，下市价单的人在<strong>赶时间</strong>。小林赶时间，把价格交给了市场。</p>
+
+<div class="quiz" id="q3" data-answer="1">
+  <p class="qq"><span class="qh">小题 3</span>卖一是 $50.02 × 200。你下了一张限价买单：200 股，不超过 $50.03。结果会怎样？</p>
+  <ul class="opts"><li>A. 以 $50.03 成交</li><li>B. 以 $50.02 成交</li><li>C. 不会成交，挂着等</li></ul>
+  <p class="qhint" hidden><b>提示：</b>限价是你「最差能接受」的价格。卖家此刻要多少？</p>
+  <p class="qans" hidden><b>答案：</b>B。条件对得上，就按已经挂在那里的卖单的价格成交，也就是 $50.02。</p>
+</div>
+</section>
+
+<section id="s4" aria-labelledby="h-s4">
+<h2 id="h-s4">一张订单簿</h2>
+<p>那些还没成交、挂着等待的限价单去哪儿了？交易所把它们按价格排好，记在一张清单上：卖单一列，买单一列，每个价格上排着谁、多少股，都记得清清楚楚。这张清单叫<strong>订单簿</strong>（order book）。订单簿就是那两支队伍的完整名单。</p>
+<p class="model">每一行背后都是真实的订单：某个投资者在券商的软件上填好、由券商送进来的。前面说的简化模型，具体是这样：北岭电池<strong>只在一个交易所交易</strong>，所有订单都在这一本订单簿里，全部公开可见。真实的美股不是这样，后面会讲。</p>
+<p>把图 1 的两支队伍竖起来：卖方放上面，买方放下面，两个第一名都靠近中间。就得到下面这张表。</p>
+
+<figure class="pf" id="fig2" data-fig="book" aria-labelledby="fig2-t">
+  <figcaption class="pf-hd"><span class="flab">图 2</span><span id="fig2-t">北岭电池订单簿，10:00:00</span><span class="pf-src">简化模型 · 单一交易所 · 全部订单可见</span></figcaption>
+  <div class="pf-stage"></div>
+  <div class="pf-ctrl"></div>
+  <ol class="pf-steps"></ol>
+  <details class="tbl">
+    <summary>表格视图（含订单明细）</summary>
+    <div class="tblwrap"><table class="data">
+      <caption class="sr">北岭电池订单簿，10:00:00</caption>
+      <thead><tr><th scope="col">方向</th><th scope="col">价格</th><th scope="col">股数</th><th scope="col">订单明细（提交时间）</th></tr></thead>
+      <tbody>
+        <tr class="a"><td>卖</td><td>$50.06</td><td>600</td><td>E 600</td></tr>
+        <tr class="a"><td>卖</td><td>$50.04</td><td>400</td><td>D 400</td></tr>
+        <tr class="a"><td>卖</td><td>$50.03</td><td>300</td><td>C 100（09:58:05）、G 200（09:59:50）</td></tr>
+        <tr class="a best"><td>卖</td><td><strong>$50.02</strong></td><td>200</td><td>B 200 ← <strong>卖一</strong></td></tr>
+        <tr class="gap"><td colspan="4">——— 价差 $0.02 ———</td></tr>
+        <tr class="b best"><td>买</td><td><strong>$50.00</strong></td><td>300</td><td>H 100（09:58:10）、J 200（09:59:40）← <strong>买一</strong></td></tr>
+        <tr class="b"><td>买</td><td>$49.99</td><td>500</td><td>K 500</td></tr>
+        <tr class="b"><td>买</td><td>$49.97</td><td>400</td><td>L 400</td></tr>
+        <tr class="b"><td>买</td><td>$49.95</td><td>800</td><td>M 800</td></tr>
+      </tbody>
+    </table></div>
+  </details>
+  <p class="flast">最新成交价：$50.01（09:59:58，100 股）</p>
+</figure>
+
+<p>怎么读这张表？从中间往外看：</p>
+<ul>
+<li>中间两行是两队最前面的一档：卖一 $50.02，买一 $50.00，中间隔着 $0.02 的价差。</li>
+<li>往上是卖方队伍后面的人，要价越来越高；往下是买方队伍后面的人，出价越来越低。</li>
+<li>「股数」是这个价格上所有订单加起来的数量。有的价格上排着不止一个人，比如 $50.03 上有 C 和 G 两个卖家。</li>
+</ul>
+<p>为什么同一只股票，同时有人要 $50.02、有人要 $50.06？因为每个人的处境不同。有人急着用钱，愿意便宜一点卖；有人不急，宁可多等，换个好价钱。大家各自在能接受的价格上挂单等待，订单簿上就排出了一道价格阶梯。</p>
+<p>那九点五十九分五十八秒那笔 $50.01 是怎么来的？之前订单簿上有一张「$50.01 卖 100 股」的单，那时它是卖一。有人用市价单把它买走，它就从订单簿上消失，卖一退到 $50.02。那笔成交，就是屏幕上的最新成交价。</p>
+
+<div class="quiz" id="q4" data-answer="1">
+  <p class="qq"><span class="qh">小题 4</span>判断：订单簿里 $50.03 这一行有 300 股，说明有一个人想以 $50.03 卖 300 股。</p>
+  <ul class="opts"><li class="add">对</li><li class="add">错</li></ul>
+  <p class="qhint" hidden><b>提示：</b>看「订单明细」一栏，这一行有几张订单？</p>
+  <p class="qans" hidden><b>答案：</b>错。这一行是 C 的 100 股和 G 的 200 股加起来的。一个价格上可以排着好几个人。</p>
+</div>
+</section>
+
+<section id="s5" aria-labelledby="h-s5">
+<h2 id="h-s5">撮合：交易所其实什么也不「决定」</h2>
+<p>订单簿上的买单和卖单，要有人把它们配到一起才会成交。在交易所里，做这件事的是一套电脑系统：一张新订单进来，它就在订单簿上找能和它成交的对手，按规则配成对，成交后把订单簿更新。这个过程叫<strong>撮合</strong>，执行撮合的程序叫<strong>撮合引擎</strong>（matching engine）。</p>
+<p>什么叫「能成交」？买方愿意出的最高价，够得着卖方愿意接受的最低价，也就是买价不低于卖价。条件对得上，就成交；对不上，新订单就挂进订单簿等待。</p>
+<p>能成交的对手常常不止一个，先跟谁成交？撮合引擎按两条规则排序。</p>
+<p>第一条是<strong>价格优先</strong>：买的时候，先找要价最低的卖单；卖的时候，先找出价最高的买单。</p>
+<p>第二条是<strong>时间优先</strong>：价格相同时，谁先挂出来，谁先成交。</p>
+<p>两条合起来，叫<strong>价格优先、时间优先</strong>，本课的模型就按这两条撮合。这样排序的一个好处，是奖励给出更好条件的人和先站出来报价的人，大家才愿意把订单挂出来等待。</p>
+<p>十点整，小林的市价单到了：买 600 股，不设界限。撮合引擎从卖一开始，一档一档往上找。</p>
+<p><strong>第一档 $50.02</strong>：B 有 200 股，全部买下。小林还差 400 股。（假如小林只买 200 股，到这里就结束了：每股 $50.02，一共 $10,004。）</p>
+<p><strong>第二档 $50.03</strong>：有 C 的 100 股和 G 的 200 股。小林还差 400 股，这 300 股全要。假如他只差 100 股，该给谁？这时就用上时间优先：C 是 09:58:05 来的，G 是 09:59:50，所以先 C 后 G。买完这一档，小林还差 100 股。</p>
+<p><strong>第三档 $50.04</strong>：D 有 400 股，小林只要 100 股。D 卖出 100 股，剩下 300 股继续挂着。像 D 这样只成交了一部分、剩下的继续等待，叫<strong>部分成交</strong>。</p>
+
+<figure class="pf" id="fig3" data-fig="climb" aria-labelledby="fig3-t">
+  <figcaption class="pf-hd"><span class="flab">图 3</span><span id="fig3-t">小林的 600 股，一档一档往上买</span><span class="pf-src">数字由撮合引擎实时算出</span></figcaption>
+  <div class="pf-stage"></div>
+  <div class="pf-ctrl"></div>
+  <ol class="pf-steps"></ol>
+  <details class="tbl">
+    <summary>表格视图</summary>
+    <div class="tblwrap"><table class="data fills-t">
+      <caption class="sr">小林的 600 股：逐笔成交</caption>
+      <thead><tr><th scope="col">成交价格</th><th scope="col">对手方</th><th scope="col">股数</th><th scope="col">金额</th></tr></thead>
+      <tbody>
+        <tr><td>$50.02</td><td>B</td><td>200</td><td>$10,004</td></tr>
+        <tr><td>$50.03</td><td>C</td><td>100</td><td>$5,003</td></tr>
+        <tr><td>$50.03</td><td>G</td><td>200</td><td>$10,006</td></tr>
+        <tr><td>$50.04</td><td>D</td><td>100</td><td>$5,004</td></tr>
+      </tbody>
+      <tfoot><tr><th scope="row"><strong>合计</strong></th><td></td><td><strong>600</strong></td><td><strong>$30,017</strong></td></tr></tfoot>
+    </table></div>
+    <p class="flast">平均价格 = 30,017 ÷ 600 ≈ <strong>$50.0283</strong></p>
+  </details>
+</figure>
+
+<p>小林多付钱的原因就在这里：他要买 600 股，卖一手里只有 200 股，引擎只好往上找更贵的卖家。</p>
+<p>卖一后面的各档价格上一共还挂着多少股，叫订单簿的<strong>市场深度</strong>（market depth）。北岭电池在 $50.06 以内一共挂着 1,500 股。小林的 600 股没有超过它，所以全部买到了，只是越往上越贵。如果每一档都挂着更多股，600 股在第一档就能买齐；如果后面挂得很少，同样的订单就要爬得更高。一张市价单会成交在几个价格上，取决于订单的大小和订单簿的深度。</p>
+<p>同一张订单，留下了三个不同的数字：</p>
+<ul>
+<li><strong>$50.01</strong>：下单前屏幕上的数字，是别人的成交记录。</li>
+<li><strong>$50.0283</strong>：小林的平均价，等于总花费 $30,017 除以 600 股。</li>
+<li><strong>$50.04</strong>：下单后屏幕上的新数字。最新成交价只记录<strong>最后一笔</strong>，小林的最后一笔正好在 $50.04。</li>
+</ul>
+<p>所以，$50.04 不是交易所定的，也不是哪个大户定的：D 愿意以 $50.04 卖，小林愿意马上买，引擎按规则把他们配在一起。引擎没有任何「判断」，它只比较价格高低和时间先后。这是本课简化模型的规则。真实交易所大多也是价格优先，但同一价格上的订单怎么分配，例如是否严格按时间先后、看不见的隐藏订单排在哪里，各家规则不尽相同。</p>
+<p>小林确实「推高了股价」，但他推高的是最新成交价这条记录，不是公司的价值。买完之后，卖一变成 $50.04（D 剩下的 300 股），买一还是 $50.00，价差从 2 美分变成 4 美分。下一个想马上买的人，起步价比小林高。</p>
+<p class="try add"><a href="#lab" data-scenario="S1">在沙盘里亲手下这张单 → 场景 1</a></p>
+
+<div class="quiz" id="q5" data-answer="1">
+  <p class="qq"><span class="qh">小题 5</span>如果小林只用市价单买 200 股，结果会怎样？</p>
+  <ul class="opts"><li>A. 全部以 $50.01 成交</li><li>B. 全部以 $50.02 成交</li><li>C. 一部分 $50.02，一部分 $50.03</li></ul>
+  <p class="qhint" hidden><b>提示：</b>卖一那一档挂着多少股？200 股够不够？</p>
+  <p class="qans" hidden><b>答案：</b>B。卖一 B 正好有 200 股，一档就够了。唯一的一笔成交在 $50.02，所以成交后的最新成交价也是 $50.02。</p>
+</div>
+
+<div class="quiz" id="q6" data-answer="1">
+  <p class="qq"><span class="qh">小题 6</span>$50.00 上有两个买家：H（09:58:10 挂单，100 股）和 J（09:59:40 挂单，200 股）。有人用市价单卖出 200 股，成交结果是什么？</p>
+  <ul class="opts"><li class="add">A. J 成交 200 股，H 不动</li><li class="add">B. H 成交 100 股，J 成交 100 股</li><li class="add">C. 只有 H 的 100 股成交，另外 100 股没有卖出</li></ul>
+  <p class="qhint" hidden><b>提示：</b>价格相同，看谁先来。</p>
+  <p class="qans" hidden><b>答案：</b>H 的 100 股全部成交，J 成交 100 股，还剩 100 股挂着。同一价格，先来的 H 先成交。（沙盘场景 5 可以亲手试。）</p>
+</div>
+<p class="try add"><a href="#lab" data-scenario="S5">在沙盘里试一试时间优先 → 场景 5</a></p>
+</section>
+
+<section id="s6" aria-labelledby="h-s6">
+<h2 id="h-s6">不交易，报价也会变</h2>
+<p><strong>接着小林的故事。</strong> 现在的订单簿：卖一 $50.04 × 300，买一 $50.00 × 300，最新成交价 $50.04。</p>
+<p>小周有 200 股想卖，她面前有一个取舍。如果也要 $50.04，每股能多拿一点，但得排在 D 剩下的 300 股后面，因为 D 先来；什么时候轮到她，要看后面有没有买家来、来多少。要价压低，她就能排到卖方第一名，下一个买家会先找她，代价是每股少拿钱：要 $50.01 比要 $50.04，200 股一共少拿 6 美元。</p>
+<p>小周想早点卖掉，于是挂了一张限价单：「卖 200 股，不低于 $50.01。」$50.01 是比买一 $50.00 高的最低一档，再低就会直接卖给买一。换一个不着急的人，留在 $50.04、甚至挂得更高，等一个更好的价钱，也完全合理。压低要价换来的是排在前面，不一定是更好的结果。</p>
+<p>买一只出 $50.00，够不着 $50.01，所以没有成交。她的订单挂进订单簿，成了新的卖一。屏幕变成：</p>
+<ul class="quote2">
+<li>买一 $50.00 × 300</li>
+<li>卖一 <strong>$50.01</strong> × 200</li>
+<li>最新成交价：还是 <strong>$50.04</strong></li>
+</ul>
+<p>一股都没成交，最新成交价没动。但想马上买的人，最低价从 $50.04 降到了 $50.01，价差从 4 美分缩到 1 美分。小周什么也没卖出，却改变了所有人面对的价格。挂限价单，就是给别人提供一个马上能成交的机会。</p>
+<p>又过了五秒，有人用市价单买入 100 股。引擎先找最便宜的卖家，也就是小周。成交价 $50.01，最新成交价变成 <strong>$50.01</strong>。小周卖掉 100 股，剩下 100 股继续挂着。</p>
+<p>一笔<strong>买入</strong>，却让屏幕上的「股价」<strong>下跌</strong>了 3 美分。原因是：最新成交价只看这一笔成交落在订单簿的哪个位置。小林那时只能买到 $50.04，这位买家碰上了小周挂的 $50.01。「买入推高股价」在大多数时候是不错的近似，但它说的是买方力量持续占上风时的趋势，不是每一笔交易都必然如此。</p>
+<p class="try add"><a href="#lab" data-scenario="S2">在沙盘里扮演小周 → 场景 2</a></p>
+
+<div class="quiz" id="q7" data-answer="1">
+  <p class="qq"><span class="qh">小题 7</span>判断：没有任何成交，屏幕上的卖一就不会变。</p>
+  <ul class="opts"><li class="add">对</li><li class="add">错</li></ul>
+  <p class="qhint" hidden><b>提示：</b>回想小周：她挂出更便宜的卖单时，有没有成交？卖一变了没有？</p>
+  <p class="qans" hidden><b>答案：</b>错。小周只挂出了一张更便宜的卖单，一股都没成交，卖一就从 $50.04 变成了 $50.01。</p>
+</div>
+</section>
+
+<section id="s7" aria-labelledby="h-s7">
+<h2 id="h-s7">报价可以收回</h2>
+<p><strong>换一种假设。</strong> 回到十点整、小林下单之前，订单簿还是图 2 的样子。上一节小周的故事没有发生。</p>
+<p>挂着的订单，在成交之前通常可以收回，这叫<strong>撤单</strong>。</p>
+<p>假设小林下单前一刻，市场上传出一条消息：北岭电池最大的客户可能在重新谈合同。真假不知道，是好是坏也说不清。</p>
+<p>C、G、D 是常年在这只股票上挂单的报价者，比如<strong>做市商</strong>（market maker）。做市商同时挂买单和卖单，买价低一点、卖价高一点，赚中间的差价。平时风险不大；但在消息真假不明的几秒里，继续挂着卖单，可能把股票卖给比自己先知道真相的人：如果其实是好消息，买走的人就赚了，做市商事后才发现卖便宜了。所以他们先把 $50.03 和 $50.04 两档的卖单全撤了，等情况明朗再说。（买方的报价者也可能撤单，这里只看卖方。）</p>
+<p>他们撤单不是因为「认定股价要涨」，而是「现在不确定，不想被消息更灵通的人占便宜」。这种风险在 S06-03 会专门讲。</p>
+<p>几毫秒后，小林的市价单到了。他的屏幕上，卖一还是 $50.02 × 200，买一还是 $50.00 × 300，<strong>和撤单前一模一样</strong>。</p>
+
+<figure class="pf" id="fig4" data-fig="cancel" aria-labelledby="fig4-t">
+  <figcaption class="pf-hd"><span class="flab">图 4</span><span id="fig4-t">最上面一行没变，后面空了</span><span class="pf-src">数字由撮合引擎实时算出</span></figcaption>
+  <div class="pf-stage"></div>
+  <div class="pf-ctrl"></div>
+  <ol class="pf-steps"></ol>
+  <details class="tbl add">
+    <summary>表格视图</summary>
+    <div class="tblwrap"><table class="data">
+      <caption class="sr">撤单前后对比</caption>
+      <thead><tr><th scope="col"><span class="sr">项目</span></th><th scope="col">撤单前</th><th scope="col">撤单后</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">卖一</th><td>$50.02 × 200</td><td>$50.02 × 200</td></tr>
+        <tr><th scope="row">$50.03、$50.04 两档</th><td>300 股、400 股</td><td>已撤，空了</td></tr>
+        <tr><th scope="row">$50.06 以内可买</th><td>1,500 股</td><td>800 股</td></tr>
+        <tr><th scope="row">市价买 600 股</th><td>$30,017</td><td>$30,028</td></tr>
+      </tbody>
+    </table></div>
+  </details>
+</figure>
+
+<p>变化在卖一<strong>后面</strong>：深度变薄了。原来 $50.06 以内一共有 1,500 股可买，现在只剩 $50.02 的 200 股和 $50.06 的 600 股，中间两档空了。只看第一行，看不出这一点。</p>
+<p>引擎照样往上找：$50.02 买 200 股（$10,004），然后直接跳到 $50.06 买 400 股（$20,024）。合计 $30,028，平均每股约 <strong>$50.0467</strong>，比原来多付了 11 美元，最新成交价变成 $50.06。</p>
+<p>这个例子说明：<strong>同样的卖一，同样的最新成交价，背后的深度可以完全不同；同一张订单的结果，也就跟着不同。</strong>两只股价相同的股票，深度可以差得更远，沙盘场景 6 可以先试一试。深度怎样变成交易成本，是下一课的主题。</p>
+<p class="try add"><a href="#lab" data-scenario="S3">在沙盘里触发这条消息 → 场景 3</a></p>
+<p class="try add opt"><a href="#lab" data-scenario="S6">选做 · 下一课预告：比较两本订单簿 → 场景 6</a></p>
+<p>撤单也有条件：已经成交的部分撤不回来；撤单和别人的订单几乎同时到达时，结果看系统先处理哪一个；有些交易场所在特定时段（例如部分收盘集合竞价阶段）不接受撤单。在这个例子里，撤单先被处理，所以生效了。</p>
+<p>所以，「订单簿上有 400 股」的准确意思是：此刻有人报价愿意卖 400 股，直到这张单被成交或被撤回为止。</p>
+
+<div class="quiz" id="q8" data-answer="1">
+  <p class="qq"><span class="qh">小题 8</span>判断：撤单前后，卖一都是 $50.02 × 200，所以小林用市价单买 600 股，花的钱一样多。</p>
+  <ul class="opts"><li class="add">对</li><li class="add">错</li></ul>
+  <p class="qhint" hidden><b>提示：</b>600 股比卖一的 200 股多。卖一后面还挂着多少？</p>
+  <p class="qans" hidden><b>答案：</b>错。撤单前花 $30,017；撤单后 $50.03 和 $50.04 两档空了，要跳到 $50.06 去买，花 $30,028。</p>
+</div>
+</section>
+
+<section id="s8" aria-labelledby="h-s8">
+<h2 id="h-s8">那么，价格到底是谁决定的？</h2>
+<p><strong>没有哪一个人决定股价。</strong> 交易所只执行规则。公司可以参与确定发行价格：首次上市时和承销商一起定价，以后再发行新股时也会定价。但投资者之间在二级市场上的每一笔交易按什么价格成交，公司不能直接决定。挂出再大订单的人，也只能决定自己愿意在什么价格交易，不能强迫别人和他成交。</p>
+<p><strong>但每个下单的人都参与了决定。</strong> 分两步：</p>
+<ul>
+<li><strong>等待的人</strong>挂限价单，在订单簿上排出一道价格阶梯。每一张单都代表一个判断：「这个价格，我愿意交易。」有人基于对公司价值的估计，有人急需用钱，有人是做市商在赚差价。</li>
+<li><strong>赶时间的人</strong>下市价单（或任何能马上成交的订单），决定阶梯被踩到哪一级。越急、量越大，踩得越远。</li>
+</ul>
+<p class="pull"><strong>最新成交价，就是这两种订单最近一次碰上的位置。</strong></p>
+<p>股价持续上涨，在订单簿上是这样发生的：想马上买的人一次次买空卖方的挂单，而卖家新挂出的价格越来越高。至于卖家为什么要价更高、买家为什么愿意追，那是价值、信息和预期的问题，S04 到 S06 会讲。这节课只讲价格在规则层面是怎么产生的。</p>
+</section>
+
+<!-- ================= 订单簿沙盘（交互方案 v2；S1–S7 与引擎不变） ================= -->
+<section id="lab" class="lab-sec" aria-labelledby="h-lab">
+  <div class="sim" id="sim">
+    <div class="sim-hd">
+      <span class="tag">互动 · 订单簿沙盘</span>
+      <span class="model-badge">简化教学模型：单一交易所、全部订单可见。不代表整个美国股票市场。</span>
+    </div>
+    <h2 id="h-lab" class="sim-title add">动手：订单簿沙盘</h2>
+    <p class="sim-intro add">场景 1–5 和场景 7 对应本课各节；场景 6 是选做，预告下一课「交易成本」的内容。也可以自由下单。</p>
+    <noscript><p class="add">沙盘和互动图需要启用 JavaScript。图 1–图 5 的表格视图不受影响。</p></noscript>
+    <div id="sim-root" hidden></div>
+  </div>
+</section>
+
+<section id="s9" aria-labelledby="h-s9">
+<h2 id="h-s9">现实比模型复杂在哪里</h2>
+<p>前面一直假设北岭电池只在一个交易所交易。真实的美股不是这样。</p>
+<p>先看最简单的情况：北岭电池同时在甲、乙两个交易所交易，两边各有自己的订单簿。某一刻，两边的买一和卖一是这样的：</p>
+
+<figure class="pf" id="fig5" data-fig="venues" aria-labelledby="fig5-t">
+  <figcaption class="pf-hd"><span class="flab">图 5</span><span id="fig5-t">同一只股票，两个交易所</span><span class="pf-src">由两本订单簿的买一、卖一算出</span></figcaption>
+  <div class="pf-stage"></div>
+  <div class="pf-ctrl"></div>
+  <ol class="pf-steps"></ol>
+  <details class="tbl">
+    <summary>表格视图</summary>
+    <div class="tblwrap"><table class="data">
+      <caption class="sr">同一只股票，两个交易所</caption>
+      <thead><tr><th scope="col"><span class="sr">交易所</span></th><th scope="col">买一</th><th scope="col">卖一</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">甲所</th><td>$50.00</td><td>$50.02</td></tr>
+        <tr><th scope="row">乙所</th><td>$49.99</td><td>$50.01</td></tr>
+        <tr class="best"><th scope="row">两所合在一起</th><td><strong>$50.00</strong>（甲所）</td><td><strong>$50.01</strong>（乙所）</td></tr>
+      </tbody>
+    </table></div>
+  </details>
+</figure>
+
+<p>只看甲所，你以为最便宜要 $50.02 才能买到；只看乙所，你以为最多只能卖 $49.99。合在一起，最高的买价在甲所（$50.00），最低的卖价在乙所（$50.01），价差只有 1 美分。</p>
+<p>美国的系统就是这样，把各家交易所等报价来源公开显示、符合规则条件的最优报价汇总起来，叫<strong>全国最优报价</strong>（NBBO，National Best Bid and Offer）。你在交易软件上看到的买一、卖一，通常就是它。它只汇总公开显示的报价，不包括看不见的隐藏订单；实际成交价也不一定正好等于它，例如场外成交可能比它略好一点。它在规则上也有分量，见下方信息卡中的 Rule 611。</p>
+<p>那小林的订单会被送到哪里？订单先到券商，由券商决定送去哪里，这叫<strong>订单路由</strong>（order routing）。现实和单一订单簿的模型，主要有四点不同。</p>
+<p><strong>零售订单不一定进交易所。</strong> 券商可以把一张零售订单送到某个交易所，也可以送到其他执行场所，包括交易所之外的做市商，由做市商自己充当对手方成交。美国证券交易委员会（SEC）在 2022 年 12 月估计，个人投资者提交的、要求马上成交的股票订单，九成以上被券商交给少数几家这样的<strong>批发做市商</strong>。这是全市场的统计，说的是大多数订单的去向；某一张订单具体去了哪里，要看券商当时的路由。这种安排对散户是好是坏，一直有争论，下一课再谈。</p>
+<p><strong>很多成交发生在交易所之外。</strong> 除了批发做市商，还有<strong>另类交易系统</strong>（ATS），其中一些常被称为「<strong>暗池</strong>」（dark pool）。按成交股数算，2025 年交易所之外的成交首次超过了全市场的一半。</p>
+<p><strong>有些订单看不见。</strong> 暗池里的订单不公开显示，有些交易所也接受不显示的订单。所以你看到的深度不是全部，成交价也可能落在显示的买一和卖一之间。本课前面说「此刻没人报 $50.01」，只在一本全部可见的订单簿里成立。</p>
+<p><strong>开盘和收盘另有规则。</strong> 主要交易所在开盘和收盘时用<strong>集合竞价</strong>：先收集一段时间的订单，到点用一个统一价格一次性成交。见下方的选读卡片。</p>
+<p>单一订单簿的模型并没有因此失效：每家交易所内部仍有自己的订单簿和撮合规则；全国最优报价，就是把多本订单簿公开显示的最优价格放在一起比。真正变的是「你的订单在哪里、和谁成交」：从一本订单簿，变成了由多个交易场所、券商的路由和做市商组成的网络。</p>
+
+<div class="quiz" id="q9" data-answer="1">
+  <p class="qq"><span class="qh">小题 9</span>判断：在美股，你在交易软件上看到的买一、卖一，通常只是某一家交易所的报价。</p>
+  <ul class="opts"><li class="add">对</li><li class="add">错</li></ul>
+  <p class="qhint" hidden><b>提示：</b>美国把各家交易所的最优报价汇总成了什么？</p>
+  <p class="qans" hidden><b>答案：</b>错。通常是全国最优报价（NBBO），也就是把各家交易所公开显示的最优报价汇总之后的结果。</p>
+</div>
+
+<aside class="icard" aria-labelledby="h-card-us">
+  <h3 id="h-card-us">美国市场规则与数据<small>（选读，可跳过）</small></h3>
+  <p class="dated"><em>核验日期：2026-11-16。以下内容会随监管和市场变化而过时，正文不依赖其中的具体数字。</em></p>
+  <ul>
+    <li><strong>场外成交占比。</strong> Cboe 统计，2025 年通过交易报告设施申报的场外成交占美国股票全市场合并成交量的 50.6%（按成交股数计算），首次超过一半。<sup class="fn add"><a href="#src-cboe" aria-label="来源：Cboe">[1]</a></sup></li>
+    <li><strong>散户订单流向。</strong> SEC 在 2022 年 12 月的规则提案中估计，个人投资者在交易所上市股票上提交的可立即成交订单，九成以上被零售券商交给少数场外批发做市商。<sup class="fn add"><a href="#src-sec2022" aria-label="来源：SEC 2022-225">[2]</a></sup></li>
+    <li><strong>最小报价单位。</strong> 价格在 $1 以上的股票，报价单位一般为 $0.01。SEC 于 2024 年通过修订，为部分价差很窄的股票引入 $0.005 的报价单位；2026 年 6 月 11 日，SEC 将该修订的合规日期延至 2027 年 11 月的第一个营业日。<sup class="fn add"><a href="#src-atkins" aria-label="来源：SEC 主席声明">[3]</a></sup></li>
+    <li><strong>防止交易穿越规则（Rule 611）。</strong> 现行规则一般要求交易场所不得以劣于其他场所受保护报价的价格成交。SEC 于 2026 年 6 月 11 日提议废除该规则；截至核验日，这仍是提案，尚未生效。<sup class="fn add"><a href="#src-611" aria-label="来源：SEC 2026-54 与 17 CFR 242.611">[4]</a></sup></li>
+  </ul>
+</aside>
+
+<aside class="icard opt" aria-labelledby="h-card-auction">
+  <h3 id="h-card-auction">开盘和收盘的集合竞价<small>（选读，可跳过）</small></h3>
+  <p>连续交易是「随到随撮合」。集合竞价则是先在一段时间里收集订单、暂不成交，到了指定时刻，再选出一个统一的价格，把所有能在这个价格成交的订单一次性成交。以 Nasdaq 为例，开盘竞价在上午 9:30 进行，收盘竞价在下午 4:00 进行，收盘竞价产生当天的官方收盘价。<sup class="fn add"><a href="#src-nasdaq" aria-label="来源：Nasdaq">[5]</a></sup></p>
+  <p>一个简化的例子。收集期间积累了以下订单：</p>
+  <table class="data auc">
+    <caption class="sr">集合竞价收集期间的订单</caption>
+    <thead><tr><th scope="col">买单</th><th scope="col">卖单</th></tr></thead>
+    <tbody>
+      <tr><td>$50.03 × 300</td><td>$49.99 × 200</td></tr>
+      <tr><td>$50.01 × 200</td><td>$50.01 × 300</td></tr>
+      <tr><td>$50.00 × 400</td><td>$50.03 × 300</td></tr>
+    </tbody>
+  </table>
+  <p>注意买方最高出价 $50.03 已经高于卖方最低要价 $49.99，这在收集阶段是允许的。逐个试价：</p>
+  <ul>
+    <li>以 $50.00 成交：愿意买的有 900 股，愿意卖的只有 200 股，只能成交 200 股。</li>
+    <li>以 $50.01 成交：愿意买的有 500 股，愿意卖的有 500 股，可成交 <strong>500 股</strong>。</li>
+    <li>以 $50.03 成交：愿意买的只有 300 股，只能成交 300 股。</li>
+  </ul>
+  <div class="viz add" data-viz="auction" role="img" aria-label="三个试算价格下可成交的股数：$50.00 为 200 股，$50.01 为 500 股，$50.03 为 300 股。$50.01 最多。"></div>
+  <p>$50.01 让最多的股数成交，于是所有成交都以 $50.01 完成。出价 $50.03 的买家也只付 $50.01。</p>
+  <p>真实交易所确定竞价价格的细则更复杂，例如还要考虑未匹配数量和参考价格。这里只展示「一个统一价格、尽量多成交」的基本思路。</p>
+</aside>
+
+<aside class="icard cn" aria-labelledby="h-card-cn">
+  <h3 id="h-card-cn">中国对照<small>（选读，可跳过）</small></h3>
+  <p>在中国内地，A 股分别在上海、深圳和北京三家证券交易所上市，一只股票在其上市的那一家交易所竞价交易。投资者的竞价订单集中进入这家交易所的交易系统，连续竞价按价格优先、时间优先撮合，开盘和收盘时段采用集合竞价。所以 A 股行情软件上的买一、卖一，基本就是这一家交易所订单簿上的报价，不需要像美国那样先把多个场所的报价汇总成全国最优报价。<sup class="fn add"><a href="#src-cn" aria-label="来源：沪深北交易规则">[6]</a></sup></p>
+  <p>这个对比要看清两点。第一，「集中在一个场所」不等于「只有一种交易方式」：大宗交易、盘后固定价格交易等方式不走连续竞价的订单簿。第二，三家交易所之间、不同板块之间、不同时段之间，具体规则并不相同，例如涨跌幅限制、能否使用市价申报、哪些时段不接受撤单。</p>
+  <p>规则也在变化。三家交易所修订后的交易规则自 2026 年 7 月 6 日起施行，但并非每一条都同时生效：上海、深圳两所的新规则把盘后固定价格交易的适用范围扩展到 A 股和 ETF；北京证券交易所新增的盘后固定价格交易条款，实施时间则由该所另行通知。深圳证券交易所的新规则写明创业板股票「可以」实行做市商机制，具体办法另行规定。</p>
+  <p>本栏只借 A 股说明一个结构差别：订单集中在一个场所，还是分散在许多场所。</p>
+</aside>
+</section>
+
+<section id="s10" aria-labelledby="h-s10">
+<h2 id="h-s10">回到小林</h2>
+<p>小林看到的 $50.01，不是价签，而是两秒前别人留下的成交小票。他真正面对的，是从 $50.02 开始、每档数量有限的卖方队伍。他的市价单说「马上成交」，撮合引擎就沿着队伍往上，按价格和时间的顺序替他找到了四个卖家。最后一笔落在 $50.04，它就成了屏幕上的新「股价」。</p>
+<p>如果那一刻做市商撤了单，他会付得更多；如果有人刚好挂出更便宜的卖单，他会付得更少。如果他用的是限价单「不超过 $50.03」，引擎会替他买下 $50.02 和 $50.03 两档共 500 股，然后停下，因为再往上就超过了他的界限。剩下的 100 股会以 $50.03 的出价挂进订单簿，成为新的买一，等别人来卖。</p>
+<p class="try add"><a href="#lab" data-scenario="S4">在沙盘里用限价单再买一次 → 场景 4</a></p>
+<p class="pull">股价不是被宣布的数字，而是一张张订单相遇时留下的足迹。读懂订单簿，就能看见留下足迹的人：有的在等，有的在赶时间，有的刚刚改了主意。</p>
+<p>不过，小林这次只买了 600 股，订单簿也还算厚。如果要马上买 1,000 股，而卖一后面只零星挂着几百股呢？股价看起来一样，花的钱可以差出几百美元。买卖价差、深度和大单自己推动的价格，加起来是一笔交易的真实成本。什么时候该用限价单，什么时候该用市价单？这是下一课的问题。</p>
+</section>
+
+<section id="keys" class="keys" aria-labelledby="h-keys">
+<h3 id="h-keys">本课要点</h3>
+<ul>
+<li>屏幕上的「股价」通常是<strong>最新成交价</strong>，是上一笔交易的记录，接不了。</li>
+<li><strong>卖一</strong>（最优卖价）是卖方挂单中要价最低的那一档价格；<strong>买一</strong>（最优买价）是买方挂单中出价最高的那一档价格。同一档上可能有好几张订单。在单一订单簿里，想马上买要付卖一，想马上卖只能得到买一。两者之差是<strong>买卖价差</strong>。</li>
+<li><strong>限价单</strong>控制最差可接受价格，但不保证成交；<strong>市价单</strong>优先马上成交，但不保证成交价格，也不保证全部成交。在本课的模型里，能成交的限价单按已经挂着的那张单的价格成交。</li>
+<li><strong>订单簿</strong>按价格列出所有挂着等待的订单。本课模型中的<strong>撮合引擎</strong>按<strong>价格优先、时间优先</strong>把对得上的买单和卖单配成对，不判断股票值多少钱。数量多的一方可能只<strong>部分成交</strong>，剩下的继续等待。</li>
+<li>一张大市价单会一档一档往上买，买到几档取决于订单大小和<strong>市场深度</strong>；平均价比下单时看到的卖一更差，最新成交价只记录最后一笔。</li>
+<li>挂单会改变报价而不改变最新成交价；一笔买入也可能让最新成交价下跌。</li>
+<li>挂单在成交前通常可以<strong>撤单</strong>。卖一不变时，后面的深度也可能已经变了，同一张订单的结果随之不同。</li>
+<li>美国股市是<strong>碎片化</strong>的：同一只股票在许多场所交易，各处公开显示的最优报价汇总成<strong>全国最优报价</strong>（NBBO），不含隐藏订单；券商可能把零售订单送到交易所，也可能送到批发做市商等场外执行场所；很多成交发生在交易所之外，还有看不见的订单。</li>
+</ul>
+</section>
+
+<section class="srcs add" aria-labelledby="h-src">
+  <h3 id="h-src" class="add">来源与核验状态</h3>
+  <p class="add src-key">✔ 已读到官方文本或其直接摘录　◐ 只有二手来源、法规转载或检索摘要。核验日期 2026-11-16。</p>
+  <ol class="add">
+    <li id="src-cboe" class="add">Cboe, <a href="https://www.cboe.com/insights/posts/2025-u-s-equities-year-in-review">2025 U.S. Equities Year in Review</a> ✔</li>
+    <li id="src-sec2022" class="add">SEC, <a href="https://www.sec.gov/news/press-release/2022-225">Press Release 2022-225</a>（2022 年 12 月）✔</li>
+    <li id="src-atkins" class="add">SEC, <a href="https://www.sec.gov/newsroom/speeches-statements/atkins-statement-minimum-pricing-increments-access-fee-caps-061126">Statement Regarding Minimum Pricing Increments and Access Fee Caps</a>（2026-06-11）✔；豁免令原文未读，二手报道对延期决定的日期说法不一 ◐</li>
+    <li id="src-611" class="add">SEC, <a href="https://www.sec.gov/newsroom/press-releases/2026-54-sec-proposes-rescission-regulation-nms-rules-611-610e">Press Release 2026-54</a>（2026-06-11）✔；现行规则 <a href="https://www.law.cornell.edu/cfr/text/17/242.611">17 CFR 242.611</a> ✔。截至 2026-11-17 未检索到最终通过的记录 ◐</li>
+    <li id="src-nasdaq" class="add">Nasdaq Trader, <a href="https://www.nasdaqtrader.com/content/productsservices/Trading/ClosingCrossfaq.pdf">Closing Cross FAQ</a> ✔；「尽量多成交」的确定原则 ◐（信息卡已注明细则更复杂）</li>
+    <li id="src-cn" class="add">《上海证券交易所交易规则（2026年修订）》<a href="https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/universal/c/c_20260424_10816492.shtml">发布页</a> ✔；《深圳证券交易所交易规则（2026年修订）》<a href="https://docs.static.szse.cn/www/lawrules/rule/trade/current/W020260424690713155663.pdf">全文</a> ✔；《北京证券交易所交易规则》<a href="https://www.bse.cn/jygl_list/200028217.html">规则页</a> ✔ 与<a href="https://www.bse.cn/jygl_list/200029608.html">北证公告〔2026〕43 号</a> ✔；北交所盘后固定价格交易的实施公告尚未检索到 ◐</li>
+  </ol>
+  <p class="add src-key">正文中以下说法目前只有 ◐，不影响本课结论：</p>
+  <ul class="add">
+    <li class="add">「卖一」「买一」「最优买价」「最优卖价」作为行情显示用语：普遍见于行情软件和财经资料；交易所规则使用「对手方最优价格」「本方最优价格」等写法，交易所行情规范中这几个词的原文尚未核到。</li>
+    <li class="add">全国最优报价的范围（公开显示、符合规则条件的报价）：依据 17 CFR 242.600(b)(60)、(b)(81) 的法规转载（<a href="https://www.law.cornell.edu/cfr/text/17/242.600">LII</a>）。</li>
+    <li class="add">「涨跌限制」价格带对市价单同样适用：依据 Cboe 与 FINRA 的说明，计划原文未读。</li>
+    <li class="add">同一价格上的分配规则各家不尽相同：只核对了 Nasdaq Rule 4757 一家作为例证；场外做市商有时提供价格改善。</li>
+  </ul>
+</section>
+
+    </article>
+
+    <aside class="notesR" aria-label="读图说明">
+      <div><b>读图</b><span class="sw" style="background:var(--ask)"></span>卖单，紫色<br><span class="sw" style="background:var(--bid)"></span>买单，墨黑<br><span class="sw" style="background:var(--lime)"></span>荧光底：此刻的买一、卖一<br><span class="sw" style="border:1.5px dashed var(--ink);background:#fff"></span>虚线：最新成交价，是记录</div>
+      <div><b>范围</b>单一交易所、全部订单可见的简化模型；只有连续交易。</div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site"><div class="w">
+  <div class="row"><b style="color:var(--ink)">MarketPilot</b><span>S02-02</span></div>
+  <p class="credits"><b>照片来源</b> 路边市场的经纪人向楼上的办公室打手势，纽约，1916 年 · Bain News Service（美国国会图书馆，LCCN 97517154）· Public domain · <a href="https://commons.wikimedia.org/wiki/File:Signalling_to_offices,_curb_market,_New_York_City_LCCN97517154.jpg">Wikimedia Commons</a>。照片经裁切、去色处理，仅作开场氛围；课文中的北岭电池、小林、小周均为虚构。</p>
+</div></footer>
+
+<button class="totop" id="totop" type="button" aria-label="回到顶部" title="回到顶部（长按可拖动，双击复位）">
+  <svg class="ring" viewBox="0 0 62 62" aria-hidden="true"><circle cx="31" cy="31" r="28"/></svg>
+  <svg class="ico-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  <svg class="ico-move" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3"/></svg>
+</button>
+<div class="totop-tip" id="totop-tip" role="status" aria-live="polite"></div>
+
+<script src="../../engine/orderbook.js"></script>
+<script src="model.js"></script>
+<script src="../../assets/totop.js"></script>
+<script src="ladder.js"></script>
+<script src="figures.js"></script>
+<script src="sandbox.js"></script>
+<script src="reader.js"></script>
+</body>
+</html>

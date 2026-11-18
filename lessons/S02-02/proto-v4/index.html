@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>图表原型 · S02-02 v4</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='11' fill='%23D4FF3A' stroke='%23111827' stroke-width='6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700;900&family=Schibsted+Grotesk:wght@600;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../site/assets/site.css">
+<link rel="stylesheet" href="proto.css">
+</head>
+<body>
+<main class="pw">
+  <p class="lab">MarketPilot · S02-02 · 图表原型（v4 候选稿）</p>
+  <h1>六张图：一步一步看懂订单簿</h1>
+  <p class="lead">S02-02 的六张图和四道小题，按课文顺序排列。网页默认 (a)，打印或导出 PDF 时自动换成 (b)。这一页没有接入课文页面。</p>
+
+  <div class="modebar" role="group" aria-label="图表显示方式">
+    <span>显示方式</span>
+    <button type="button" data-mode="anim" aria-pressed="true">(a) 网页动画：一步一步出现</button>
+    <button type="button" data-mode="static" aria-pressed="false">(b) 书本式：静态 + 箭头编号</button>
+  </div>
+
+  <section class="ex">
+    <h2>屏幕上其实有三个数字</h2>
+    <p>小林的屏幕上，大号数字 <b>$50.01</b> 下面还有两行小字：<b>买一 $50.00 × 300</b>，<b>卖一 $50.02 × 200</b>。</p>
+    <p>这两行小字是两个专业术语：<b>买一</b>（best bid）和<b>卖一</b>（best ask）。</p>
+    <p>想象所有想卖北岭电池的人排成一队，<b>谁要价最低，谁排第一</b>。排第一的人的要价，就是<b>卖一</b>。通俗地讲，卖一就是此刻市场上最便宜的卖价，所以也叫“最优卖价”。想买的人也排成一队，<b>谁出价最高，谁排第一</b>；排第一的人的出价，就是<b>买一</b>，也就是此刻最高的买价，也叫“最优买价”。</p>
+    <p class="aside">往下还有“买二”“卖二”“买三”“卖三”……就是两支队伍里排第二、第三的人。英文行情软件把买一、卖一写成 Bid、Ask。</p>
+
+    <figure class="pf" id="pf1" data-fig="queues" aria-labelledby="pf1-t">
+      <figcaption class="pf-hd"><span class="flab">图 1</span><span id="pf1-t">两支队伍：买一与卖一</span></figcaption>
+      <div class="pf-stage"></div>
+      <div class="pf-ctrl"></div>
+      <ol class="pf-steps"></ol>
+    </figure>
+
+    <div class="quiz" data-q="q1"></div>
+  </section>
+
+  <section class="ex">
+    <h2>一张订单簿</h2>
+    <p>还没成交、挂着等待的限价单，按价格排好队，放在<b>订单簿</b>（order book）里。订单簿就是那两支队伍的完整名单。把图 1 的两支队伍竖起来，就是下面这张图。</p>
+
+    <figure class="pf" id="pf2" data-fig="book" aria-labelledby="pf2-t">
+      <figcaption class="pf-hd"><span class="flab">图 2</span><span id="pf2-t">北岭电池订单簿，10:00:00</span></figcaption>
+      <div class="pf-stage"></div>
+      <div class="pf-ctrl"></div>
+      <ol class="pf-steps"></ol>
+    </figure>
+  </section>
+
+  <section class="ex">
+    <h2>撮合：小林的 600 股</h2>
+    <p>交易所把买单和卖单配成对、让它们成交的过程，叫<b>撮合</b>（matching）；负责这件事的电脑程序，叫<b>撮合引擎</b>（matching engine）。用大白话说，撮合就是“配对”：配上了，就成交。</p>
+    <p>它不判断股票值多少钱，只按两条死规矩办事：</p>
+    <ol class="rules"><li><b>价格优先</b>：买家来了，先配给要价最低的卖家。</li><li><b>时间优先</b>：要价一样，谁先挂出来，谁先配。</li></ol>
+    <p>十点整，小林的<b>市价单</b>（market order）到了，要买 600 股。通俗地讲，市价单就是“什么价格都接受，只要马上买到”的订单。看引擎怎样一档一档地配。</p>
+
+    <figure class="pf" id="pf3" data-fig="climb" aria-labelledby="pf3-t">
+      <figcaption class="pf-hd"><span class="flab">图 3</span><span id="pf3-t">小林的 600 股，一档一档往上买</span><span class="pf-src">数字由撮合引擎实时算出</span></figcaption>
+      <div class="pf-stage"></div>
+      <div class="pf-ctrl"></div>
+      <ol class="pf-steps"></ol>
+    </figure>
+
+    <div class="quiz" data-q="q5"></div>
+  </section>
+
+  <section class="ex">
+    <h2>不交易，报价也会变</h2>
+    <p>小周挂出一张“卖 200 股，不低于 $50.01”的限价单。买方第一名只出 $50.00，够不着，所以没有成交。但她的订单成了新的卖一：一股都没成交，屏幕上的卖一就从 $50.04 变成了 $50.01。</p>
+    <div class="quiz" data-q="q7"></div>
+  </section>
+
+  <section class="ex">
+    <h2>报价可以收回</h2>
+    <p>回到十点整、小林下单之前。一条真假不明的消息传出，做市商（market maker）C、G、D 怕被消息更灵通的人占便宜，先把 $50.03 和 $50.04 的卖单撤了（cancel）。几毫秒后小林的市价单到了，他屏幕上的卖一还是 $50.02 × 200。</p>
+
+    <figure class="pf" id="pf4" data-fig="cancel" aria-labelledby="pf4-t">
+      <figcaption class="pf-hd"><span class="flab">图 4</span><span id="pf4-t">最上面一行没变，后面空了</span><span class="pf-src">数字由撮合引擎实时算出</span></figcaption>
+      <div class="pf-stage"></div>
+      <div class="pf-ctrl"></div>
+      <ol class="pf-steps"></ol>
+    </figure>
+  </section>
+
+  <section class="ex">
+    <h2>同样的股价，完全不同的流动性</h2>
+    <p>我现在想马上买 1,000 股，要花多少钱？最新成交价回答不了，答案在订单簿里。下面两只虚构的股票，最新成交价都是 $50.00。</p>
+
+    <figure class="pf" id="pf5" data-fig="thick" aria-labelledby="pf5-t">
+      <figcaption class="pf-hd"><span class="flab">图 5</span><span id="pf5-t">两只“股价相同”的股票</span><span class="pf-src">数字由撮合引擎实时算出</span></figcaption>
+      <div class="pf-stage"></div>
+      <div class="pf-ctrl"></div>
+      <ol class="pf-steps"></ol>
+    </figure>
+
+    <div class="quiz" data-q="q8"></div>
+  </section>
+
+  <section class="ex">
+    <h2>现实比模型复杂在哪里</h2>
+    <p>真实的美股，同一只股票在好几个交易所同时交易，每家都有自己的订单簿。先看最简单的情况：甲、乙两个交易所。</p>
+    <p class="aside"><b>交易所、券商、交易软件是什么关系？</b>你不能自己直接去交易所下单。你要在<b>券商</b>（broker）开户：券商是有资格把订单送进市场的中介，<b>交易软件</b>就是券商给你用的 App。你点“买入”，订单先到券商，券商再把它送到某个交易所或别的交易场所去配对。正式课程里，这一段打算放到本课之前讲（规划待确认）。</p>
+
+    <figure class="pf" id="pf6" data-fig="venues" aria-labelledby="pf6-t">
+      <figcaption class="pf-hd"><span class="flab">图 6</span><span id="pf6-t">同一只股票，两个交易所</span></figcaption>
+      <div class="pf-stage"></div>
+      <div class="pf-ctrl"></div>
+      <ol class="pf-steps"></ol>
+    </figure>
+  </section>
+
+  <p class="foot">原型说明：(a) 不会自动播放：点“播放”或“下一步”才往下走，可暂停、上一步、重来。系统开启“减少动态效果”、打印或导出 PDF 时，自动显示 (b)：所有步骤画在同一张图上，用圈号和箭头标出先后。顶部按钮可以手动切换，方便对照。</p>
+</main>
+<script src="../../../site/engine/orderbook.js"></script>
+<script src="../../../site/lessons/S02-02/model.js"></script>
+<script src="proto.js"></script>
+</body>
+</html>

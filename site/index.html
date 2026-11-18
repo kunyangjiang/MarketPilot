@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarketPilot</title>
+<meta name="description" content="MarketPilot：把金融市场当作复杂系统来理解。从一张订单簿，到一场金融恐慌。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2212%22 fill=%22%23D4FF3A%22 stroke=%22%23111827%22 stroke-width=%227%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/shell.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="top"><div class="w">
+  <a class="logo" href="#home"><i></i>MarketPilot</a>
+  <nav class="mainnav" aria-label="主导航">
+    <a href="#home" data-sec="home">首页</a><a href="#courses" data-sec="courses">课程</a><a href="#stories" data-sec="stories">故事</a>
+  </nav>
+  <button class="sbtn" id="s-open" type="button" aria-haspopup="dialog" aria-controls="search" aria-keyshortcuts="Control+K Meta+K">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <span class="t">搜索</span><kbd id="kbd">Ctrl K</kbd><span class="sr">打开搜索</span>
+  </button>
+</div></header>
+
+<div id="main" tabindex="-1">
+<!-- ============ 首页 ============ -->
+<main data-screen="home" class="w">
+  <section class="hero" aria-label="开场">
+    <div class="card l"><div class="lab">MarketPilot · 金融市场 · 复杂系统</div>
+      <h1>金融市场是一个<br><em>复杂系统。</em></h1>
+      <p class="sub">从一张订单簿，到一场金融恐慌。</p>
+      <p class="intro" id="h-intro"></p>
+      <div class="go"><a class="btn pri" href="#courses">探索课程 →</a></div></div>
+    <div class="shot"><img alt="东京筑地市场的金枪鱼拍卖" id="h-p1">
+      <div class="hot" style="left:28%;top:42%"><span><small>S02 · 市场如何运作</small>这里的价格，由买家一轮轮竞价决定</span></div>
+      <div class="hot l" style="left:80%;top:24%"><span><small>注意</small>拍卖与交易所的撮合规则不同</span></div>
+      <div class="hot" style="left:56%;top:76%"><span><small>每一条鱼</small>都是一笔即将成立的交易</span></div>
+      <span class="credit">Joe deSousa · CC0</span></div>
+  </section>
+
+  <section class="sec" aria-labelledby="now-h">
+    <div class="sec-h"><div><div class="lab">课程</div><h2 id="now-h">从这里开始</h2></div><a class="more" href="#courses" id="h-all">全部课程 →</a></div>
+    <div class="now" id="h-now"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="layers-h">
+    <div class="sec-h"><div><div class="lab">课程 · 四个学习层级</div><h2 id="layers-h">一条从订单簿走到金融危机的路</h2></div><p id="h-lsum"></p></div>
+    <div class="layers" id="h-layers"></div>
+  </section>
+
+  <section class="sec teaser" aria-labelledby="st-h">
+    <div class="scope"><div class="frame"><img alt="" id="h-p2">
+      <div class="slate"><span class="lab">故事</span><b id="st-h">故事</b></div>
+      <p class="subt">以金融市场为背景的原创虚构作品</p>
+      <div class="cta"><a class="btn" href="#stories">看看故事栏目 →</a></div></div>
+      <div class="bar"><span id="h-p2cap"></span></div></div>
+  </section>
+  <footer class="site"><div class="row"><b style="color:var(--ink)">MarketPilot</b><span>把金融市场当作复杂系统来理解</span></div><div id="h-cr"></div></footer>
+</main>
+
+<!-- ============ 课程目录 ============ -->
+<main data-screen="courses" class="w" hidden>
+  <div class="crumb"><a href="#home">首页</a><span>/</span>课程</div>
+  <section class="chead">
+    <div class="card l"><div class="lab">课程</div><h1>61 课，按四个层级展开</h1>
+      <div class="nums"><div><b>4</b>学习层级</div><div><b>11</b>阶段</div><div><b>61</b>课</div></div>
+</div>
+    <div class="shot"><img alt="从欧文信托大楼楼顶俯瞰华尔街，1938 年" id="c-p1"><div class="hot" style="left:40%;top:60%"><span><small>华尔街 · 1938</small>61 课，从这条街讲起</span></div><span class="credit">Berenice Abbott · Public domain</span></div>
+  </section>
+  <nav class="jump" aria-label="跳到层级" id="c-jump"></nav>
+  <div id="c-list"></div>
+  <p class="cl-foot">形式：叙＝叙事 · 机＝机制 · 数＝计算 · 互＝互动 · 思＝思辨</p>
+  <footer class="site"><div class="row"><b style="color:var(--ink)">MarketPilot</b><span>把金融市场当作复杂系统来理解</span></div><div id="c-cr"></div></footer>
+</main>
+
+<!-- ============ 故事 ============ -->
+<main data-screen="stories" class="w" hidden>
+  <section class="scope shero" aria-labelledby="sw-h"><div class="frame"><img alt="" id="s-p1">
+    <div class="slate"><span class="lab">MarketPilot · 故事</span><h1 id="sw-h">故事</h1><p class="def">以金融市场为背景的原创虚构作品</p></div></div>
+    <div class="bar"><span id="s-p1cap"></span></div></section>
+  <footer class="site"><div class="row"><b style="color:var(--ink)">MarketPilot</b><span>把金融市场当作复杂系统来理解</span></div><div id="s-cr"></div></footer>
+</main>
+</div>
+
+<!-- ============ 全站搜索 ============ -->
+<dialog class="search" id="search" aria-labelledby="s-title">
+  <h2 class="sr" id="s-title">搜索 MarketPilot</h2>
+  <div class="s-in">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <input id="s-q" type="search" placeholder="搜索课程，例如：订单簿、1907" autocomplete="off" role="combobox" aria-expanded="true" aria-controls="s-list" aria-autocomplete="list" aria-describedby="s-hint">
+    <button class="s-close" id="s-close" type="button" aria-label="关闭搜索">Esc</button>
+  </div>
+  <div class="s-body"><div id="s-state"></div><ul class="s-res" id="s-list" role="listbox" aria-label="搜索结果"></ul></div>
+  <div class="s-foot" id="s-hint"><span><kbd>↑</kbd><kbd>↓</kbd>选择</span><span><kbd>Enter</kbd>打开</span><span><kbd>Esc</kbd>关闭</span></div>
+  <p class="sr" aria-live="polite" id="s-live"></p>
+</dialog>
+
+<button class="totop" id="totop" type="button" aria-label="回到顶部" title="回到顶部（长按可拖动，双击复位）">
+  <svg class="ring" viewBox="0 0 62 62" aria-hidden="true"><circle cx="31" cy="31" r="28"/></svg>
+  <svg class="ico-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  <svg class="ico-move" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3"/></svg>
+</button>
+<div class="totop-tip" id="totop-tip" role="status" aria-live="polite"></div>
+
+<script src="assets/catalog.js"></script>
+<script src="assets/photos.js"></script>
+<script src="assets/search-index.js"></script>
+<script src="assets/shell.js"></script>
+<script src="assets/search.js"></script>
+<script src="assets/totop.js"></script>
+</body>
+</html>
