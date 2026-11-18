@@ -17,10 +17,10 @@
   img('h-p1', 'tuna', '40% 50%');
   $('h-all').textContent = '全部 ' + MP.lessons.length + ' 课 →';
   const cover = {
-    'S02-02': l => '<div class="shot"><img src="' + PH.curbSignal.src + '" alt="" style="object-position:50% 35%;transform:scale(1.08)"></div>',
+    'S02-01': l => '<div class="shot"><img class="col" src="' + PH.broadSt.src + '" alt="" style="object-position:50% 62%"></div>',
     'S09-03': l => '<div class="shot"><img src="' + PH.panic1907.src + '" alt="" style="object-position:50% 40%"></div>'
   };
-  // 首页「从这里开始」只放有封面照片的课；其余已写好的课从课程目录和搜索进入
+  // 首页「从这里开始」：S02-01 是第一课，S09-03 从一个故事读起；其余已写好的课从课程目录和搜索进入
   $('h-now').innerHTML = readable.filter(l => cover[l.id]).map(l => '<a href="' + MP.readable[l.id].href + '">' + cover[l.id](l) +
     '<div class="tx"><span class="lab">' + l.id + ' · ' + l.stage.id + ' ' + esc(l.stage.name) + '</span><b>' + esc(l.t) + '</b><p>' + esc(MP.readable[l.id].q) + '</p></div></a>').join('');
   $('h-lsum').textContent = MP.layers.length + ' 层 · ' + MP.stages.length + ' 个阶段 · ' + MP.lessons.length + ' 课';
@@ -29,7 +29,7 @@
     return '<a class="lrow" href="#layer-' + (i + 1) + '"><span class="n">' + MP.layerLabel(i) + '</span><span><b>' + esc(L.name) + '</b><small>' + L.stages.map(s => s.id + ' ' + esc(s.name)).join(' · ') + '</small></span><span class="c">' + L.stages.length + ' 个阶段 · ' + ls.length + ' 课' + '</span><span class="ar" aria-hidden="true">→</span></a>';
   }).join('');
   img('h-p2', 'strand1915', '50% 84%'); $('h-p2cap').textContent = PH.strand1915.cap;
-  $('h-cr').innerHTML = PH.credits(['tuna', 'curbSignal', 'panic1907', 'strand1915']);
+  $('h-cr').innerHTML = PH.credits(['tuna', 'broadSt', 'panic1907', 'strand1915']);
 
   /* ===== 故事 ===== */
   img('s-p1', 'strand1915', '50% 84%'); $('s-p1cap').textContent = PH.strand1915.cap;

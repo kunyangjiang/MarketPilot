@@ -146,7 +146,7 @@ test.after(() => { try { ws.close(); } catch (e) {} try { chrome.kill(); } catch
 for (const M of MOUNTS) {
   const tag = M === '/' ? 'root' : 'nested';
   for (const [vw, vh, mob, dev] of [[1280, 900, false, 'desktop'], [390, 844, true, 'mobile']]) {
-    test(`[${tag} ${dev}] 首页：无报错、无失败请求、无横向溢出；主按钮「探索课程」打开课程目录；两课分别推荐`, async () => {
+    test(`[${tag} ${dev}] 首页：无报错、无失败请求、无横向溢出；主按钮「探索课程」打开课程目录；从 S02-01 开始，另推荐 S09-03`, async () => {
       await viewport(vw, vh, mob);
       await load(M);
       assert.deepEqual(errorsSeen(), []); assert.deepEqual(badRequests(), []);
@@ -156,7 +156,7 @@ for (const M of MOUNTS) {
         now:[...document.querySelectorAll('#h-now a')].map(a=>[a.getAttribute('href'),!!a.querySelector('.stat,.st'),a.querySelector('b').textContent]),
         nav:[...document.querySelectorAll('.mainnav a')].map(a=>a.textContent), foot:document.querySelector('[data-screen=home] footer').textContent}`);
       assert.deepEqual(r.pri, [['探索课程 →', '#courses']]);
-      assert.deepEqual(r.now.map(x => x[0]), ['lessons/S02-02/', 'lessons/S09-03/']);
+      assert.deepEqual(r.now.map(x => x[0]), ['lessons/S02-01/', 'lessons/S09-03/']);
       assert.ok(r.now.every(x => x[1] === false), '首页推荐卡片不应挂状态标签');
       assert.deepEqual(r.nav, ['首页', '课程', '故事']);
       const home = await evaluate(`return {txt:document.querySelector('[data-screen=home]').textContent, sum:document.getElementById('h-lsum').textContent}`);

@@ -41,5 +41,5 @@ test('首页层级说明正好是「4 层 · 11 个阶段 · 61 课」：没有�
 test('目录数据不再提供状态文字；照片清单是统一样稿里外壳用的 9 张', () => {
   global.window = {}; for (const m of ['../assets/catalog.js', '../assets/photos.js']) delete require.cache[require.resolve(m)]; require('../assets/catalog.js'); require('../assets/photos.js'); const W = global.window; delete global.window;
   assert.equal(W.MP.status, undefined);
-  assert.deepEqual(Object.keys(W.PH).filter(k => typeof W.PH[k] === 'object'), ['tuna', 'curbSignal', 'abbottRoof', 'melons', 'abbottSkyline', 'crowd29c', 'chicagoTrains', 'panic1907', 'strand1915']);
+  assert.deepEqual(Object.keys(W.PH).filter(k => typeof W.PH[k] === 'object'), ['tuna', 'broadSt', 'abbottRoof', 'melons', 'abbottSkyline', 'crowd29c', 'chicagoTrains', 'panic1907', 'strand1915']);
 });
