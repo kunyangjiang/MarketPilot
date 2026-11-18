@@ -19,7 +19,7 @@ test.after(() => { for (const r of [A, B]) fs.rmSync(r.out, { recursive: true, f
 test('只含运行时文件：首页、两课、它们引用的样式、脚本、图片和搜索索引', () => {
   const files = walk(A.out);
   assert.deepEqual(files, A.files.map(f => f.file));
-  for (const need of ['index.html', '404.html', 'assets/search-index.js', 'assets/catalog.js', 'assets/shell.js', 'assets/search.js', 'lessons/S02-02/index.html', 'lessons/S09-03/index.html'])
+  for (const need of ['index.html', '404.html', 'assets/search-index.js', 'assets/catalog.js', 'assets/shell.js', 'assets/search.js', 'lessons/S02-01/index.html', 'lessons/S02-02/index.html', 'lessons/S02-03/index.html', 'lessons/S02-04/index.html', 'lessons/S09-03/index.html', 'engine/orderbook.js'])
     assert.ok(files.includes(need), '缺少 ' + need);
   for (const f of files) for (const re of D.EXCLUDE) assert.ok(!re.test(f), '不应发布：' + f);
   for (const f of files) assert.ok(/\.(html|css|js|png|jpe?g|webp|svg|woff2?)$/i.test(f), '不是网页运行时文件：' + f);

@@ -56,11 +56,12 @@ test('索引文字都来自课程页正文；不含草稿、审阅或样稿的�
   }
   // 默认隐藏的内容（小题提示与答案、沙盘揭晓）不进索引，搜索摘要不会提前透露答案
   const allText = IDX.map(e => e.text).join(' ');
-  for (const bad of ['答案：', '提示：']) assert.ok(!allText.includes(bad), '索引收了隐藏的「' + bad + '」');
+  // 正文里可以有「最直白的答案：」这样的句子；小题的「答案：」「提示：」是独立的开头，前面不接文字
+  for (const bad of ['答案：', '提示：']) assert.ok(!new RegExp('(?<!\\p{L})' + bad, 'u').test(allText), '索引收了隐藏的「' + bad + '」');
   for (const id of Object.keys(MP.readable)) {
     const h = fs.readFileSync(path.join(SITE, MP.readable[id].href, 'index.html'), 'utf8');
     for (const m of h.matchAll(/<p class="q(?:ans|hint)" hidden>([\s\S]*?)<\/p>/g)) {
-      const s = m[1].replace(/<[^>]+>/g, '').replace(/^(答案|提示)：/, '').trim().slice(0, 16);
+      const s = m[1].replace(/<[^>]+>/g, '').replace(/^(答案|提示)：/, '').trim().slice(0, 40); // 取足够长的一段：提示常以正文里的半句话开头，只比 16 个字会误报
       assert.ok(!allText.includes(s), id + ' 的隐藏答案或提示进了索引：' + s);
     }
   }
@@ -76,7 +77,7 @@ test('不进索引的部分：hidden、free-only 实验控件（含嵌套）、<
   assert.equal(dropTables('<p>a</p><details class="tbl add"><summary>表格视图</summary><table><tr><td>$1</td></tr></table></details><p>b</p>').replace(/\s+/g, ''), '<p>a</p><p>b</p>');
   const all = IDX.map(e => e.title + ' ' + e.text).join(' ');
   for (const bad of ['表格视图', '需要启用 JavaScript', '当天提款需求 W', '出借人对抵押贷款的评估值']) assert.ok(!all.includes(bad), '索引收了「' + bad + '」');
-  // 筹备中的 59 课不在这份索引里（它们只在 search.js 里按课号和标题出现）
+  // 筹备中的 56 课不在这份索引里（它们只在 search.js 里按课号和标题出现）
   const ids = new Set(IDX.map(e => e.id));
   assert.deepEqual([...ids].sort(), Object.keys(MP.readable).sort());
 });

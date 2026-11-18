@@ -1,6 +1,6 @@
 /* 站点课程目录：与冻结的课程体系 v1.0 逐条核对。
  *   - 4 个层级、11 个阶段、61 课：层名、阶段号、阶段名、课数、课号、标题、顺序都与课程体系一致；
- *   - 只有 S02-02 与 S09-03 有课程页；其余 59 课只列标题，不带链接，也没有任何状态标签。
+ *   - 只有 S02-01、S02-02、S02-03、S02-04 与 S09-03 有课程页；其余 56 课只列标题，不带链接，也没有任何状态标签。
  * 运行：node --test site/tests/site-catalog.test.js */
 'use strict';
 const test = require('node:test');
@@ -43,9 +43,9 @@ test('61 课：课号、标题、顺序与课程体系第 2 节「完整课程�
   heads.forEach(([, id, name, n]) => { const s = MP.stages.find(x => x.id === id); assert.equal(s.name, name); assert.equal(s.lessons.length, Number(n)); });
 });
 
-test('已写好的课：只有 S02-02 与 S09-03，各有课程页；核心问题与课程页一致', () => {
-  assert.deepEqual(MP.lessons.filter(l => l.readable).map(l => l.id), ['S02-02', 'S09-03']);
-  assert.equal(MP.lessons.filter(l => !l.readable).length, 59);
+test('已写好的课：S02-01 至 S02-04 与 S09-03，各有课程页；核心问题与课程页一致', () => {
+  assert.deepEqual(MP.lessons.filter(l => l.readable).map(l => l.id), ['S02-01', 'S02-02', 'S02-03', 'S02-04', 'S09-03']);
+  assert.equal(MP.lessons.filter(l => !l.readable).length, 56);
   for (const [id, r] of Object.entries(MP.readable)) {
     assert.equal(r.href, 'lessons/' + id + '/');
     const html = fs.readFileSync(path.join(SITE, r.href, 'index.html'), 'utf8');

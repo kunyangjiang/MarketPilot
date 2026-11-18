@@ -20,7 +20,8 @@
     'S02-02': l => '<div class="shot"><img src="' + PH.curbSignal.src + '" alt="" style="object-position:50% 35%;transform:scale(1.08)"></div>',
     'S09-03': l => '<div class="shot"><img src="' + PH.panic1907.src + '" alt="" style="object-position:50% 40%"></div>'
   };
-  $('h-now').innerHTML = readable.map(l => '<a href="' + MP.readable[l.id].href + '">' + cover[l.id](l) +
+  // 首页「从这里开始」只放有封面照片的课；其余已写好的课从课程目录和搜索进入
+  $('h-now').innerHTML = readable.filter(l => cover[l.id]).map(l => '<a href="' + MP.readable[l.id].href + '">' + cover[l.id](l) +
     '<div class="tx"><span class="lab">' + l.id + ' · ' + l.stage.id + ' ' + esc(l.stage.name) + '</span><b>' + esc(l.t) + '</b><p>' + esc(MP.readable[l.id].q) + '</p></div></a>').join('');
   $('h-lsum').textContent = MP.layers.length + ' 层 · ' + MP.stages.length + ' 个阶段 · ' + MP.lessons.length + ' 课';
   $('h-layers').innerHTML = MP.layers.map((L, i) => {

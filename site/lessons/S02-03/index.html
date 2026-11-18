@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>为什么屏幕上显示 $100，你下单却可能花 $100.30？ · S02-03 · MarketPilot</title>
+<meta name="description" content="MarketPilot S02-03：买卖价差、深度与价格冲击，显性费用与滑点，以及按目的选择限价单或市价单。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2212%22 fill=%22%23D4FF3A%22 stroke=%22%23111827%22 stroke-width=%227%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="lesson.css">
+</head>
+<body>
+<a class="skip" href="#lesson-body">跳到正文</a>
+
+<header class="top"><div class="w">
+  <a class="logo" href="../../"><i></i>MarketPilot</a>
+  <nav class="mainnav" aria-label="主导航">
+    <a href="../../">首页</a>
+    <a href="../../#courses" aria-current="page">课程</a>
+    <a href="../../#stories">故事</a>
+  </nav>
+  <a class="sbtn" href="../../?search=" aria-label="搜索"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>搜索</span></a>
+</div>
+<div class="rprog" aria-hidden="true"><i id="rprog"></i></div>
+</header>
+
+<main class="w" id="main">
+  <div class="crumb"><a href="../../#courses">课程</a><span>/</span><a href="../../#layer-1">第一层 货币、市场与资产</a><span>/</span><a href="../../#S02">S02 市场如何运作</a><span>/</span>第 3 课</div>
+
+  <section class="lhero" aria-labelledby="lesson-title">
+    <div class="card l">
+      <div class="lab">MarketPilot · S02 市场如何运作 · 第 3 课</div>
+      <h1 id="lesson-title">为什么屏幕上显示 $100，你下单却可能花 $100.30？</h1>
+      <p class="q">报价与实际成交价之间的差距从哪里来？</p>
+      <p class="goal"><b>学习目标</b>能解释买卖价差和大额订单的价格冲击，并为不同目的选择限价单或市价单</p>
+    </div>
+    <figure class="shot" style="margin:0">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/The_floor_of_the_New_York_Stock_Exchange%2C_secretly_shot_with_a_camera_hidden_in_the_photographer%27s_sleeve_LCCN2006685051.jpg/1280px-The_floor_of_the_New_York_Stock_Exchange%2C_secretly_shot_with_a_camera_hidden_in_the_photographer%27s_sleeve_LCCN2006685051.jpg"
+           alt="1907 年纽约证券交易所的交易大厅，人群围在各个交易柱旁，这张照片是用藏在袖子里的相机拍的" style="object-position:50% 50%;transform:scale(1.6)">
+      <div class="hot" style="left:12%;top:30%"><span><small>1907 年 · 交易大厅</small>相机藏在摄影师的袖子里</span></div>
+      <div class="hot" style="left:30%;top:72%"><span><small>屏幕上 $100.00</small>买 1,000 股，平均却是 $100.30</span></div>
+      <a class="credit" href="https://commons.wikimedia.org/wiki/File:The_floor_of_the_New_York_Stock_Exchange,_secretly_shot_with_a_camera_hidden_in_the_photographer%27s_sleeve_LCCN2006685051.jpg">Library of Congress · 1907 · Public domain</a>
+      <figcaption class="sr">纽约证券交易所的交易大厅，1907 年。照片仅作开场氛围，与课文中的虚构公司无关。</figcaption>
+    </figure>
+  </section>
+
+  <div class="card reader">
+    <nav class="ltoc" aria-label="本课章节">
+      <div class="lab">本课 15 节</div>
+      <ol id="toc">
+        <li><a href="#s1"><span class="n">01</span>一张多出 300 美元的账单</a></li>
+        <li><a href="#s2"><span class="n">02</span>第一层：价差的一半</a></li>
+        <li><a href="#s3"><span class="n">03</span>价差是谁的收入</a></li>
+        <li><a href="#s4"><span class="n">04</span>第二层：订单太大，自己把价格推高</a></li>
+        <li><a href="#s5"><span class="n">05</span>同样的价格，不同的深度</a></li>
+        <li><a href="#s6"><span class="n">06</span>流动性：快、多、稳</a></li>
+        <li><a href="#s7"><span class="n">07</span>订单簿会恢复吗</a></li>
+        <li><a href="#s8"><span class="n">08</span>看得见的费用</a></li>
+        <li><a href="#s9"><span class="n">09</span>看不见的成本：滑点</a></li>
+        <li><a href="#s10"><span class="n">10</span>怎样知道成交得好不好</a></li>
+        <li><a href="#s11"><span class="n">11</span>把成本换成百分比</a></li>
+        <li><a href="#s12"><span class="n">12</span>限价单还是市价单</a></li>
+        <li><a href="#s13"><span class="n">13</span>中国对照</a></li>
+        <li><a href="#s14"><span class="n">14</span>几个容易混在一起的说法</a></li>
+        <li><a href="#s15"><span class="n">15</span>回到那张账单</a></li>
+        <li><a href="#keys"><span class="n">··</span>本课要点</a></li>
+        <li><a href="#srcs"><span class="n">··</span>来源</a></li>
+      </ol>
+    </nav>
+
+    <article id="lesson-body" tabindex="-1">
+<section id="s1" aria-labelledby="h-s1"><h2 id="h-s1" tabindex="-1"><span class="hn">第 01 节</span>一张多出 300 美元的账单</h2>
+<p>上一次，小林买了 600 股北岭电池，多花了十一美元。他记住了一件事：屏幕上的大号数字是最新成交价，不是能买到的价格。</p>
+<p>这一次，他看中了另一家公司：远帆科技。屏幕上写着 <strong>$100.00</strong>。下面两行小字：买一 $99.98，卖一 $100.02。他想买 1,000 股，心里估了一下：卖一是 $100.02，1,000 股大概 $100,020。他选了市价买入。</p>
+<p>成交回报出来：1,000 股，合计 <strong>$100,300</strong>，平均每股 <strong>$100.30</strong>。比他估的多了 $280，比屏幕上那个 $100.00 多了整整 $300。再看屏幕，最新成交价已经变成了 $100.63。</p>
+<p>小林这次没有看错价格，也没有点错按钮。他的直觉其实有一半是对的：卖一确实是能马上买到的最低价。他漏掉的是另一半：<strong>卖一只对挂在那一档上的股数有效。</strong></p>
+<p>先给一句最直白的答案：<strong>屏幕上的价格，是别人上一笔成交的价格；你付的，是你这一笔订单自己要吃掉的那些价格。</strong></p>
+<p>这 $300 是怎么来的？这一课把它一层一层拆开。拆完以后，你会知道一笔交易真正的成本由哪几部分组成，哪些看得见、哪些看不见，以及下单之前能做些什么。</p>
+</section>
+
+<section id="s2" aria-labelledby="h-s2"><h2 id="h-s2" tabindex="-1"><span class="hn">第 02 节</span>第一层：价差的一半</h2>
+<p>先只买 100 股。卖一那一档挂着 200 股，要价 $100.02，100 股可以全部在这一档成交：合计 $10,002，平均 $100.02。</p>
+<p>比屏幕上的 $100.00 多了两美分。这两美分从哪里来，上一课已经讲过：想马上买，只能接受卖方要价最低的那一档，也就是卖一；想马上卖，只能拿到买方出价最高的那一档，也就是买一。两者之差是<strong>买卖价差</strong>，这里是 $100.02 − $99.98 = $0.04。</p>
+<p>那么，「屏幕上的价格」应该拿哪个数来比？最新成交价 $100.00 只是一条记录，下一秒可能就变了。更稳妥的参照是买一和卖一的正中间：($99.98 + $100.02) ÷ 2 = $100.00，叫<strong>中间价</strong>（midpoint）。这里中间价恰好等于最新成交价，但两者不一定总相等。</p>
+<p>如果你在银行换过外币，就见过一模一样的东西。银行的牌价上，同一种外币有两个价格：银行买入你的外币用一个价，卖给你外币用另一个更高的价。你今天换成美元、明天又换回人民币，就算汇率一点没动，也会少一点钱。那一点钱，就是两个牌价之间的差。股票的买一和卖一，是同一回事，只不过「牌价」不是一家银行定的，而是订单簿上排在最前面的买方和卖方。</p>
+<p>以中间价为参照，马上买要多付半个价差，马上卖要少拿半个价差。所以，小林的第一层成本是<strong>价差的一半</strong>，每股 $0.02。</p>
+<p>如果他买完 100 股，马上又卖掉，会怎样？卖的时候只能按买一 $99.98 成交，拿回 $9,998。一买一卖，股价一分没动，他已经少了 $4。这 $4 正好是一个完整的价差乘以 100 股。来回一趟，两个半价差，合起来就是一整个价差。</p>
+<figure class="pf" id="fig1" aria-labelledby="fig1-t">
+  <figcaption class="pf-hd"><span class="flab">图 1</span><span id="fig1-t">三个价格</span><span class="kind model">虚构订单簿</span></figcaption>
+  <div class="pf-stage f1">
+    <div class="lv ask" id="fig1-ask"><span class="side">卖一</span><span class="p">$100.02</span><span class="q">× 200</span><span class="tag" id="fig1-pay" hidden>付 $10,002</span></div>
+    <div class="mid"><span>中间价 $100.00</span></div>
+    <div class="lv bid" id="fig1-bid"><span class="side">买一</span><span class="p">$99.98</span><span class="q">× 300</span><span class="tag" id="fig1-get" hidden>得 $9,998</span></div>
+  </div>
+  <div class="pf-ctrl"><button type="button" class="pri" id="fig1-btn">买 100 股</button><button type="button" id="fig1-reset">重来</button></div>
+  <p class="verdict" id="fig1-v" aria-live="polite">价差 = $100.02 − $99.98 = $0.04</p>
+</figure>
+<div class="quiz" id="q1" data-answer="2">
+  <p class="qq"><span class="qh">小题 1</span>一只股票买一 $20.00、卖一 $20.10。你市价买入 1,000 股，立刻又市价卖出，订单簿的前两档都足够大。不算任何费用，你亏了多少？</p>
+  <ul class="opts"><li>$0</li><li>$50</li><li>$100</li></ul>
+  <p class="qhint" hidden><b>提示：</b>买的时候按哪个价格成交？卖的时候呢？</p>
+  <p class="qans" hidden><b>答案：</b>C。买入付 $20.10，卖出得 $20.00，每股差 $0.10，1,000 股共 $100。正好是一个完整的价差。B 是半个价差，只算了单程。</p>
+</div>
+</section>
+
+<section id="s3" aria-labelledby="h-s3"><h2 id="h-s3" tabindex="-1"><span class="hn">第 03 节</span>价差是谁的收入</h2>
+<p>小林多付的那两美分，去了哪里？</p>
+<p>去了挂卖单的人那里。上一课说过，订单簿里一直挂着单、随时准备成交的报价者，有一部分是做市商：他们同时挂买单和卖单，买价低一点，卖价高一点。小林马上买，就是按做市商（或者别的挂单者）的要价成交。</p>
+<p>这不是白拿的钱。挂在那里等的人，承担了两种风险。第一，挂单之后价格可能变：他以 $100.02 卖出，转眼股价涨到 $100.50，他就卖便宜了。第二，来成交的人可能比他知道得更多。上一课那几秒的「消息真假不明」就是这种情形：在别人掌握新消息的时候继续挂着单，很可能吃亏。价差是对这两种风险的补偿，也是对「随时提供成交机会」这项服务的报酬。</p>
+<p>所以，价差的大小，大致反映了挂单者面对的风险有多大。一只每天成交几千万股、消息透明的大公司股票，价差可能只有一美分；一只每天只成交几千股的小公司股票，价差可能大得多。本课不讨论做市商赚得多还是少、对散户是好是坏，这些争论放在后面讲算法交易的那一课。这里只需要记住：<strong>价差是马上成交的代价，你每次「马上买」或「马上卖」，都在付这个代价。</strong></p>
+</section>
+
+<section id="s4" aria-labelledby="h-s4"><h2 id="h-s4" tabindex="-1"><span class="hn">第 04 节</span>第二层：订单太大，自己把价格推高</h2>
+<p>回到小林的 1,000 股。卖一那一档只有 200 股，不够。撮合引擎吃完 $100.02 这一档，继续往上找下一档，一档一档吃上去：</p>
+<div class="tblw"><table class="bs"><thead><tr><th>档位</th><th>价格</th><th>成交股数</th><th>金额</th></tr></thead><tbody><tr><td class="n">1</td><td class="n">$100.02</td><td class="n">200</td><td class="n">$20,004</td></tr><tr><td class="n">2</td><td class="n">$100.12</td><td class="n">200</td><td class="n">$20,024</td></tr><tr><td class="n">3</td><td class="n">$100.28</td><td class="n">200</td><td class="n">$20,056</td></tr><tr><td class="n">4</td><td class="n">$100.45</td><td class="n">200</td><td class="n">$20,090</td></tr><tr><td class="n">5</td><td class="n">$100.63</td><td class="n">200</td><td class="n">$20,126</td></tr><tr class="tot"><td><strong>合计</strong></td><td></td><td class="n"><strong>1,000</strong></td><td class="n"><strong>$100,300</strong></td></tr></tbody></table></div>
+<p>平均每股 $100.30。最后一笔成交在 $100.63，所以屏幕上的最新价跳到了 $100.63。</p>
+<p>现在可以把每股多出的 $0.30 拆成两段了：</p>
+<ul><li><strong>$0.02 是价差的一半</strong>：哪怕只买 100 股也要付。</li><li><strong>$0.28 是订单自己造成的</strong>：因为卖一那一档不够大，订单不得不去吃更贵的档位。</li></ul>
+<p>想象你在菜市场买番茄，最便宜的那个摊位卖 5 元一斤，可它只剩 2 斤。你要买 10 斤，买光这一摊，只能去下一摊，5.5 元一斤，再下一摊 6 元。最后你这 10 斤的平均价，比「5 元一斤」高出不少。不是谁涨了价，是你要的量比最便宜那一摊能给的多。</p>
+<p>这个类比只差一点：菜市场的摊主看到你一口气买光，可能会马上涨价；订单簿上已经挂好的卖单不会变，变的只是你一档一档往上吃。至于挂单的人看到之后会不会改价，那是下面讲「恢复」时的事。</p>
+<p>第二段叫<strong>价格冲击</strong>（price impact），也常叫<strong>市场冲击</strong>（market impact）：订单本身的规模推动了成交价格，规模越大，推得越远。小林这 1,000 股，价格冲击一共是 $280，价差的一半是 $20，合起来正好是他多付的 $300。</p>
+<p>价格冲击不是线性的。买 200 股，平均价还是 $100.02，没有冲击；买 300 股，开始吃到第二档，平均 $100.0533；买 500 股，平均 $100.112；买 1,000 股，平均 $100.30。订单越大，每多买一股，多付得越多，因为后面的档位越来越贵。</p>
+<figure class="pf" id="fig2" aria-labelledby="fig2-t">
+  <figcaption class="pf-hd"><span class="flab">图 2</span><span id="fig2-t">订单规模与平均价</span><span class="kind model">虚构订单簿 · 引擎计算</span></figcaption>
+  <div class="ctl"><label class="rng" for="fig2-q">订单规模 <span class="val" id="fig2-qv">1,000 股</span><input type="range" id="fig2-q" min="100" max="1000" step="100" value="1000" aria-describedby="fig2-out"></label><span class="seg" role="group" aria-label="方向"><button type="button" data-side="buy" aria-pressed="true">买</button><button type="button" data-side="sell" aria-pressed="false">卖</button></span></div>
+  <div class="pf-stage f2">
+    <div class="ladder" id="fig2-book" aria-label="远帆科技订单簿"></div>
+    <svg id="fig2-svg" viewBox="0 0 360 260" role="img" aria-label="平均成交价随订单规模上升的折线"></svg>
+  </div>
+  <dl class="outs" id="fig2-out" aria-live="polite">
+    <div><dt>平均价</dt><dd id="fig2-avg"></dd></div>
+    <div><dt>合计</dt><dd id="fig2-tot"></dd></div>
+    <div><dt>价差的一半</dt><dd id="fig2-hs"></dd></div>
+    <div><dt>价格冲击</dt><dd id="fig2-im"></dd></div>
+    <div><dt>最新价被推到</dt><dd id="fig2-last"></dd></div>
+  </dl>
+  <p class="pf-note">虚构订单簿；真实订单簿里的挂单会随时增减。价差的一半和价格冲击都以中间价 $100.00 为参照。</p>
+</figure>
+<p>卖出也是一样，只是方向相反。如果小林要一次卖出 1,000 股，引擎会从买一 $99.98 开始，一档一档往下吃，平均只能卖到 $99.879，最后一笔成交在 $99.75。</p>
+</section>
+
+<section id="s5" aria-labelledby="h-s5"><h2 id="h-s5" tabindex="-1"><span class="hn">第 05 节</span>同样的价格，不同的深度</h2>
+<p>价格冲击有多大，取决于订单簿有多「厚」：卖一后面，每一档上挂了多少股。</p>
+<p>上一课的沙盘里有一个场景可以把这一点看得很清楚。两只虚构的股票，最新成交价都是 $50.00。股票 A 的卖一 $50.01 上挂着 3,000 股；股票 B 的卖方只零星挂着几档：$50.05 × 100、$50.20 × 200、$50.40 × 300、$50.80 × 400。两边各市价买入 1,000 股：</p>
+<ul><li>A：全部在 $50.01 成交，合计 $50,010，平均 $50.010。</li><li>B：一档一档吃上去，合计 $50,485，平均 $50.485，最新价被推到 $50.80。</li></ul>
+<p>屏幕上的价格一样，买同样多的股票，B 比 A 每股多付 $0.475，1,000 股合计多付 $475。</p>
+<p>订单簿在各个价位上能承接多少股，叫<strong>深度</strong>（depth）。A 深，B 浅。只看屏幕上的价格，看不出这一点；只有看订单簿，或者真的去成交，才会发现。</p>
+<figure class="pf" id="fig3" aria-labelledby="fig3-t">
+  <figcaption class="pf-hd"><span class="flab">图 3</span><span id="fig3-t">两本订单簿</span><span class="kind model">数据与上一课沙盘场景 6 相同</span></figcaption>
+  <div class="pf-stage f3">
+    <div><p class="bk-t">股票 A · 最新 $50.00</p><div class="ladder" id="fig3-a"></div><dl class="outs one" id="fig3-ra"></dl></div>
+    <div><p class="bk-t">股票 B · 最新 $50.00</p><div class="ladder" id="fig3-b"></div><dl class="outs one" id="fig3-rb"></dl></div>
+  </div>
+  <div class="pf-ctrl"><button type="button" class="pri" id="fig3-btn" aria-pressed="false">各市价买 1,000 股</button></div>
+  <p class="verdict" id="fig3-v" aria-live="polite">屏幕上的价格一样。按下按钮，看两边各要付多少</p>
+</figure>
+<div class="quiz" id="q2" data-answer="1">
+  <p class="qq"><span class="qh">小题 2</span>两只股票的最新成交价、买一、卖一完全相同。你打算一次买入 5,000 股。下面哪一项最能说明两只股票的实际成本可能相差很大？</p>
+  <ul class="opts"><li>两只股票的公司规模不同</li><li>两只股票卖一后面各档挂单的数量不同</li><li>两只股票的最新成交时间不同</li></ul>
+  <p class="qhint" hidden><b>提示：</b>5,000 股能不能在卖一那一档全部成交？如果不能，接下来会发生什么？</p>
+  <p class="qans" hidden><b>答案：</b>B。大单要吃到卖一后面的档位，后面挂得越少、要价越高，价格冲击越大。公司规模和成交时间本身不决定这一次成交的价格。</p>
+</div>
+</section>
+
+<section id="s6" aria-labelledby="h-s6"><h2 id="h-s6" tabindex="-1"><span class="hn">第 06 节</span>流动性：快、多、稳</h2>
+<p>第 1 课用一句话描述过流动性：想卖的时候能不能很快卖掉，价格会不会差很多。现在可以把它说得准确一些。</p>
+<p>一只股票的<strong>流动性</strong>（liquidity），指的是能以接近当前价格、较快地买卖较大数量的程度。金融学里常把它分成三个方面：</p>
+<ul><li><strong>价差</strong>：马上成交要付多少。价差越窄，流动性越好。</li><li><strong>深度</strong>：在接近当前价格的地方，能承接多大的订单。深度越大，大单的价格冲击越小。</li><li><strong>恢复力</strong>：一笔大单把订单簿吃薄之后，新的挂单多快补回来。恢复越快，下一笔订单面对的价格越接近原来的水平。</li></ul>
+<p>三个方面不一定同时好。一只股票可能价差只有一美分，但卖一后面挂得很薄；也可能平时很厚，在消息发布的那几秒里突然变薄。上一课做市商撤单的那一幕，就是深度在几秒之内消失的例子。</p>
+<p>前两个方面已经看过了。第三个方面，恢复力，需要把时间也放进来。</p>
+</section>
+
+<section id="s7" aria-labelledby="h-s7"><h2 id="h-s7" tabindex="-1"><span class="hn">第 07 节</span>订单簿会恢复吗</h2>
+<p>假设小林不着急。他不一次买 1,000 股，而是先买 500 股，过一会儿再买 500 股。</p>
+<p>第一批 500 股，吃掉 $100.02 和 $100.12 两档，再在 $100.28 吃掉 100 股，合计 $50,056。最新价变成 $100.28。卖方剩下的挂单是：$100.28 × 100、$100.45 × 200、$100.63 × 200。</p>
+<p>接下来会发生什么，取决于市场。</p>
+<p><strong>情形一：订单簿恢复了。</strong> 在小林等待的这段时间里，有卖方看到价格上去了，愿意卖，于是新挂出两张卖单：$100.06 × 200、$100.12 × 200。新的卖一是 $100.06，比原来的 $100.02 高一点，但比 $100.28 低很多。小林的第二批 500 股，按 $100.06、$100.12、$100.28 依次成交，合计 $50,064。两批加起来 $100,120，平均 $100.12，比一次买完少付 $180。</p>
+<p><strong>情形二：订单簿没有恢复。</strong> 没有人补挂新单。第二批 500 股只能吃原来剩下的档位：$100.28 × 100、$100.45 × 200、$100.63 × 200，合计 $50,244。两批加起来 $100,300，和一次买完一模一样。</p>
+<figure class="pf" id="fig4" aria-labelledby="fig4-t">
+  <figcaption class="pf-hd"><span class="flab">图 4</span><span id="fig4-t">先买一半，等一等</span><span class="kind model">两种情形都是假设</span></figcaption>
+  <div class="pf-stage f4">
+    <div class="ladder" id="fig4-book" aria-label="远帆科技订单簿"></div>
+    <div class="f4-side">
+      <div class="seg f4-pick" id="fig4-pick" role="group" aria-label="等待期间"><button type="button" data-k="A" aria-pressed="false">有人补挂卖单</button><button type="button" data-k="B" aria-pressed="false">没有人补挂</button></div>
+      <dl class="tots" id="fig4-tots"></dl>
+    </div>
+  </div>
+  <div class="pf-now" aria-live="polite"></div>
+  <div class="pf-ctrl"><button type="button" data-a="prev">上一步</button><button type="button" class="pri" data-a="next">下一步</button><button type="button" data-a="again">重来</button><span class="cnt"></span></div>
+  <ol class="pf-steps"></ol>
+  <p class="pf-note">两种情形都是虚构的假设；真实市场里补挂多少、多快补挂，事先并不知道。</p>
+</figure>
+<p>这个例子说明了两件事。</p>
+<p>第一，<strong>把大单拆开、分时间执行，可以降低价格冲击，但前提是订单簿在间隔里恢复</strong>。拆单本身不会让卖方变多，它只是给了卖方补挂的时间。</p>
+<p>第二，<strong>等待也有风险</strong>。这里只画了两种情形，真实市场里还有第三种：在小林等待的时候，价格因为别的原因继续上涨，或者别的买家抢先吃掉了新挂的卖单，第二批反而更贵。拆单是用时间换价格，换来的不是确定的结果。机构投资者买卖大量股票时，常常把一笔大单拆成许多小单，分散在一天甚至几天里执行，就是在这两种风险之间权衡。</p>
+<div class="quiz" id="q3" data-answer="1">
+  <p class="qq"><span class="qh">小题 3</span>判断：把一笔大单拆成几笔小单，分几次买入，总能比一次买完便宜。</p>
+  <ul class="opts"><li class="add">对</li><li class="add">错</li></ul>
+  <p class="qhint" hidden><b>提示：</b>在两次买入之间，订单簿和价格可能怎样变化？</p>
+  <p class="qans" hidden><b>答案：</b>错。只有订单簿在间隔里恢复、价格没有朝不利的方向走，拆单才会更便宜；如果没有人补挂，或者价格继续上涨，拆单可能一样贵，甚至更贵。</p>
+</div>
+</section>
+
+<section id="s8" aria-labelledby="h-s8"><h2 id="h-s8" tabindex="-1"><span class="hn">第 08 节</span>看得见的费用</h2>
+<p>到这里为止，小林多付的 $300 全部来自价格：价差和冲击。它们不会单独列在账单上，而是藏在成交价里。账单上单独列出的，是另一类东西：<strong>显性费用</strong>。</p>
+<p>在美国，一笔股票交易可能涉及几种显性费用。</p>
+<p><strong>佣金</strong>。券商为客户执行订单收取的费用。过去按笔或按股收取；近年来许多面向个人投资者的美国券商对网上股票交易不收佣金。具体收多少，要看各家券商公布的收费表。</p>
+<p><strong>卖出时的监管类收费</strong>。这一项最容易被误解，需要说得细一点。</p>
+<p>美国《1934 年证券交易法》第 31 条要求各家交易所和美国金融业监管局（FINRA）这类<strong>自律组织</strong>，按它们市场上发生的特定证券卖出金额，定期向 SEC 缴费。也就是说，法律上的缴费义务在交易所和 FINRA 身上，不在券商身上，更不在投资者身上。SEC 在给券商的说明里写得很直接：第 31 条对券商及其客户不施加义务；券商常把转嫁给客户的那笔收费叫做「SEC 费」或「第 31 条费」，这种叫法并不准确。</p>
+<p>实际的传递链条是这样的：SEC 向交易所和 FINRA 收费；交易所和 FINRA 再向它们的会员券商收取相应的费用；券商通常再向卖出的客户收一笔。最后出现在你账单上的那一行，是<strong>券商向你收的费用</strong>，金额通常按 SEC 公布的费率计算，但它不是你直接欠 SEC 的税或费。</p>
+<p>费率由 SEC 定期调整。根据 SEC 2026 年 2 月发布的费率公告，自 2026 年 4 月 4 日起，费率为每百万美元卖出金额 $20.60；在此之前的一段时间里，费率为零。只有卖出要算，买入不算。按这个费率，卖出 $99,879 的股票，对应的金额约为 $2.06。</p>
+<p>另有一笔类似的收费，是 FINRA 为支付自身监管成本向会员券商收取的「交易活动费」，同样只针对卖出，按股数计算，每笔设有上限。FINRA 2026 年的费率是每股 $0.000195、每笔最多 $9.79；但 FINRA 又通过一项规则修改，把 2026 年 10 月 1 日至 12 月 31 日这三个月的费率暂时降为零，计划自 2027 年 1 月 1 日起恢复。券商是否、以及怎样把它转嫁给客户，由各家券商自己决定。</p>
+<p>这两项收费，对一笔普通的个人交易来说金额都很小，而且费率会变。本课举出这些数字，是为了说明它们<strong>是什么、由谁向谁收、按什么算</strong>，不是为了让你记住某一个费率。下单前要看的，是你自己券商的收费表。</p>
+<figure class="pf" id="fig5" aria-labelledby="fig5-t">
+  <figcaption class="pf-hd"><span class="flab">图 5</span><span id="fig5-t">一笔交易的成本拆开来</span><span class="kind model">相对中间价 $100.00</span></figcaption>
+  <div class="ctl"><label class="rng" for="fig5-q">订单规模 <span class="val" id="fig5-qv">1,000 股</span><input type="range" id="fig5-q" min="100" max="1000" step="100" value="1000" aria-describedby="fig5-out"></label><span class="seg" role="group" aria-label="方向"><button type="button" data-side="buy" aria-pressed="true">买</button><button type="button" data-side="sell" aria-pressed="false">卖</button></span></div>
+  <div class="pf-stage">
+    <div class="stack" id="fig5-bar" aria-hidden="true"></div>
+    <dl class="outs" id="fig5-out" aria-live="polite">
+      <div><dt>价差的一半</dt><dd id="fig5-hs"></dd></div>
+      <div><dt>价格冲击</dt><dd id="fig5-im"></dd></div>
+      <div><dt>显性费用</dt><dd id="fig5-fee"></dd></div>
+    </dl>
+    <p class="pf-note" id="fig5-feenote"></p>
+  </div>
+  <p class="pf-note">显性费用以你所用券商公布的收费表为准；图中不假设佣金。FINRA 交易活动费按股计算、金额很小，且 2026 年 10 月 1 日至 12 月 31 日暂为零，不放进图里。</p>
+</figure>
+<p>拿这几个数字放在一起看：小林卖出 1,000 股时，价差和冲击合计 $121，第 31 条对应的金额约 $2。对这样一笔订单来说，看不见的成本比看得见的费用大得多。这只是这一个例子里的情况：订单很小、价差很窄时，比例会不同。</p>
+</section>
+
+<section id="s9" aria-labelledby="h-s9"><h2 id="h-s9" tabindex="-1"><span class="hn">第 09 节</span>看不见的成本：滑点</h2>
+<p>还有一种成本，跟订单簿的厚薄无关，跟时间有关。</p>
+<p>小林看到卖一是 $100.02，决定买入。从他看到这个价格，到订单真正到达执行场所，中间隔着几百毫秒，有时更长。在这段时间里，卖一可能已经被别人买走，或者挂单的人撤了单。他的订单到达时，面对的已经是另一本订单簿。</p>
+<p>举一个具体的例子。小林看到卖一 $100.02 × 200，决定市价买 100 股。就在他的订单路上，另一位买家抢先买走了这一档的全部 200 股。小林的订单到达时，卖一已经变成 $100.12，他的 100 股只能在这里成交，合计 $10,012。他下单时以为会付 $10,002，结果多付了 $10。这 $10 不是他自己的订单造成的：100 股本来在第一档就够了。</p>
+<p>本课把这种差距叫做<strong>滑点</strong>（slippage）：你决定下单时看到的价格，和订单最终的成交价之间的差距。滑点里既可能有你自己订单造成的价格冲击，也可能有这段时间里市场本身的变动。前者你可以通过控制订单规模来管理，后者你控制不了。</p>
+<p>滑点不一定是坏事。价格也可能朝对你有利的方向变，或者你的订单得到比当时报价更好的成交价。这就引出下一个问题：怎样判断一笔成交到底好不好？</p>
+</section>
+
+<section id="s10" aria-labelledby="h-s10"><h2 id="h-s10" tabindex="-1"><span class="hn">第 10 节</span>怎样知道成交得好不好</h2>
+<p>上一课说过，在美国，券商可以把零售订单送到交易所，也可以送到交易所之外的批发做市商。订单送到哪里，成交价可能略有不同。那么，怎样衡量「成交得好」？</p>
+<p>美国的规则用了几个专门的统计口径，最基本的有两个。</p>
+<p><strong>有效价差</strong>（effective spread）。以收到订单那一刻的全国最优买卖报价的中间价为参照，买单的有效价差，是成交价与中间价之差的两倍。小林买 100 股、成交在 $100.02、中间价 $100.00，有效价差就是 2 × $0.02 = $0.04，正好等于报价价差。假设另一张同样的订单成交在 $100.01，有效价差就是 $0.02，只有报价价差的一半。乘以 2，是为了能直接和报价价差比较。</p>
+<p><strong>价格改善</strong>（price improvement）。买单成交价低于收到订单时的全国最优卖价，或者卖单成交价高于全国最优买价，就叫得到了价格改善。上面那张成交在 $100.01 的买单，就得到了一美分的价格改善。</p>
+<p>SEC 的 Rule 605 要求执行场所，以及 2024 年修订之后的大型券商，按月公开这些统计：例如平均有效价差与平均报价价差之比，比值越低，说明成交价越接近中间价；以及多大比例的订单得到了价格改善。这些报告是公开的，任何人都可以去看。</p>
+<p>不过，这些统计说的是大量订单的平均情况，不是你某一张订单的保证。本课不比较哪家券商、哪种去向更好；订单流的去向为什么会引发争论，后面讲算法交易的那一课再谈。</p>
+</section>
+
+<section id="s11" aria-labelledby="h-s11"><h2 id="h-s11" tabindex="-1"><span class="hn">第 11 节</span>把成本换成百分比</h2>
+<p>几美分、几百美元，单看金额很难判断大不大。更有用的做法，是把成本换算成占交易金额的比例。</p>
+<p>小林买入 1,000 股，按中间价算，这笔交易值 $100,000，他多付了 $300，也就是 <strong>0.3%</strong>。假设他买完立刻后悔，又把 1,000 股市价卖掉：订单簿的买方没有变，他从 $99.98 一档一档往下卖，平均 $99.879，拿回 $99,879。一买一卖，股价本身一分没动，他已经少了 $421，相当于本金的 <strong>0.42%</strong>。这还没算任何显性费用。</p>
+<p>0.42% 听起来不多。但如果一个人习惯频繁进出，每年像这样来回十次，每次面对同样的订单簿，一年下来光是价差和冲击就要吃掉本金的 4% 左右。同样一笔钱，换一只价差一美分、深度很厚的股票，每次来回也许只有百分之零点零几。</p>
+<p>这并不是说买卖本身是错的，而是说：<strong>交易成本跟交易次数成正比，而收益不一定</strong>。一个判断要带来多少收益，才值得为它付出这一次来回的成本？下单前，把这一笔大致算一下，是一个很实际的习惯。</p>
+</section>
+
+<section id="s12" aria-labelledby="h-s12"><h2 id="h-s12" tabindex="-1"><span class="hn">第 12 节</span>限价单还是市价单</h2>
+<p>现在回到这一课最实际的问题：下单时，应该用市价单还是限价单？</p>
+<p>上一课已经讲过两者的区别：市价单不设价格界限，只要有对手方就马上成交；限价单设定一个界限，只在不差于这个界限的价格成交，剩下的挂在订单簿上等。用这一课的语言重新说一遍：</p>
+<ul><li><strong>市价单</strong>用价格的不确定，换成交的确定。它保证（在有对手方时）马上成交，但不保证价格：订单越大、订单簿越薄、市场变得越快，成交价离你看到的价格可能越远。</li><li><strong>限价单</strong>用成交的不确定，换价格的确定。它保证价格不差于界限，但不保证成交：价格走开了，订单可能一直挂着，甚至一股也买不到。</li></ul>
+<p>回到远帆科技。假设小林这次下的是限价单：买 1,000 股，不超过 $100.10。引擎从卖一开始找，$100.02 那一档的 200 股在界限之内，成交；下一档 $100.12 超过了界限，停下。结果是：成交 200 股，合计 $20,004；剩下的 800 股以 $100.10 的出价挂进订单簿，成为新的买一，等卖方来成交。</p>
+<p>他没有多付一分冤枉钱，但也只买到了五分之一。如果之后有人以 $100.10 或更低的价格卖出，他会陆续买到；如果价格一路涨上去，这 800 股可能永远买不到。这就是限价单的代价，也有人称之为<strong>机会成本</strong>：没成交的那部分，错过的可能是后来的涨幅。</p>
+<p>所以，选哪一种，取决于你更在乎什么：</p>
+<ul><li><strong>必须马上成交</strong>，而且订单相对订单簿很小：市价单的代价通常只是价差的一半。</li><li><strong>对价格敏感</strong>，愿意等：限价单。</li><li><strong>订单相对订单簿很大</strong>：市价单会带来明显的价格冲击。可以用限价单控制最高价，或者把订单拆开分时执行，同时接受可能成交不全的风险。</li><li><strong>冷门股票</strong>，价差宽、深度浅：市价单尤其危险，一笔不大的订单也可能成交在离屏幕价很远的地方。</li></ul>
+<figure class="pf" id="fig6" aria-labelledby="fig6-t">
+  <figcaption class="pf-hd"><span class="flab">图 6</span><span id="fig6-t">选哪种订单</span></figcaption>
+  <div class="f6">
+  <div class="sc" data-ok="market" id="fig6-c1">
+    <p class="sc-q" id="fig6-c1-q"><b>①</b>收盘前必须买到 100 股一只成交活跃的大公司股票</p>
+    <div class="sc-opts" role="radiogroup" aria-labelledby="fig6-c1-q">
+      <label><input type="radio" name="fig6-c1" value="market"> 市价单</label>
+      <label><input type="radio" name="fig6-c1" value="limit"> 限价单</label>
+      <label><input type="radio" name="fig6-c1" value="split"> 拆开分批</label>
+    </div>
+    <div class="sc-bar"><button type="button" class="pri" data-a="check">提交</button><button type="button" data-a="show">看答案</button></div>
+    <p class="sc-fb" aria-live="polite" hidden></p>
+    <p class="sc-hint" hidden><b>提示：</b>这只股票价差很窄，100 股会在哪一档成交？</p>
+    <p class="sc-ans" hidden></p>
+  </div>
+  <div class="sc" data-ok="limit" id="fig6-c2">
+    <p class="sc-q" id="fig6-c2-q"><b>②</b>只愿意在 $100.05 以下买入远帆科技，今天买不到也无所谓</p>
+    <div class="sc-opts" role="radiogroup" aria-labelledby="fig6-c2-q">
+      <label><input type="radio" name="fig6-c2" value="market"> 市价单</label>
+      <label><input type="radio" name="fig6-c2" value="limit"> 限价单</label>
+      <label><input type="radio" name="fig6-c2" value="split"> 拆开分批</label>
+    </div>
+    <div class="sc-bar"><button type="button" class="pri" data-a="check">提交</button><button type="button" data-a="show">看答案</button></div>
+    <p class="sc-fb" aria-live="polite" hidden></p>
+    <p class="sc-hint" hidden><b>提示：</b>你更在乎成交，还是价格？</p>
+    <p class="sc-ans" hidden></p>
+  </div>
+  <div class="sc" data-ok="limit split" id="fig6-c3">
+    <p class="sc-q" id="fig6-c3-q"><b>③</b>要买入 5,000 股远帆科技，而卖一后面一共只挂了 1,000 股</p>
+    <div class="sc-opts" role="radiogroup" aria-labelledby="fig6-c3-q">
+      <label><input type="radio" name="fig6-c3" value="market"> 市价单</label>
+      <label><input type="radio" name="fig6-c3" value="limit"> 限价单</label>
+      <label><input type="radio" name="fig6-c3" value="split"> 拆开分批</label>
+    </div>
+    <div class="sc-bar"><button type="button" class="pri" data-a="check">提交</button><button type="button" data-a="show">看答案</button></div>
+    <p class="sc-fb" aria-live="polite" hidden></p>
+    <p class="sc-hint" hidden><b>提示：</b>5,000 股比卖一后面所有挂单加起来还多，市价单会怎样？</p>
+    <p class="sc-ans" hidden></p>
+  </div>
+  <div class="sc" data-ok="limit" id="fig6-c4">
+    <p class="sc-q" id="fig6-c4-q"><b>④</b>一只每天只成交几千股的股票，买一和卖一相差 $0.50</p>
+    <div class="sc-opts" role="radiogroup" aria-labelledby="fig6-c4-q">
+      <label><input type="radio" name="fig6-c4" value="market"> 市价单</label>
+      <label><input type="radio" name="fig6-c4" value="limit"> 限价单</label>
+      <label><input type="radio" name="fig6-c4" value="split"> 拆开分批</label>
+    </div>
+    <div class="sc-bar"><button type="button" class="pri" data-a="check">提交</button><button type="button" data-a="show">看答案</button></div>
+    <p class="sc-fb" aria-live="polite" hidden></p>
+    <p class="sc-hint" hidden><b>提示：</b>$0.50 的价差意味着马上买要多付多少？</p>
+    <p class="sc-ans" hidden></p>
+  </div>
+  </div>
+  <div class="f6-demo" id="fig6-demo" hidden></div>
+  <p class="pf-note">情境题没有唯一的标准做法，答案说明的是每种选择的代价。</p>
+</figure>
+<div class="quiz" id="q4" data-answer="1">
+  <p class="qq"><span class="qh">小题 4</span>判断：限价单比市价单好，因为它能保证价格。</p>
+  <ul class="opts"><li class="add">对</li><li class="add">错</li></ul>
+  <p class="qhint" hidden><b>提示：</b>限价单保证了什么？没有保证什么？</p>
+  <p class="qans" hidden><b>答案：</b>错。限价单保证成交价不差于界限，但不保证成交。两者各有代价，哪一种更合适取决于你更需要成交的确定，还是价格的确定。</p>
+</div>
+<div class="quiz" id="q5" data-answer="1">
+  <p class="qq"><span class="qh">小题 5</span>一只股票买一 $10.00、卖一 $10.50，卖一那一档只挂了 100 股。你想买 2,000 股，但不着急。下面哪种做法最可能避免付出很高的冲击成本？</p>
+  <ul class="opts"><li>一次市价买入 2,000 股</li><li>设一个能接受的最高价，挂限价单，并接受可能分几次、甚至无法全部成交</li><li>先市价买 100 股，看看成交价再说</li></ul>
+  <p class="qhint" hidden><b>提示：</b>价差这么宽、卖一这么薄，市价单会一路吃到哪里？</p>
+  <p class="qans" hidden><b>答案：</b>B。A 会吃穿多档，冲击成本可能很高。C 只买到 100 股，而且已经付了半个很宽的价差，并没有解决剩下 1,900 股的问题。B 用不确定的成交换来了价格上限。</p>
+</div>
+</section>
+
+<section id="s13" aria-labelledby="h-s13"><h2 id="h-s13" tabindex="-1"><span class="hn">第 13 节</span>中国对照</h2>
+<p>A 股同样有买卖价差和价格冲击：投资者的竞价订单集中进入上市的那家交易所，订单簿的道理与本课相同。不同的主要是显性费用的结构。</p>
+<p>A 股卖出时要缴<strong>证券交易印花税</strong>。《中华人民共和国印花税法》规定，证券交易印花税只向出让方（卖出的一方）征收，不向受让方征收。财政部和国家税务总局宣布，自 2023 年 8 月 28 日起证券交易印花税减半征收，按公开报道，减半后为成交金额的千分之零点五。与美国的第 31 条费用不同，印花税是直接对卖出方征收的税，不是由交易所先缴、再层层转嫁的收费。此外，A 股交易还涉及券商佣金、交易所经手费和证券登记结算机构的过户费等，具体标准以券商、交易所和中国证券登记结算公司公布的为准。</p>
+</section>
+
+<section id="s14" aria-labelledby="h-s14"><h2 id="h-s14" tabindex="-1"><span class="hn">第 14 节</span>几个容易混在一起的说法</h2>
+<div class="tblw"><table class="bs"><thead><tr><th>你看到的说法</th><th>实际含义</th></tr></thead><tbody><tr><td>现价 $100.00</td><td>最近一笔成交的价格，是记录，不是报价</td></tr><tr><td>卖一 $100.02</td><td>现在马上能买到的最低价，只对这一档挂着的股数有效</td></tr><tr><td>平均成交价 $100.30</td><td>你这一笔订单吃掉的所有档位的加权平均</td></tr><tr><td>价格冲击</td><td>你自己的订单规模把成交价推远的部分</td></tr><tr><td>滑点</td><td>下单时看到的价格与最终成交价的差距，包括自己的冲击和市场本身的变动</td></tr><tr><td>「SEC 费」</td><td>券商向卖出的客户收取、用来覆盖第 31 条费用的转嫁收费；法律上的缴费义务在交易所和 FINRA</td></tr><tr><td>零佣金</td><td>不收佣金，不等于没有成本；价差和冲击仍然在成交价里</td></tr></tbody></table></div>
+</section>
+
+<section id="s15" aria-labelledby="h-s15"><h2 id="h-s15" tabindex="-1"><span class="hn">第 15 节</span>回到那张账单</h2>
+<p>小林那 1,000 股多付的 $300，现在可以完整地写出来了：</p>
+<ul><li>每股 $0.02 是价差的一半，1,000 股共 $20：只要马上买，就要付。</li><li>每股 $0.28 是价格冲击，共 $280：订单比卖一那一档大得多，自己把价格推高了。</li><li>账单上另列的显性费用：买入时取决于券商的佣金；如果是卖出，还会有券商按第 31 条费率转嫁的那一小笔。</li></ul>
+<p>如果他当时用限价单，或者分两批买、恰好订单簿恢复了，这 $300 可以少一些；代价是可能买不全，或者等来的价格更高。没有一种下单方式能同时保证价格和成交，能做的，是在下单之前想清楚自己更在乎哪一个。</p>
+<p>成交回报出来了，股票显示在小林的账户里，旁边却有一行小字：「未结算」。其实，他第一次买那 600 股北岭电池的时候，这行小字就出现过，只是他没有留意。股票明明已经买到了，为什么还没结算？成交之后，钱和股票到底什么时候、通过谁真正交换？这是下一课的问题。</p>
+</section>
+
+
+<section id="keys" class="keys" aria-labelledby="h-keys"><h2 id="h-keys" tabindex="-1">本课要点</h2>
+<ul><li>以买一和卖一的<strong>中间价</strong>为参照，马上买要多付半个<strong>价差</strong>，马上卖要少拿半个价差；买了马上再卖，来回一趟付一个完整的价差。</li><li>价差是对挂单者承担的价格风险和信息风险的补偿，也是「马上成交」这项服务的价格。</li><li>订单比最优价位上的挂单大时，要吃到更差的档位，这叫<strong>价格冲击</strong>；订单越大、订单簿越浅，冲击越大。</li><li><strong>流动性</strong>有三个方面：价差、深度、恢复力。拆单分时执行可以降低冲击，但只有订单簿恢复、价格没有朝不利方向走时才有效。</li><li><strong>显性费用</strong>包括佣金和卖出时的监管类收费。美国第 31 条费用的缴费义务在交易所和 FINRA，券商通常再向卖出的客户收取；费率会调整，以 SEC 公告和券商收费表为准。</li><li><strong>滑点</strong>是决定下单时看到的价格与最终成交价之间的差距，包括自己造成的冲击和市场本身的变动。美国用<strong>有效价差</strong>和<strong>价格改善</strong>等统计衡量执行质量。</li><li><strong>市价单</strong>用价格的不确定换成交的确定，<strong>限价单</strong>用成交的不确定换价格的确定。按目的选择。</li></ul></section>
+
+<section class="srcs" id="srcs" aria-labelledby="h-srcs"><h2 id="h-srcs" tabindex="-1">来源</h2>
+<ul><li>U.S. Securities and Exchange Commission, <em>Section 31 Transaction Fees: Basic Information for Firms</em>.</li><li>U.S. Securities and Exchange Commission, <em>Fee Rate Advisory #2 for Fiscal Year 2026</em>（2026 年 2 月），及 Release No. 34-104909。</li><li>FINRA, By-Laws Schedule A, Section 1（Trading Activity Fee）；FINRA, SR-FINRA-2026-021（2026 年 10 月 1 日至 12 月 31 日暂停收取交易活动费）。</li><li>17 CFR 242.600(b)（Regulation NMS 定义：average effective spread、average quoted spread、price improvement）。</li><li>U.S. Securities and Exchange Commission, press release 2024-32, 「SEC Adopts Amendments to Enhance Disclosure of Order Execution Information」（2024 年 3 月 6 日）。</li><li>《中华人民共和国印花税法》（2021 年 6 月 10 日通过，2022 年 7 月 1 日施行）第三条。</li><li>新华社，2023 年 8 月 28 日报道：财政部、国家税务总局公告证券交易印花税减半征收（减半后税率据公开报道）。</li><li>流动性的三个方面（价差、深度、恢复力）的说法见 Kyle, A. S. (1985). Continuous Auctions and Insider Trading. <em>Econometrica</em>, 53(6), 1315–1335。</li><li>本课所有成交数字由 MarketPilot 撮合引擎计算，订单簿为虚构的教学数据。</li></ul></section>
+    </article>
+
+    <aside class="notesR" aria-label="读图说明">
+      <div><b>读图</b><span class="sw" style="border-top:3px solid var(--ink)"></span>墨黑：成交、挂单<br><span class="sw" style="border-top:3px solid var(--vio)"></span>紫色：价格冲击、被吃掉的档位<br><span class="sw" style="border-top:8px solid var(--lime)"></span>荧光：此刻成交的一档<br><span class="sw" style="border-top:2px dashed var(--ink2)"></span>虚线：新挂单、中间价</div>
+      <div><b>模型与事实</b>远帆科技的订单簿是虚构的教学数据，所有成交由与上一课相同的撮合引擎当场计算。费率、规则来自 SEC、FINRA 和中国的法律文件，见文末来源。</div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site"><div class="w">
+  <div class="row"><b style="color:var(--ink)">MarketPilot</b><span>S02-03</span></div>
+  <p class="credits"><b>照片来源</b> 纽约证券交易所的交易大厅，1907 年 · 美国国会图书馆，LCCN 2006685051 · Public domain · <a href="https://commons.wikimedia.org/wiki/File:The_floor_of_the_New_York_Stock_Exchange,_secretly_shot_with_a_camera_hidden_in_the_photographer%27s_sleeve_LCCN2006685051.jpg">Wikimedia Commons</a>。照片经裁切、去色处理，仅作开场氛围；课文中的远帆科技为虚构。</p>
+</div></footer>
+
+<button class="totop" id="totop" type="button" aria-label="回到顶部" title="回到顶部（长按可拖动，双击复位）">
+  <svg class="ring" viewBox="0 0 62 62" aria-hidden="true"><circle cx="31" cy="31" r="28"/></svg>
+  <svg class="ico-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  <svg class="ico-move" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3"/></svg>
+</button>
+<div class="totop-tip" id="totop-tip" role="status" aria-live="polite"></div>
+
+<script src="../../assets/totop.js"></script>
+<script src="../../engine/orderbook.js"></script>
+<script src="data.js"></script>
+<script src="steps.js"></script>
+<script src="lesson.js"></script>
+<script src="../S02-02/reader.js"></script>
+</body>
+</html>

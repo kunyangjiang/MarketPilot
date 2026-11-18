@@ -16,7 +16,10 @@
 | `./#S02-02` 等课号 | 目录中这一课所在的行（标出这一行） |
 | `./#stories` | 故事栏目 |
 | `./?search=词` | 打开搜索面板（课程页页头的搜索按钮用它） |
+| `lessons/S02-01/` | S02-01 一家公司为什么要发行股票，你买股票的钱又去了哪里？ |
 | `lessons/S02-02/` | S02-02 股价到底是谁决定的？ |
+| `lessons/S02-03/` | S02-03 为什么屏幕上显示 $100，你下单却可能花 $100.30？ |
+| `lessons/S02-04/` | S02-04 点击 Buy 之后，你的股票究竟经历了什么？ |
 | `lessons/S09-03/` | S09-03 1907 年，一场失败的铜矿股逼空…… |
 
 课程页的面包屑回到 `../../#层级` 和 `../../#阶段`。从目录打开一课时，地址会先换成该课所在的阶段，所以按浏览器的"返回"会回到这个阶段。
@@ -27,7 +30,7 @@
 
 ## 已写好的课与目录
 
-`assets/catalog.js` 里的 `MP.readable` 列出已写好的课（目前是 S02-02 和 S09-03），它们在目录里链接到课程页。其余 59 课只列课号和标题，不链接到任何页面。**网站上不显示任何写作或开放状态**（没有「可阅读 / 筹备中」之类的标签），`tests/site-product.test.js` 会拦下这类字样。
+`assets/catalog.js` 里的 `MP.readable` 列出已写好的课（目前是 S02-01 至 S02-04 和 S09-03），它们在目录里链接到课程页。其余 56 课只列课号和标题，不链接到任何页面。**网站上不显示任何写作或开放状态**（没有「可阅读 / 筹备中」之类的标签），`tests/site-product.test.js` 会拦下这类字样。
 
 开放一节新课的步骤：
 1. 放好 `lessons/<课号>/index.html`；
@@ -79,6 +82,7 @@ node --test "site/tests/*.test.js" "lessons/S09-03/preflight/*.test.js"
 | `tests/site-product.test.js` | 课程页和外壳上没有开发过程的痕迹（「改看静态版」、流程用语、内部文件名、状态标签等） |
 | `tests/site-browser.test.js` | **测的是临时生成的发布目录**（设 `MP_ROOT=src` 改测源目录）。根路径与子路径各一遍，桌面 1280 与手机 390 各一遍：首页、目录、层级跳转、地址片段（11 个阶段和 61 个课号全部直接打开）、课程往返、搜索、故事、直接打开课程地址、链接普查、发布范围；另有一项在浏览器里核对搜索索引：每一句都在课程页初始可见文字里，初始隐藏的内容一句都不在索引里 |
 | `tests/engine.test.js`、`content-fidelity.test.js`、`browser.test.js` | S02-02 |
+| `tests/s02-batch01-*.test.js` | S02-01、S02-03、S02-04（内容与数字；真实浏览器中的交互、键盘、减少动态效果、打印、手机） |
 | `tests/s0903-*.test.js`、`lessons/S09-03/preflight/*.test.js` | S09-03（含时间线来源代号与图中来源的对照） |
 
 截图写到 `shots/`。
@@ -97,7 +101,7 @@ node --test "site/tests/*.test.js" "lessons/S09-03/preflight/*.test.js"
 | `assets/shell.js`、`assets/search.js`、`assets/totop.js` | 路由与渲染、搜索、回到顶部 |
 | `tools/build-search-index.js` | 生成搜索索引 |
 | `tools/build-dist.js` | 生成发布目录 |
-| `engine/`、`lessons/S02-02/`、`lessons/S09-03/` | 两节课及 S02-02 的撮合引擎 |
+| `engine/`、`lessons/S02-0*/`、`lessons/S09-03/` | 五节课及 S02-02 的撮合引擎（S02-03 也调用它） |
 | `tests/`、`tools/`、`shots/` | 开发用，**不应发布** |
 
 ## 不在本目录里的东西
