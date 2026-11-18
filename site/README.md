@@ -37,6 +37,8 @@
 2. 在 `MP.readable` 里加一行；
 3. 运行 `node site/tools/build-search-index.js`。
 
+S02-01、S02-03、S02-04 的页面由课文稿生成，不要直接改 `index.html`：改课文稿（`lessons/<课号>/` 下）或课程页配置（`lessons/<课号>/页面配置/`）后，运行 `node site/tools/lesson-build/assemble.js <课号>`，再重新生成搜索索引。`tests/lesson-build.test.js` 检查这三课能从仓库内的文件重新生成，并与已验收页面逐字节一致。S02-02 与 S09-03 的页面是手写的。
+
 ## 搜索索引
 
 `assets/search-index.js` 由 `tools/build-search-index.js` 生成。生成脚本只读正式课程页的读者可见正文：开场的标题、核心问题和学习目标，以及 `<article>` 里每个带 id 的小节。以下内容不收：带 `hidden` 属性的元素（小题的提示与答案、沙盘的揭晓，免得搜索摘要提前透露答案）、只在「自由实验」模式出现的 `free-only` 控件、`<noscript>`、图的表格视图（`details.tbl`，只有数字）。它不读课文原稿、核验记录或设计样稿。
@@ -101,6 +103,7 @@ node --test "site/tests/*.test.js" "lessons/S09-03/preflight/*.test.js"
 | `assets/shell.js`、`assets/search.js`、`assets/totop.js` | 路由与渲染、搜索、回到顶部 |
 | `tools/build-search-index.js` | 生成搜索索引 |
 | `tools/build-dist.js` | 生成发布目录 |
+| `tools/lesson-build/` | 由课文稿生成 S02-01、S02-03、S02-04 的课程页 |
 | `engine/`、`lessons/S02-0*/`、`lessons/S09-03/` | 五节课及 S02-02 的撮合引擎（S02-03 也调用它） |
 | `tests/`、`tools/`、`shots/` | 开发用，**不应发布** |
 
