@@ -16,6 +16,7 @@
 | `./#S02-02` 等课号 | 目录中这一课所在的行（标出这一行） |
 | `./#stories` | 故事栏目 |
 | `./?search=词` | 打开搜索面板（课程页页头的搜索按钮用它） |
+| `lessons/S01-01/` … `lessons/S01-06/` | S01 货币、信用与利率（六课） |
 | `lessons/S02-01/` | S02-01 一家公司为什么要发行股票，你买股票的钱又去了哪里？ |
 | `lessons/S02-02/` | S02-02 股价到底是谁决定的？ |
 | `lessons/S02-03/` | S02-03 为什么屏幕上显示 $100，你下单却可能花 $100.30？ |
@@ -30,14 +31,14 @@
 
 ## 已写好的课与目录
 
-`assets/catalog.js` 里的 `MP.readable` 列出已写好的课（目前是 S02-01 至 S02-04 和 S09-03），它们在目录里链接到课程页。其余 56 课只列课号和标题，不链接到任何页面。**网站上不显示任何写作或开放状态**（没有「可阅读 / 筹备中」之类的标签），`tests/site-product.test.js` 会拦下这类字样。
+`assets/catalog.js` 里的 `MP.readable` 列出已写好的课（目前是 S01-01 至 S01-06、S02-01 至 S02-04 和 S09-03），它们在目录里链接到课程页。其余 50 课只列课号和标题，不链接到任何页面。**网站上不显示任何写作或开放状态**（没有「可阅读 / 筹备中」之类的标签），`tests/site-product.test.js` 会拦下这类字样。
 
 开放一节新课的步骤：
 1. 放好 `lessons/<课号>/index.html`；
 2. 在 `MP.readable` 里加一行；
 3. 运行 `node site/tools/build-search-index.js`。
 
-S02-01、S02-03、S02-04 的页面由课文稿生成，不要直接改 `index.html`：改课文稿（`lessons/<课号>/` 下）或课程页配置（`lessons/<课号>/页面配置/`）后，运行 `node site/tools/lesson-build/assemble.js <课号>`，再重新生成搜索索引。`tests/lesson-build.test.js` 检查这三课能从仓库内的文件重新生成，并与已验收页面逐字节一致。S02-02 与 S09-03 的页面是手写的。
+S01-01 至 S01-06、S02-01、S02-03、S02-04 的页面由课文稿生成，不要直接改 `index.html`：改课文稿（`lessons/<课号>/` 下）或课程页配置（`lessons/<课号>/页面配置/`）后，运行 `node site/tools/lesson-build/assemble.js <课号>`，再重新生成搜索索引。面包屑和课程页顶部的阶段名从 `assets/catalog.js` 读取。`tests/lesson-build.test.js` 检查这九课能从仓库内的文件重新生成，并与已验收页面逐字节一致。S02-02 与 S09-03 的页面是手写的。
 
 ## 搜索索引
 
@@ -103,7 +104,7 @@ node --test "site/tests/*.test.js" "lessons/S09-03/preflight/*.test.js"
 | `assets/shell.js`、`assets/search.js`、`assets/totop.js` | 路由与渲染、搜索、回到顶部 |
 | `tools/build-search-index.js` | 生成搜索索引 |
 | `tools/build-dist.js` | 生成发布目录 |
-| `tools/lesson-build/` | 由课文稿生成 S02-01、S02-03、S02-04 的课程页 |
+| `tools/lesson-build/` | 由课文稿生成 S01-01 至 S01-06、S02-01、S02-03、S02-04 的课程页 |
 | `engine/`、`lessons/S02-0*/`、`lessons/S09-03/` | 五节课及 S02-02 的撮合引擎（S02-03 也调用它） |
 | `tests/`、`tools/`、`shots/` | 开发用，**不应发布** |
 

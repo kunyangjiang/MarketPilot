@@ -1,4 +1,4 @@
-/* 课程页组装检查：S02-01、S02-03、S02-04 的页面只依赖仓库内的文件就能重新生成，
+/* 课程页组装检查：S01-01 至 S01-06、S02-01、S02-03、S02-04 的页面只依赖仓库内的文件就能重新生成，
  * 连续生成两次逐字节相同，并且与已验收的 site/lessons/<课号>/ 逐字节相同。
  * 运行：node --test site/tests/lesson-build.test.js（输出到临时目录，不动 site/lessons） */
 'use strict';
@@ -10,7 +10,7 @@ const { execFileSync } = require('child_process');
 const SITE = path.join(__dirname, '..');
 const ROOT = path.join(SITE, '..');
 const TOOL = path.join(SITE, 'tools', 'lesson-build', 'assemble.js');
-const LESSONS = ['S02-01', 'S02-03', 'S02-04'];
+const LESSONS = ['S01-01', 'S01-02', 'S01-03', 'S01-04', 'S01-05', 'S01-06', 'S02-01', 'S02-03', 'S02-04'];
 const FILES = ['index.html', 'lesson.css', 'steps.js'];
 const sha = f => crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
 // 仓库里存的是 LF；在 core.autocrlf=true 的 Windows 检出里，已验收页面的工作副本可能是 CRLF，比较时先统一换行

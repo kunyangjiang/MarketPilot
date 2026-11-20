@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你存在银行里的钱，究竟是什么？ · S01-01 · MarketPilot</title>
+<meta name="description" content="MarketPilot S01-01：存进银行的钱归银行所有，存款是银行欠你的一笔债。用 T 型账户看清现金、存款、准备金各是谁的负债，以及取现和转账时账上发生了什么。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2212%22 fill=%22%23D4FF3A%22 stroke=%22%23111827%22 stroke-width=%227%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="lesson.css">
+</head>
+<body>
+<a class="skip" href="#lesson-body">跳到正文</a>
+
+<header class="top"><div class="w">
+  <a class="logo" href="../../"><i></i>MarketPilot</a>
+  <nav class="mainnav" aria-label="主导航">
+    <a href="../../">首页</a>
+    <a href="../../#courses" aria-current="page">课程</a>
+    <a href="../../#stories">故事</a>
+  </nav>
+  <a class="sbtn" href="../../?search=" aria-label="搜索"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>搜索</span></a>
+</div>
+<div class="rprog" aria-hidden="true"><i id="rprog"></i></div>
+</header>
+
+<main class="w" id="main">
+  <div class="crumb"><a href="../../#courses">课程</a><span>/</span><a href="../../#layer-1">第一层 货币、市场与资产</a><span>/</span><a href="../../#S01">S01 货币、信用与利率</a><span>/</span>第 1 课</div>
+
+  <section class="lhero" aria-labelledby="lesson-title">
+    <div class="card l">
+      <div class="lab">MarketPilot · S01 货币、信用与利率 · 第 1 课</div>
+      <h1 id="lesson-title">你存在银行里的钱，究竟是什么？</h1>
+      <p class="q">存款是实物保管，还是一笔债权？</p>
+      <p class="goal"><b>学习目标</b>能用 T 型账户说明存款是银行的负债，并区分现金、准备金与存款</p>
+    </div>
+    <figure class="h01 card" aria-labelledby="h01-cap">
+      <div class="h01-pair">
+        <div class="h01-it">
+          <svg viewBox="0 -14 240 214" role="img" aria-label="一只钱包，露出两张 $100 纸币，合计 $200">
+            <g transform="translate(38 22) rotate(-9)"><rect width="150" height="70" rx="4" class="nt"/><rect x="7" y="7" width="136" height="56" rx="2" stroke="currentColor" fill="none" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.6"/><ellipse cx="75" cy="35" rx="17" ry="21" stroke="currentColor" fill="none" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.6"/><text x="14" y="25" class="nv">$100</text><text x="136" y="58" class="nv" text-anchor="end">100</text></g><g transform="translate(62 30) rotate(5)"><rect width="150" height="70" rx="4" class="nt"/><rect x="7" y="7" width="136" height="56" rx="2" stroke="currentColor" fill="none" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.6"/><ellipse cx="75" cy="35" rx="17" ry="21" stroke="currentColor" fill="none" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.6"/><text x="14" y="25" class="nv">$100</text><text x="136" y="58" class="nv" text-anchor="end">100</text></g>
+            <path d="M22 92h196a10 10 0 0 1 10 10v78a10 10 0 0 1-10 10H22a10 10 0 0 1-10-10v-78a10 10 0 0 1 10-10z" class="wb"/>
+            <path d="M12 118h146a16 16 0 0 1 16 16v4a16 16 0 0 1-16 16H12" stroke="currentColor" fill="none" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="154" cy="136" r="5" fill="currentColor"/>
+            <text x="200" y="176" class="wt" text-anchor="end">$200</text>
+          </svg>
+          <p class="h01-tag"><span>钱包里的 $200</span><b>联储欠持有人</b></p>
+        </div>
+        <div class="h01-ne" aria-hidden="true">≠</div>
+        <div class="h01-it">
+          <svg viewBox="0 -14 240 214" role="img" aria-label="一部手机，屏幕上写着：河岸银行，余额 $3,500">
+            <rect x="66" y="6" width="108" height="188" rx="18" class="wb"/>
+            <rect x="75" y="24" width="90" height="152" rx="6" stroke="currentColor" fill="none" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.6"/>
+            <path d="M108 14h24" stroke="currentColor" fill="none" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.4"/>
+            <text x="120" y="56" class="ps" text-anchor="middle">河岸银行</text>
+            <path d="M84 66h72" stroke="currentColor" fill="none" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.2"/>
+            <text x="120" y="94" class="ps2" text-anchor="middle">余额</text>
+            <rect x="82" y="104" width="76" height="30" rx="6" class="hl"/>
+            <text x="120" y="126" class="pv" text-anchor="middle">$3,500</text>
+            <circle cx="120" cy="184" r="4" stroke="currentColor" fill="none" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.6"/>
+          </svg>
+          <p class="h01-tag"><span>手机里的 $3,500</span><b>河岸银行欠小林</b></p>
+        </div>
+      </div>
+      <figcaption id="h01-cap">同样叫美元，欠债的人不同</figcaption>
+    </figure>
+  </section>
+
+  <div class="card reader">
+    <nav class="ltoc" aria-label="本课章节">
+      <div class="lab">本课 8 节</div>
+      <ol id="toc">
+        <li><a href="#s1"><span class="n">01</span>发工资那天</a></li>
+        <li><a href="#s2"><span class="n">02</span>一位煤矿主的官司</a></li>
+        <li><a href="#s3"><span class="n">03</span>一张 T 型账户</a></li>
+        <li><a href="#s4"><span class="n">04</span>三种钱，三张欠条</a></li>
+        <li><a href="#s5"><span class="n">05</span>钱「转」走的时候</a></li>
+        <li><a href="#s6"><span class="n">06</span>金库里有多少</a></li>
+        <li><a href="#s7"><span class="n">07</span>这笔债权有多安全</a></li>
+        <li><a href="#s8"><span class="n">08</span>回到钱包和手机</a></li>
+        <li><a href="#keys"><span class="n">··</span>本课要点</a></li>
+        <li><a href="#srcs"><span class="n">··</span>来源</a></li>
+      </ol>
+    </nav>
+
+    <article id="lesson-body" tabindex="-1">
+<section id="s1" aria-labelledby="h-s1"><h2 id="h-s1" tabindex="-1"><span class="hn">第 01 节</span>发工资那天</h2>
+<p>小林工作的第一个月，月底那天早上，手机弹出一条通知：工资到账，$3,200。他的账户在一家叫河岸银行的银行，原来还剩 $500，现在余额是 $3,700。</p>
+<p>中午他去楼下的取款机取了 $200 现金，放进钱包。手机上的余额随即变成 $3,500。</p>
+<p>在小林看来，这件事再简单不过：他有 $3,700，一部分放在钱包里，一部分放在银行里，合起来还是 $3,700。钱包里的是钱，银行里的也是钱，只是放的地方不同。</p>
+<p>这个想法几乎人人都有，而且平时用起来也没出过问题。可是只要追问一句，它就站不住了：<strong>银行里那 $3,500，放在哪里？</strong> 河岸银行的金库里，有没有一叠写着小林名字的钞票？</p>
+<p>没有。河岸银行的金库里确实有现金，但那些现金不属于小林，也不属于任何一个储户。小林的手机屏幕上显示的，是另一种东西：</p>
+<p><strong>钱包里的 $200 是取款机吐出的两张 $100 纸币，是联邦储备系统（美国的中央银行，下面简称联储）欠持有人的；手机里的 $3,500，是河岸银行欠小林的。</strong> 两者都叫「美元」，用起来也差不多，但欠债的人不同，所以它们不是同一种东西。</p>
+<p>这一课就沿着「谁欠谁」这条线往下走：先看法律怎样回答「存进银行的钱归谁」，再学一种画账的方法，把现金、存款、准备金三种钱放到同一张图上，最后看取现和转账时，账上到底发生了什么。</p>
+</section>
+
+<section id="s2" aria-labelledby="h-s2"><h2 id="h-s2" tabindex="-1"><span class="hn">第 02 节</span>一位煤矿主的官司</h2>
+<p>「存进银行的钱还是不是我的」，这个问题在英国法院里争过，而且争到了当时的最高审级。</p>
+<p>1829 年 4 月，英国斯塔福德郡一位叫爱德华·福利（Edward Thomas Foley）的煤矿主，把 6,117 英镑 10 先令从他和合伙人的共同账户，转到一家私人银行为他单独开的账户里。这家银行在邻近的伍斯特郡斯陶尔布里奇，合伙人里有一位叫托马斯·希尔，案子因此得名。银行写信确认收到，并答应按每年 3% 给他计息，一年大约 183 英镑。此后几年，账上再没有存入新的钱，利息也只记到 1831 年底。</p>
+<p>1838 年，福利把银行告上法院，要求银行把这笔钱以及以他名义收付的所有款项「交代清楚」。这种诉讼在当时的衡平法院里，是委托人对代理人、受益人对受托人才能提的：意思是，这钱是我的，你替我管着，你得说清楚它现在在哪、怎么用了。</p>
+<p>官司一路打到上议院。1848 年 8 月，上议院驳回了福利的上诉。大法官的那段话后来被一再引用，意思大致如下：</p>
+<div class="tblw"><table class="bs"><thead><tr><th>判词大意（据英格兰判例汇编 9 ER 1002 的原文意译）</th></tr></thead><tbody><tr><td>钱一旦存进银行，就完全不再是存款人的钱，而是银行的钱。银行只负有一项义务：存款人来要的时候，付给他一笔相等的数额。</td></tr><tr><td>银行可以拿这笔钱随意使用，用它赚到的利润归银行自己；即使它拿去做有风险的投机，也不算违反信托。</td></tr><tr><td>所以，银行不是存款人的代理人或受托人，它是存款人的债务人。</td></tr></tbody></table></div>
+<p>同案的另一位法官坎贝尔勋爵把这层关系说得更短：在钱的往来上，银行和客户之间是<strong>债务人与债权人</strong>的关系。</p>
+<p>既然银行只是欠福利钱，福利就不能像委托人那样要求银行「交代」那笔钱的去向；他能做的，只是像任何债权人一样，要求银行还钱。上议院正是以此驳回了他要求银行交代账目的请求。</p>
+<p>这桩案子叫 <em>Foley v Hill</em>，是英国法的判例。美国的法院也是这样看存款的。1995 年，美国最高法院在一桩破产案（<em>Citizens Bank of Maryland v. Strumpf</em>）里讨论银行暂停支付一个账户算不算「拿走了存款人的财产」，判词的回答很直白：银行账户不多不少，只是银行对存款人的一项付款承诺；银行暂时不付，不是占有了存款人的财产，只是暂不履行它的承诺。两国的法律体系和银行法细节都不同，但在「存款是什么」这一点上，结论是一致的。它回答了这一课的核心问题：</p>
+<p><strong>存款不是保管，是债权。</strong> 债权（claim）是一种要求别人付钱的权利。你把钱存进银行，就把钱的所有权交给了银行，换回一项权利：银行欠你一笔钱，你要的时候它得还。</p>
+<p>真正的「保管」在银行里也有，叫保险箱（safe deposit box）：你租一个箱子，把金条、首饰或者一叠钞票锁在里面，箱子里的东西始终是你的，银行不能动，也不能拿去放贷。两者的区别，在出事的时候看得最清楚：后面会讲到，美国的存款保险保的是存款，<strong>不保</strong>保险箱里的东西。存款是银行的债务，所以需要保险；保险箱里的东西本来就不是银行的，银行倒了也还是你的，只是要等清算时取回。</p>
+<p>保管和债权的界线，在历史上并不是一开始就划得这么清楚。英格兰银行 2014 年的介绍文章讲过一段早期的故事：在英格兰银行 1694 年成立之前，英格兰已经有一些兼做银行生意的金匠替客户保管金币，并开出收据；后来这些收据本身开始在人们手里转来转去，被当作一种钱来用。收据原本只是「保管」的凭证，一旦人们不再急着取回金币，而是直接拿收据付款，它就开始像钱一样流通了。今天的存款走得更远：连「原物」都没有了，只剩下银行欠你的一个数。</p>
+</section>
+
+<section id="s3" aria-labelledby="h-s3"><h2 id="h-s3" tabindex="-1"><span class="hn">第 03 节</span>一张 T 型账户</h2>
+<p>「谁欠谁」说多了容易乱，会计里有一种很简单的画法，可以把它一次画清楚，叫 <strong>T 型账户</strong>（T-account）。</p>
+<p>画一个大写的 T。左边记<strong>资产</strong>（asset），也就是你拥有的东西和别人欠你的东西；右边记<strong>负债</strong>（liability），也就是你欠别人的东西。资产减去负债，剩下的部分叫<strong>权益</strong>（equity），也记在右边。对个人来说，权益就是<strong>净资产</strong>（net worth）；对公司和银行来说，权益属于股东，叫<strong>股东权益</strong>（shareholders' equity）。这样左右两边永远相等：</p>
+<p><strong>资产 = 负债 + 权益</strong></p>
+<p>通俗地讲，左边回答「我有什么」，右边回答「这些东西里，有多少是欠别人的，有多少是我自己的」。</p>
+<p>先画小林的。为了简单，只看他和钱有关的部分，不算房子、车子和别的东西：</p>
+<div class="tblw"><table class="bs"><thead><tr><th>小林 · 资产</th><th>金额</th><th>小林 · 负债与净资产</th><th>金额</th></tr></thead><tbody><tr><td>现金</td><td class="n">$200</td><td>负债</td><td class="n">$0</td></tr><tr><td>河岸银行的存款</td><td class="n">$3,500</td><td>净资产</td><td class="n">$3,700</td></tr><tr class="tot"><td>合计</td><td class="n">$3,700</td><td>合计</td><td class="n">$3,700</td></tr></tbody></table></div>
+<p>再画河岸银行的。银行的账很大，这里只看小林这一笔在银行账上的位置：</p>
+<div class="tblw"><table class="bs"><thead><tr><th>河岸银行 · 资产</th><th>金额</th><th>河岸银行 · 负债</th><th>金额</th></tr></thead><tbody><tr><td>（银行的各种资产，下面第 6 节再看）</td><td>……</td><td>小林的存款</td><td class="n">$3,500</td></tr></tbody></table></div>
+<p><strong>同一笔 $3,500，在小林的账上记在左边，是他的资产；在河岸银行的账上记在右边，是银行的负债。</strong> 这不是巧合，而是所有债权债务的共同点：一个人的债权，必然是另一个人的债务，两张账上各记一次，方向相反。学习目标里那句「存款是银行的负债」，指的就是这个。</p>
+<p>可以把存款想成一张借条：河岸银行写给小林，「欠小林 $3,500，随时来取」。这个比喻抓住了最要紧的一点，但它在两个地方不准确，要说清楚。</p>
+<p>第一，普通的借条很少有人愿意收。你拿着朋友写给你的借条去超市，收银员不会收。银行的「借条」却几乎人人都收：工资打进来是它，刷卡付钱用的也是它。这是存款能被当作钱来用的原因，它为什么能被这样信任，第 7 节会回来讲。</p>
+<p>第二，普通借条写明了什么时候还，活期存款没有到期日，存款人随时可以要。银行因此要随时准备好应付提款和转账，这一点决定了第 6 节里银行怎样安排它的资产。</p>
+<div class="quiz" id="q1" data-answer="1">
+  <p class="qq"><span class="qh">小题 1</span>判断：小林把 $200 现金存进河岸银行。这 200 美元的钞票仍然属于小林，银行只是替他保管，之后要原样还给他。</p>
+  <ul class="opts"><li class="add">对</li><li class="add">错</li></ul>
+  <p class="qhint" hidden><b>提示：</b>想想福利的官司：钱一存进银行，所有权归谁？银行的义务是还「原来那几张钞票」，还是还「相等的数额」？</p>
+  <p class="qans" hidden><b>答案：</b>错。钞票一存进去就归银行所有，银行可以拿去用；小林得到的是一笔 $200 的债权，银行的义务是在他要的时候付给他相等的数额，不是原来那几张钞票。</p>
+</div>
+</section>
+
+<section id="s4" aria-labelledby="h-s4"><h2 id="h-s4" tabindex="-1"><span class="hn">第 04 节</span>三种钱，三张欠条</h2>
+<p>现在可以回到开头那个问题：钱包里的 $200 和手机里的 $3,500，为什么不是同一种东西。答案藏在 T 型账户的右边：<strong>看它记在谁的负债里。</strong></p>
+<p><strong>第一种：现金</strong>（currency），也就是纸币和硬币。美国的纸币全称叫<strong>联邦储备券</strong>（Federal Reserve note），是联储的负债，记在联储账的右边。联储每周公布一张资产负债表（H.4.1 统计表）：截至 2026 年 11 月 11 日，流通中的现金约 2.50 万亿美元，其中联储券约 2.44 万亿。剩下的一小部分是财政部发行的通货（联储的表里另有一行「财政部发行的通货」），硬币就在其中：按美国法律，硬币由财政部长负责铸造和发行，不是联储的负债。所以严格说，钱包里的纸币和硬币欠债人不一样：纸币是联储欠的，硬币是财政部欠的。</p>
+<p>说钞票是联储的「负债」，听起来有点怪：拿着一张 $20 的钞票去联储，它不会给你金子，只会给你另一张 $20，或者两张 $10。早年的银行券确实可以兑换黄金，那时「欠」的意思很具体。今天的纸币不再兑换任何实物，英格兰银行在讲英镑时说得很直白：央行欠持有人的这笔债，只能用同样的钱来偿还。这里的比喻就到了边界：钞票仍然记在央行账的负债一侧，央行的资产一侧放着与之相对的国债等资产，但持有人并不能要求央行把钞票换成别的什么。它之所以被人接受，靠的是法律、税收和对币值稳定的信任，这些是后面讲通胀的课要回答的问题。</p>
+<p><strong>第二种：存款</strong>（deposit），记在商业银行账的右边。小林的 $3,500 是河岸银行的负债；如果他在另一家银行也有账户，那部分就是那家银行的负债。在今天的经济里，人们手里的钱绝大部分是这一种。美国联储的货币统计（H.6 统计表）里有一个口径叫 M1，大致包括流通中的现金和随时可以动用的存款。2026 年 9 月，M1 约 20.06 万亿美元，其中现金约 2.40 万亿，只占 12% 左右，其余约 88% 都是存款。英国的情况更极端：英格兰银行 2014 年的一篇介绍文章写到，英国公众持有的钱有 97% 是银行存款。</p>
+<p>（两张表里的「现金」数字不一样，是因为口径不同：H.6 的现金不包括存在银行金库里的那部分，H.4.1 的「流通中的现金」包括。）</p>
+<p><strong>第三种：准备金</strong>（reserves），这是普通人见不到、却最关键的一种。商业银行在联储开有账户，账户里的余额就叫准备金。通俗地讲，<strong>准备金就是银行在央行的存款</strong>：你把钱存在河岸银行，河岸银行把钱存在联储。所以准备金和小林的存款是同一种关系，只是往上挪了一层：它是联储的负债，是河岸银行的资产。截至 2026 年 11 月 11 日，美国各存款机构在联储的存款，也就是准备金余额，约 2.97 万亿美元。</p>
+<p>能在联储开账户的，只有银行和少数几类金融机构。小林不能把钱直接存在联储，他也用不着准备金：他付款用的是存款。准备金是银行之间付款用的钱，下一节会看到它怎样起作用。</p>
+<p>把三种钱排在一起：</p>
+<div class="tblw"><table class="bs"><thead><tr><th>钱</th><th>是谁的负债</th><th>谁持有</th><th>美国的规模</th></tr></thead><tbody><tr><td>现金（联储券和硬币）</td><td>联储（纸币）；财政部（硬币）</td><td>个人、企业，也有一部分在银行金库里</td><td>约 2.50 万亿美元（2026-11-11）</td></tr><tr><td>存款</td><td>商业银行</td><td>个人、企业</td><td>M1 里约 17.66 万亿美元（2026 年 9 月）</td></tr><tr><td>准备金</td><td>联储</td><td>银行和少数金融机构</td><td>约 2.97 万亿美元（2026-11-11）</td></tr></tbody></table></div>
+<p>其中纸币（联储券）和准备金是联储的负债，经济学里合称<strong>央行货币</strong>（central bank money）；硬币是财政部的负债，在流通的现金里只占一小部分；存款是商业银行的负债，叫<strong>商业银行货币</strong>（commercial bank money）。人们日常说的「钱」，主要是后一种。</p>
+<figure class="pf" id="fig1" aria-labelledby="fig1-t">
+  <figcaption class="pf-hd"><span class="flab">图 1</span><span id="fig1-t">谁欠谁</span><span class="kind">分类练习</span></figcaption>
+  <p class="pf-desc" id="fig1-d">先点一张卡片，再点它的欠债人。用键盘时：Tab 选到卡片按 Enter，再 Tab 到欠债人按 Enter</p>
+  <div class="f1-play" id="fig1-play">
+    <div class="pf-stage f1-cards" role="group" aria-label="六张卡片" aria-describedby="fig1-d"></div>
+    <div class="f1-bins" role="group" aria-label="四个欠债人"></div>
+    <p class="f1-fb" id="fig1-fb" aria-live="polite">先选一张卡片</p>
+    <div class="pf-ctrl"><button type="button" class="pri" data-a="key" hidden>看答案</button><button type="button" data-a="again">重来</button><span class="cnt" id="fig1-cnt"></span></div>
+  </div>
+  <div class="f1-key" id="fig1-key" hidden>
+    <div class="tblw"><table class="bs"><caption class="sr">六张卡片各是谁的负债</caption><thead><tr><th>联储</th><th>财政部</th><th>河岸银行</th><th>松石银行</th></tr></thead><tbody><tr><td>钱包里的 $20 纸币<br>河岸银行在联储的准备金<br>河岸银行金库里的一沓纸币</td><td>一枚 25 美分硬币</td><td>小林在河岸银行的存款</td><td>房东在松石银行的存款</td></tr></tbody></table></div>
+  </div>
+  <p class="pf-note">易错的一张：金库里的纸币由河岸银行持有，欠债的却是联储</p>
+</figure>
+<div class="quiz" id="q2" data-answer="0">
+  <p class="qq"><span class="qh">小题 2</span>下面哪一项是河岸银行的<strong>负债</strong>？</p>
+  <ul class="opts"><li>小林在河岸银行的存款</li><li>河岸银行在联储的准备金</li><li>河岸银行金库里的现金</li><li>河岸银行发放给企业的贷款</li></ul>
+  <p class="qhint" hidden><b>提示：</b>负债是「欠别人的」。这四样东西里，哪一样是河岸银行需要在别人来要时付出去的？</p>
+  <p class="qans" hidden><b>答案：</b>A。小林的存款是河岸银行欠小林的，是它的负债。准备金是联储欠河岸银行的，金库现金是河岸银行持有的现金（纸币是联储的负债，硬币是财政部的负债），贷款是借款企业欠河岸银行的，这三样都是河岸银行的资产。</p>
+</div>
+</section>
+
+<section id="s5" aria-labelledby="h-s5"><h2 id="h-s5" tabindex="-1"><span class="hn">第 05 节</span>钱「转」走的时候</h2>
+<p>如果存款只是银行账上的一个数字，那「转账」时，有没有什么东西真的被搬走了？</p>
+<p>答案是：<strong>同一家银行里转账，什么都没有搬，只是银行改了一下「欠谁」；两家银行之间转账，银行之间要用准备金结清。</strong> 下面用小林这个月的几笔账，一步一步看。</p>
+<p><strong>第一步：发工资。</strong> 小林的公司也在河岸银行开户。发工资时，河岸银行把公司名下的存款减少 $3,200，把小林名下的存款增加 $3,200。银行欠的总数没变，只是欠的对象从公司换成了小林。银行账的左边一笔都没动，准备金一分钱也没用到。</p>
+<p><strong>第二步：取现。</strong> 小林从取款机取出 $200。他的账上，存款少了 $200，现金多了 $200，总数还是 $3,700，只是换了形式。河岸银行的账上，右边小林的存款少了 $200，左边金库里的现金也少了 $200：银行用自己持有的现金，还掉了欠小林的一部分。两边同时缩小，仍然相等。</p>
+<p>反过来，如果小林把这 $200 再存回去，每一行都反着走一遍：他的现金变成存款，河岸银行多了 $200 金库现金，也多欠他 $200。英格兰银行的文章把这一步说得很准：存入现金，其实是把一张央行的欠条，换成了一张商业银行的欠条。刷借记卡买东西也是同样的道理：如果小林和商店在同一家银行，银行只是少欠小林一点、多欠商店一点；如果不在同一家，就进入下面这一步。</p>
+<p><strong>第三步：跨行付房租。</strong> 小林要付 $1,500 房租，房东的账户在另一家银行，叫松石银行。这一次涉及四张账：</p>
+<ul><li>小林：存款少 $1,500；</li><li>河岸银行：右边小林的存款少 $1,500，左边的准备金也少 $1,500；</li><li>松石银行：右边房东的存款多 $1,500，左边的准备金也多 $1,500；</li><li>联储：右边欠河岸银行的少 $1,500，欠松石银行的多 $1,500，总数不变。</li></ul>
+<p>为什么一定要动准备金？因为松石银行凭空多欠了房东 $1,500，它不会白白答应，它需要同时收到一笔等额的资产。河岸银行用来付这笔钱的，就是它在联储的存款。通俗地讲，<strong>小林用河岸银行的欠条付给房东，房东拿到的是松石银行的欠条，而两家银行之间，用联储的欠条结账。</strong></p>
+<p>在美国，银行之间的大额实时付款走联储运营的 <strong>Fedwire</strong> 系统：付款银行在联储账户里的余额被扣减，收款银行的被增加，入账即最终完成，不能撤回。工资代发、日常转账这类小额批量付款大多走<strong>自动清算所</strong>（ACH），按批次处理。联储运营的 ACH 结算时，联邦储备银行在付款银行的结算账户上记一笔借方、在收款银行的结算账户上记一笔贷方；有的小银行不在联储直接开户，而是借用一家代理行的账户结算。这一课不展开这些系统的细节，只要记住一件事：<strong>无论走哪条通道，银行之间的账，最终都记在央行的账户上</strong>，或者记在替它们结算的代理行在央行的账户上。</p>
+<p>一家大银行一天要替客户付出去很多钱，也会收进来很多钱，大部分互相抵消，最后真正需要从准备金里付出去的，是付出和收进之间的差额。如果哪天付出去的多、准备金不够，银行就得先从别的银行借一些准备金来。银行之间隔夜、无担保地借这种余额的市场叫联邦基金市场，联储的货币政策就是为这个市场的利率设定目标区间，这是本阶段第 6 课的内容。</p>
+<p><strong>第四步：银行补充现金。</strong> 月底取现的人多，河岸银行的金库现金变少了。它向联储换一批纸币（联储券），$50,000：河岸银行的准备金少 $50,000，金库现金多 $50,000，总资产不变；联储那边，欠河岸银行的准备金少 $50,000，流通中的联储券多 $50,000，总负债也不变。纸币和准备金之间可以随时互换，这是它们同属央行货币的另一面。</p>
+<figure class="pf" id="fig2" aria-labelledby="fig2-t">
+  <figcaption class="pf-hd"><span class="flab">图 2</span><span id="fig2-t">四张账一起动</span><span class="kind model">简化模型</span></figcaption>
+  <p class="pf-desc">小林这个月的四笔账。每一步只有亮起的行在变，单位：美元</p>
+  <div class="pf-stage f2" aria-label="四张 T 型账户">
+    <p class="f2-say" id="fig2-say"></p>
+    <div class="f2-sw"><button type="button" id="fig2-alt" aria-pressed="false" hidden>如果房东也在河岸银行</button></div>
+    <div class="f2-tier one"><section class="ta" id="ta-xl" aria-label="小林的账"></section></div>
+    <div class="f2-tier two"><section class="ta" id="ta-river" aria-label="河岸银行的账"></section><section class="ta" id="ta-pine" aria-label="松石银行的账"></section></div>
+    <div class="f2-tier one"><section class="ta" id="ta-fed" aria-label="联储的账"></section></div>
+  </div>
+  <div class="pf-now" aria-live="polite"></div>
+  <div class="pf-ctrl"><button type="button" data-a="prev">上一步</button><button type="button" class="pri" data-a="next">下一步</button><button type="button" data-a="again">重来</button><span class="cnt"></span></div>
+  <ol class="pf-steps"></ol>
+  <details class="tbl" id="fig2-tbl"><summary>四步汇总表</summary><div class="tblw" id="fig2-sum"></div></details>
+  <p class="pf-note">银行只列与本例有关的行，证券和贷款合成「其他资产」；联储只列本例两家银行的准备金和本例换出的纸币</p>
+</figure>
+<div class="quiz" id="q3" data-answer="2">
+  <p class="qq"><span class="qh">小题 3</span>小林把 $1,500 从河岸银行转给松石银行的房东。转账结束后，联储账上所有银行准备金的<strong>总额</strong>怎样变化？</p>
+  <ul class="opts"><li>减少 $1,500</li><li>增加 $1,500</li><li>不变</li></ul>
+  <p class="qhint" hidden><b>提示：</b>联储账上欠河岸银行的少了多少？欠松石银行的多了多少？</p>
+  <p class="qans" hidden><b>答案：</b>C。准备金只是从河岸银行名下移到了松石银行名下，联储欠所有银行的总数不变。</p>
+</div>
+<div class="quiz" id="q4" data-answer="1">
+  <p class="qq"><span class="qh">小题 4</span>判断：如果房东也在河岸银行开户，小林付房租时，河岸银行同样要动用它在联储的准备金。</p>
+  <ul class="opts"><li class="add">对</li><li class="add">错</li></ul>
+  <p class="qhint" hidden><b>提示：</b>同一家银行内部转账，银行欠的总数变了吗？有没有另一家银行需要被付钱？</p>
+  <p class="qans" hidden><b>答案：</b>错。同行转账只是把河岸银行欠小林的一部分改成欠房东，没有别的银行需要结账，准备金不动。</p>
+</div>
+</section>
+
+<section id="s6" aria-labelledby="h-s6"><h2 id="h-s6" tabindex="-1"><span class="hn">第 06 节</span>金库里有多少</h2>
+<p>既然存款是银行的负债，那银行用什么来还？它手里有多少现金？</p>
+<p>答案是：<strong>远远少于它欠储户的总数。</strong> 储户存进来的钱，银行的大部分拿去发放贷款、买入债券，只留一小部分以现金和准备金的形式随时备用。</p>
+<p>看一家虚构的、简化过的银行。河岸银行一共欠储户 9 亿美元，股东投入并积累下来的股东权益有 1 亿美元：</p>
+<div class="tblw"><table class="bs"><thead><tr><th>河岸银行 · 资产</th><th>金额</th><th>河岸银行 · 负债与股东权益</th><th>金额</th></tr></thead><tbody><tr><td>在联储的准备金</td><td>1.2 亿</td><td>存款</td><td>9 亿</td></tr><tr><td>金库现金</td><td>0.1 亿</td><td>股东权益</td><td>1 亿</td></tr><tr><td>证券（国债等）</td><td>2.7 亿</td><td></td><td></td></tr><tr><td>贷款</td><td>6 亿</td><td></td><td></td></tr><tr class="tot"><td>合计</td><td>10 亿</td><td>合计</td><td>10 亿</td></tr></tbody></table></div>
+<p>这张表是教学用的简化版。真实银行的资产负债表还有许多别的科目：向别的银行和机构的借款、发行的债券、各种应收应付等等；各项比例在不同银行、不同年份之间差别也很大。但它保留了最要紧的结构：<strong>右边主要是欠储户的存款，左边只有约 13% 是现金和准备金，其余是贷款和证券。</strong></p>
+<figure class="pf" id="fig3" aria-labelledby="fig3-t">
+  <figcaption class="pf-hd"><span class="flab">图 3</span><span id="fig3-t">一家银行的资产负债表</span><span class="kind model">虚构银行</span></figcaption>
+  <p class="pf-desc">河岸银行，总资产 10 亿美元。点按或悬停每一段，看它是谁欠谁的</p>
+  <div class="pf-stage f3">
+    <div class="f3-col"><p class="f3-h">资产</p><div class="f3-bar" id="fig3-a"><div class="f3-liq" aria-hidden="true"><span>随时可用：13%</span></div></div></div>
+    <div class="f3-col"><p class="f3-h">负债与股东权益</p><div class="f3-bar" id="fig3-l"></div></div>
+  </div>
+  <p class="verdict" id="fig3-out" aria-live="polite">点一段，看它是谁欠谁的</p>
+  <ul class="f3-all" id="fig3-all"></ul>
+  <p class="pf-note">虚构银行，简化科目，比例只作示意</p>
+</figure>
+<p>为什么只留这么少？因为平时每天来取现和转出的钱，只占存款的一小部分，同时还有人在存入、转入。留着大量不生息的现金，银行就少了贷款和证券的收入。银行要在「随时付得出」和「赚得到钱」之间权衡。</p>
+<p>证券在这里起一个中间作用。国债这类证券有利息收入，同时通常比较容易在短时间内卖出，或者拿去作抵押借到准备金，所以可以把它看作现金和贷款之间的缓冲：比现金多一点收益，比贷款更容易变现。贷款的收益更高，但大多要等借款人按期还款，急用时很难马上收回。</p>
+<p>这种权衡过去有一部分由法律规定。美国曾经要求银行按存款的一定比例，持有金库现金或在联储的存款，叫<strong>法定准备金率</strong>（reserve requirement ratio）。联储在 2020 年 3 月宣布，自 2020 年 3 月 26 日起把这个比率降为零，取消了所有存款机构的法定准备金要求。这不等于银行不再需要准备金：它仍然要付得出取款和转账，还要满足流动性方面的其他监管要求，只是不再有一个按存款算出来的固定比例。</p>
+<aside class="cn" aria-label="中国对照"><b>中国对照</b><p>中国人民银行仍然对银行规定法定存款准备金率，并把调整这个比率作为货币政策工具之一。所以在中国，银行吸收的存款里有一部分必须作为准备金存在人民银行，这一点和现在的美国不同。存款是银行的负债、准备金是银行在央行的存款，这两条在两地是一样的。</p></aside>
+<p>看完这张表，一个更大的问题自然冒出来：河岸银行账上有 6 亿美元贷款。这些贷款发出去的时候，借款人账户里的钱从哪里来？是不是把别的储户存进来的钱借了出去？这是下一课的问题。这里只先说一句：<strong>你账户里的存款，不一定是某个人拿着现金存进来变成的。</strong> 小林的工资就不是，它是从公司的存款转过来的；而公司的存款，又可能来自别的地方。</p>
+</section>
+
+<section id="s7" aria-labelledby="h-s7"><h2 id="h-s7" tabindex="-1"><span class="hn">第 07 节</span>这笔债权有多安全</h2>
+<p>既然存款是对银行的债权，它就和所有债权一样，有一个风险：<strong>欠债的人可能还不上。</strong></p>
+<p>上一节的表已经说明，河岸银行手里的现金和准备金只够应付一小部分存款。平时这没有问题；可如果很多储户同时来取，银行就得变卖证券、收回贷款，而这些资产不一定能马上按原价变现。银行如果资不抵债，存款这笔债权就可能受损。存款人一起涌来取钱会怎样，是第 9 阶段的内容，这里先不展开。</p>
+<p>为了让普通储户不必担心这件事，很多国家设立了<strong>存款保险</strong>（deposit insurance）。美国的存款保险由联邦存款保险公司（FDIC）提供：在投保银行，每位存款人、每家银行、每一种账户所有权类别，保额是 <strong>25 万美元</strong>。FDIC 的存款保险基金由美国政府的完全信用担保。</p>
+<p>几个容易误会的地方：</p>
+<ul><li>保险保的是存款，不保股票、债券、基金、年金、加密资产，也不保国债，即使这些东西是在银行里买的；保险箱里的东西同样不保。</li><li>额度按「每家银行」算。在同一家银行开几个同类账户，额度不会叠加；在不同的银行各存一笔，各有一份额度。</li><li>「账户所有权类别」是指个人账户、联名账户、某些退休账户等不同类别，各类别分别计算额度。规则细节较多，以 FDIC 的说明为准。</li></ul>
+<aside class="cn" aria-label="中国对照"><b>中国对照</b><p>中国的《存款保险条例》自 2015 年 5 月 1 日起施行，实行限额偿付，最高偿付限额为人民币 <strong>50 万元</strong>：同一存款人在同一家投保机构的所有被保险存款，本金和利息合并计算，50 万元以内全额偿付，超出部分依法从该机构的清算财产中受偿。被保险的存款包括人民币存款和外币存款。</p></aside>
+<p>存款保险也回答了第 3 节留下的问题之一：为什么银行的「借条」几乎人人都收？原因不止一个：活期存款按约定随时可取；工资、税款、账单都可以用它支付；而存款保险让普通储户即使在银行出事时，也能在额度内拿回钱。这些安排加在一起，让人们不必去查每家银行的账，就愿意把它的负债当作钱来用。</p>
+<div class="quiz" id="q5" data-answer="1">
+  <p class="qq"><span class="qh">小题 5</span>小林在一家受 FDIC 保险的银行有一个个人账户，余额 $300,000，他在这家银行没有别的账户。如果这家银行倒闭，存款保险按规定能保的部分是多少？</p>
+  <ul class="opts"><li>$300,000</li><li>$250,000</li><li>$50,000</li></ul>
+  <p class="qhint" hidden><b>提示：</b>额度按每位存款人、每家银行、每一种所有权类别计算。他只有一个个人账户。</p>
+  <p class="qans" hidden><b>答案：</b>B。个人账户这一类别的额度是 $250,000；超出的 $50,000 没有保险，只能作为对这家银行的债权，由 FDIC 以接管人身份变卖银行资产、清偿债务时处理，不能保证全额收回。</p>
+</div>
+</section>
+
+<section id="s8" aria-labelledby="h-s8"><h2 id="h-s8" tabindex="-1"><span class="hn">第 08 节</span>回到钱包和手机</h2>
+<p>现在再看小林这个月的账。钱包里的 $200 是两张纸币，是联储的负债；手机上的 $2,000（付完房租后）是河岸银行的负债；河岸银行为了随时付得出钱，又在联储存着准备金，那是联储欠河岸银行的。把三张账连起来，就是一条欠债的链条：</p>
+<ol class="flow"><li>小林持有河岸银行的存款（河岸银行欠小林）</li><li>河岸银行持有准备金和金库里的纸币（联储欠河岸银行）</li><li>小林付款给别的银行的客户时，河岸银行用准备金结清</li></ol>
+<p>所以「钱」并不是一种东西，而是几种不同的承诺，按层级挂在一起：家庭和企业用商业银行的承诺付款，银行之间用央行的承诺付款。平时这些承诺之间可以一比一地互换，存款随时能取成现金，准备金随时能换成现钞，所以人们感觉不到它们的区别。只有在这种一比一的互换出问题的时候，比如一家银行还不上储户的钱，区别才会显露出来。</p>
+<p>这条链条还有一半没讲：河岸银行账上那 6 亿美元贷款，以及与之相连的存款，是怎样出现的。下一课从这里接着讲。</p>
+</section>
+
+
+<section id="keys" class="keys" aria-labelledby="h-keys"><h2 id="h-keys" tabindex="-1">本课要点</h2>
+<ul><li>存款不是保管，是债权：钱一进银行就归银行所有，银行欠你一笔相等的数额，你要的时候它得付（Foley v Hill，英国上议院，1848 年）。真正的保管是保险箱。</li><li>T 型账户的左边是资产，右边是负债和权益，两边永远相等；个人的权益叫净资产，公司和银行的叫股东权益。同一笔存款，在储户的账上是资产，在银行的账上是负债。</li><li>三种钱按「是谁的负债」区分：现金是联储（纸币）和财政部（硬币）的负债；存款是商业银行的负债；准备金是银行在联储的存款，是联储的负债，只有银行和少数金融机构能持有。</li><li>美国人手里的钱绝大部分是存款：2026 年 9 月，M1 约 20.06 万亿美元，现金约占 12%。</li><li>同行转账只改变银行欠谁；跨行转账时，付款银行和收款银行用准备金在联储的账上结清，准备金总额不变。取现时，储户的存款和银行的金库现金同时减少。</li><li>银行只把一小部分资产留作现金和准备金，其余是贷款和证券。美国的法定准备金率自 2020 年 3 月 26 日起为零；中国仍有法定存款准备金率。</li><li>存款是对银行的债权，有银行还不上的风险。美国 FDIC 按每位存款人、每家投保银行、每一种所有权类别保 25 万美元；中国的最高偿付限额是 50 万元。</li></ul></section>
+
+<section class="srcs" id="srcs" aria-labelledby="h-srcs"><h2 id="h-srcs" tabindex="-1">来源</h2>
+<ul><li><em>Foley v Hill</em> (1848) 2 HLC 28, 9 ER 1002 (House of Lords). English Reports transcript.</li><li><em>Citizens Bank of Maryland v. Strumpf</em>, 516 U.S. 16 (1995) (opinion of the Court by Justice Scalia).</li><li>McLeay, M., Radia, A., &amp; Thomas, R. (2014). Money in the modern economy: an introduction. <em>Bank of England Quarterly Bulletin</em>, 2014 Q1, 4–13.</li><li>Board of Governors of the Federal Reserve System, <em>H.4.1 Factors Affecting Reserve Balances</em>, release of November 12, 2026 (data for November 11, 2026).</li><li>Board of Governors of the Federal Reserve System, <em>H.6 Money Stock Measures</em>, release of October 27, 2026 (data for September 2026).</li><li>Board of Governors of the Federal Reserve System, <em>Reserve Requirements</em> (reduction of reserve requirement ratios to zero percent effective March 26, 2020).</li><li>Board of Governors of the Federal Reserve System, <em>Fedwire Funds Services</em> and <em>Automated Clearinghouse Services</em>.</li><li>Federal Reserve Banks, <em>Operating Circular No. 4: Automated Clearing House Items</em>, effective January 5, 2026 (settlement provisions unchanged in the version effective December 11, 2026).</li><li>Federal Deposit Insurance Corporation, <em>Understanding Deposit Insurance</em>; <em>When a Bank Fails – Facts for Depositors, Creditors, and Borrowers</em>.</li><li>31 U.S.C. § 5111(a) (the Secretary of the Treasury shall mint and issue coins).</li><li>Federal Reserve Bank of New York, <em>Effective Federal Funds Rate</em> (definition of the federal funds market).</li><li>《存款保险条例》（国务院令第 660 号），2015 年 2 月 17 日签署，2015 年 3 月 31 日公布，2015 年 5 月 1 日起施行。</li></ul></section>
+    </article>
+
+    <aside class="notesR" aria-label="读图说明">
+      <div><b>读图</b><span class="sw" style="background:var(--ink)"></span>墨黑：账上的数<br><span class="sw" style="background:var(--lime);box-shadow:inset 0 0 0 1px var(--ink)"></span>荧光：这一步变动的行<br><span class="sw" style="background:var(--vio)"></span>紫色：减少的数</div>
+      <div><b>T 型账户</b>左边是资产，右边是负债和权益，两边永远相等。同一笔钱，在持有人账上记左边，在欠债人账上记右边</div>
+      <div><b>例子</b>小林、河岸银行、松石银行都是虚构的教学例子。银行的科目经过简化，比例只作示意</div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site"><div class="w">
+  <div class="row"><b style="color:var(--ink)">MarketPilot</b><span>S01-01</span></div>
+  <p class="credits">开场插图与本课的图均为原创示意。小林、河岸银行、松石银行是虚构的教学例子。</p>
+</div></footer>
+
+<button class="totop" id="totop" type="button" aria-label="回到顶部" title="回到顶部（长按可拖动，双击复位）">
+  <svg class="ring" viewBox="0 0 62 62" aria-hidden="true"><circle cx="31" cy="31" r="28"/></svg>
+  <svg class="ico-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  <svg class="ico-move" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3"/></svg>
+</button>
+<div class="totop-tip" id="totop-tip" role="status" aria-live="polite"></div>
+
+<script src="../../assets/totop.js"></script>
+
+<script src="steps.js"></script>
+<script src="lesson.js"></script>
+<script src="../S02-02/reader.js"></script>
+</body>
+</html>

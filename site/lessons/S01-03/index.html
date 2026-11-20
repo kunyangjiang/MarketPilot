@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>为什么今天的 100 美元，比明年的 100 美元更值钱？ · S01-03 · MarketPilot</title>
+<meta name="description" content="MarketPilot S01-03：复利与折现是同一条路的两个方向；折现率是机会成本；从一场 52 周国库券拍卖看银行贴现率、持有期回报与投资利率的区别。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2212%22 fill=%22%23D4FF3A%22 stroke=%22%23111827%22 stroke-width=%227%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="lesson.css">
+</head>
+<body>
+<a class="skip" href="#lesson-body">跳到正文</a>
+
+<header class="top"><div class="w">
+  <a class="logo" href="../../"><i></i>MarketPilot</a>
+  <nav class="mainnav" aria-label="主导航">
+    <a href="../../">首页</a>
+    <a href="../../#courses" aria-current="page">课程</a>
+    <a href="../../#stories">故事</a>
+  </nav>
+  <a class="sbtn" href="../../?search=" aria-label="搜索"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>搜索</span></a>
+</div>
+<div class="rprog" aria-hidden="true"><i id="rprog"></i></div>
+</header>
+
+<main class="w" id="main">
+  <div class="crumb"><a href="../../#courses">课程</a><span>/</span><a href="../../#layer-1">第一层 货币、市场与资产</a><span>/</span><a href="../../#S01">S01 货币、信用与利率</a><span>/</span>第 3 课</div>
+
+  <section class="lhero" aria-labelledby="lesson-title">
+    <div class="card l">
+      <div class="lab">MarketPilot · S01 货币、信用与利率 · 第 3 课</div>
+      <h1 id="lesson-title">为什么今天的 100 美元，比明年的 100 美元更值钱？</h1>
+      <p class="q">未来的钱怎样换算成今天的钱？</p>
+      <p class="goal"><b>学习目标</b>能手算单笔现金流的复利与折现，并解释折现率的含义</p>
+    </div>
+    <figure class="tb03" aria-labelledby="tb03-cap">
+      <p class="tb-big" aria-hidden="true"><span class="a">$95.66</span><span class="arr">→</span><span class="b">$100</span></p>
+      <p class="tb-days" aria-hidden="true">364 天</p>
+      <p class="tb-date" aria-hidden="true">2026 年 10 月 27 日 · 美国财政部 52 周国库券拍卖</p>
+      <p class="tb-src" aria-hidden="true">TreasuryDirect 拍卖结果，CUSIP 912797WT0</p>
+      <figcaption class="sr" id="tb03-cap">2026 年 10 月 27 日美国财政部 52 周国库券拍卖：每 $100 面值约卖 $95.66，364 天后付 $100。来源：TreasuryDirect 拍卖结果，CUSIP 912797WT0</figcaption>
+    </figure>
+  </section>
+
+  <div class="card reader">
+    <nav class="ltoc" aria-label="本课章节">
+      <div class="lab">本课 8 节</div>
+      <ol id="toc">
+        <li><a href="#s1"><span class="n">01</span>$100 的承诺，卖了 $95.66</a></li>
+        <li><a href="#s2"><span class="n">02</span>早拿到的钱能做什么</a></li>
+        <li><a href="#s3"><span class="n">03</span>利息也会生利息</a></li>
+        <li><a href="#s4"><span class="n">04</span>多少年翻一倍</a></li>
+        <li><a href="#s5"><span class="n">05</span>把复利倒过来走</a></li>
+        <li><a href="#s6"><span class="n">06</span>折现率从哪里来</a></li>
+        <li><a href="#s7"><span class="n">07</span>回到那场拍卖</a></li>
+        <li><a href="#s8"><span class="n">08</span>两个方向，一个利率</a></li>
+        <li><a href="#keys"><span class="n">··</span>本课要点</a></li>
+        <li><a href="#srcs"><span class="n">··</span>来源</a></li>
+      </ol>
+    </nav>
+
+    <article id="lesson-body" tabindex="-1">
+<section id="s1" aria-labelledby="h-s1"><h2 id="h-s1" tabindex="-1"><span class="hn">第 01 节</span>$100 的承诺，卖了 $95.66</h2>
+<p>2026 年 10 月 27 日，美国财政部举行了一场拍卖，卖的是一种叫<strong>国库券</strong>（Treasury bill，常简称 T-bill）的短期债券。这一期是 52 周国库券，编号 912797WT0：买家在 10 月 29 日付钱，到 2027 年 10 月 28 日，也就是 364 天之后，财政部按<strong>面值</strong>（face value）把钱付给持有人。面值 $100 的国库券，到期付 $100。</p>
+<p>拍卖结束，成交价格是：每 $100 面值，<strong>$95.662333</strong>。</p>
+<p>也就是说，买家交出约 $95.66，换来财政部的一个承诺：364 天后付他 $100。这中间财政部不再付任何利息，到期那天也只付 $100。财政部在 TreasuryDirect 网站上对国库券的说明很直接：国库券按折价或按面值出售，到期支付面值；对国库券来说，「利息」就是你付的价钱和到期拿回的面值之间的差。这一期，差额是每 $100 面值 $4.34。</p>
+<p>这里有两个问题值得停下来想一想。买家明知道到期能拿 $100，为什么不肯付满 $100？财政部明知道到期要还 $100，为什么今天只收约 $95.66 也愿意卖？</p>
+<p>两个问题背后是同一件事：<strong>今天的钱可以马上拿去生息，明年的钱要等到明年才能用。</strong> 买家手里的钱本来可以拿去做别的、能生息的事；要他把钱交给财政部、一等就是 364 天，到期拿回的就得比交出去的多。财政部要的恰恰是今天就能用的钱，它愿意为「现在就用」付出代价。两边的考虑碰在一起，明年的 $100 在今天就只值 $95.66 左右。</p>
+<p>这一课把这个「打折」算清楚。先看今天的钱怎样一年年长大，再把这个过程倒过来，算出未来的钱今天值多少；然后弄清楚决定折扣大小的那个利率到底代表什么。最后回到这场拍卖，看买卖双方各自算的是什么账。</p>
+<p>有一个前提先说在这里：本课假设财政部一定按时付钱。承诺有没有可能落空、这种可能怎样影响价格，是本阶段第 5 课的内容。</p>
+</section>
+
+<section id="s2" aria-labelledby="h-s2"><h2 id="h-s2" tabindex="-1"><span class="hn">第 02 节</span>早拿到的钱能做什么</h2>
+<p>先离开国库券，看一件更小的事。</p>
+<p>小林的朋友欠他 $100。朋友说：「现在还你也行，明年这个时候还也行，数目都是 $100。」小林几乎不用想就会选现在。可如果追问一句为什么，答案并不只是「早拿到心里踏实」。</p>
+<p>假设小林能找到一个地方，存进去的钱每年付 5% 的利息。（为了好算，本课大部分例子都用 5%。这是教学用的数字，不是哪家银行此刻真正挂出的利率。）现在拿到 $100，他马上存进去，一年后账上是：</p>
+<p>$100 + $100 × 5% = $105</p>
+<p>如果等到明年才拿到，他手里只有 $100。<strong>同样是 $100，早拿一年，明年就多出 $5。</strong> 这 $5 不是朋友给的，是早拿到的钱自己挣来的：这一年钱在小林手里，就能被拿去生息；在朋友手里，小林就只能等。</p>
+<p>站到朋友那边看，事情正好反过来。晚还一年，等于小林白白借给他 $100 用了一年，一分钱利息也没收。朋友拿这 $100 去还一笔别的欠款、去进一批货，或者只是不必先动自己的存款，这一年的好处都归了朋友。所以「早还晚还数目一样」这句话听起来公平，其实是把一年的使用权白送了出去。</p>
+<p>经济学把这件事叫作<strong>货币的时间价值</strong>（time value of money）：同样数额的钱，越早拿到越值钱，因为早拿到的人多出一段可以让它生息的时间。小林存进去的 $100 叫<strong>本金</strong>（principal）；一年后的 $105，是这 $100 按 5% 放一年之后的<strong>终值</strong>（future value），意思是「今天的一笔钱，到将来某一天会变成多少」。</p>
+<p>那么，为什么会有人愿意为「早用钱」付利息？因为总有人现在就需要钱，手里却暂时没有：一家店想现在就添一台设备，一个家庭想现在就买房，政府现在就要付各种开支。对他们来说，今天的 $100 比明年的 $100 有用得多，他们愿意明年多还一点，换今天先用上。另一边，像小林这样暂时用不上这笔钱的人，可以等一等，前提是等待有回报。利息，就是这两类人之间成交的价格：一方为「现在用」付钱，另一方因为「肯等」收钱。</p>
+<p>钱的时间价值还有别的来源。明年的 $100 也许买不到今天这么多东西；欠钱的人也可能还不上，未来的 $100 不一定真能到手。这两点分别是第 4 课和第 5 课的主题。这一课只讲最基本的一条：<strong>今天的钱可以拿去生息。</strong> 下面所有的数字都只看美元的数目，不问它能买多少东西，并且假设承诺一定兑现。</p>
+</section>
+
+<section id="s3" aria-labelledby="h-s3"><h2 id="h-s3" tabindex="-1"><span class="hn">第 03 节</span>利息也会生利息</h2>
+<p>小林把 $100 存进去以后，第一年结束时有 $105。他不取，接着存第二年。第二年结束时，账上是多少？</p>
+<p>很多人的第一反应是 $110：每年 $5，两年 $10。实际是 <strong>$110.25</strong>。</p>
+<p>多出来的 $0.25 从哪里来？第二年开始的时候，账上已经不是 $100，而是 $105。存款按账上实际有的钱计息，第二年的利息是：</p>
+<p>$105 × 5% = $5.25</p>
+<p>这 $5.25 里，$5 是原来那 $100 本金的利息；另外 $0.25，是第一年那 $5 利息自己生出来的利息，也就是 $5 × 5%。第一年的利息留在账上，到了第二年已经和本金一起计息了。</p>
+<p>这种让利息留在账上、和本金一起继续计息的方式，叫<strong>复利</strong>（compound interest）。和它相对的是<strong>单利</strong>（simple interest）：每年只按最初的本金计息，利息拿出来另放，不再生息。</p>
+<p>两年里 $0.25 的差别小得可以忽略。可它每年都在变大，因为今年的「利息的利息」，明年又会生出自己的利息。把时间拉长：</p>
+<div class="tblw"><table class="bs"><thead><tr><th>年数</th><th>复利（5%）</th><th>单利（5%）</th><th>复利多出</th></tr></thead><tbody><tr><td class="n">1</td><td class="n">$105.00</td><td class="n">$105.00</td><td class="n">$0.00</td></tr><tr><td class="n">2</td><td class="n">$110.25</td><td class="n">$110.00</td><td class="n">$0.25</td></tr><tr><td class="n">3</td><td class="n">$115.76</td><td class="n">$115.00</td><td class="n">$0.76</td></tr><tr><td class="n">10</td><td class="n">$162.89</td><td class="n">$150.00</td><td class="n">$12.89</td></tr><tr><td class="n">20</td><td class="n">$265.33</td><td class="n">$200.00</td><td class="n">$65.33</td></tr><tr><td class="n">30</td><td class="n">$432.19</td><td class="n">$250.00</td><td class="n">$182.19</td></tr></tbody></table></div>
+<p>单利每年都只多 $5，30 年一共 $150。复利每年增加的不是同样的金额，而是同样的<strong>比例</strong>：账上越多，5% 对应的金额就越大。到第 30 年，光是这一年的利息就有 $20.58，是第一年的四倍多。</p>
+<figure class="pf" id="fig1" aria-labelledby="fig1-t">
+  <figcaption class="pf-hd"><span class="flab">图 1</span><span id="fig1-t">复利的台阶</span></figcaption>
+  <p class="pf-desc">$100 按每年 5% 存着不取，每根柱是一年末的余额；虚线是单利</p>
+  <p class="f1-key" aria-hidden="true"><span class="pr">本金 $100</span><span class="in">累计利息</span><span class="hl">这一步</span><span class="sl">单利</span></p>
+  <div class="pf-stage f1"><svg id="fig1-svg" role="img" aria-labelledby="fig1-alt"><title id="fig1-alt">复利余额柱状图</title></svg></div>
+  <div class="pf-now" aria-live="polite"></div>
+  <div class="pf-ctrl"><button type="button" data-a="prev">上一步</button><button type="button" class="pri" data-a="next">下一步</button><button type="button" data-a="again">重来</button><span class="cnt"></span></div>
+  <ol class="pf-steps"></ol>
+</figure>
+<p>每一年做的事其实只有一件：把账上的数乘以 1.05。一年乘一次，两年乘两次：</p>
+<p>$100 × 1.05 × 1.05 = $110.25</p>
+<p>十年就是连乘十次 1.05，得到 $162.89。把「乘 n 次 (1 + r)」简写成 (1 + r)ⁿ，就是复利终值的算式：</p>
+<p><strong>终值 = 本金 × (1 + r)ⁿ</strong></p>
+<p>r 是每年的利率，5% 写成 0.05；n 是年数。算式里没有新东西，只是把「每年乘一次 1.05」写短了。手算时，年数不多可以一次次地乘；年数多了，用计算器的乘方键。本课都假设每年计一次息；有些产品每半年甚至每天计息一次，道理相同，算出来的数会略有差别。</p>
+<p>人们常把复利比作滚雪球：雪球越大，滚一圈粘上的雪越多。这个比喻抓住了「越滚越快」的原因，即每一年新增多少，取决于已经有多少。但它有两处不准确。第一，雪球粘多少雪，要看路上有多少雪，时多时少；复利在利率不变时每年都按同一个比例增长，是可以事先精确算出来的。第二，雪球推出去就自己滚，复利却要三个条件同时成立：利率一直是 5%（现实中的利率会变）；利息一直留在账上（小林每年把利息取出来花掉，复利就退回成了单利）；付利息的一方一直付得出（这一点第 5 课再谈）。</p>
+<div class="quiz" id="q1" data-answer="1">
+  <p class="qq"><span class="qh">小题 1</span>小林另存了 $200，年利率 5%，按复利计息，中途不取。第二年的利息是多少？</p>
+  <ul class="opts"><li>$10.00</li><li>$10.50</li><li>$20.50</li><li>$10.25</li></ul>
+  <p class="qhint" hidden><b>提示：</b>第二年开始时，账上已经不是 $200 了。先算第一年末账上有多少。</p>
+  <p class="qans" hidden><b>答案：</b>B。第一年末账上有 $200 × 1.05 = $210，第二年的利息是 $210 × 5% = $10.50，其中 $0.50 是第一年利息 $10 生出的利息。A 是单利的算法；C 是两年利息的合计。</p>
+</div>
+</section>
+
+<section id="s4" aria-labelledby="h-s4"><h2 id="h-s4" tabindex="-1"><span class="hn">第 04 节</span>多少年翻一倍</h2>
+<p>复利有一个常被问到的问题：按某个利率，钱要多少年才能翻一倍？</p>
+<p>回到 5% 的例子。按上面的算式，$100 存 14 年是 $197.99，存 15 年是 $207.89，所以翻倍落在第 14 年和第 15 年之间。精确地算，大约是 14.21 年。</p>
+<p>不用计算器，有一个估算的办法，叫 <strong>72 法则</strong>（rule of 72）：用 72 除以年利率的百分数，得到的就是翻倍大约需要的年数。5% 时，72 ÷ 5 = 14.4 年，比精确值 14.21 年只多了 0.19 年。</p>
+<p>72 法则只是近似，而且它的误差会随利率变：</p>
+<div class="tblw"><table class="bs"><thead><tr><th>年利率</th><th>72 法则（年）</th><th>精确值（年）</th><th>72 法则多算</th></tr></thead><tbody><tr><td class="n">1%</td><td class="n">72.00</td><td class="n">69.66</td><td class="n">2.34</td></tr><tr><td class="n">3%</td><td class="n">24.00</td><td class="n">23.45</td><td class="n">0.55</td></tr><tr><td class="n">5%</td><td class="n">14.40</td><td class="n">14.21</td><td class="n">0.19</td></tr><tr><td class="n">8%</td><td class="n">9.00</td><td class="n">9.01</td><td class="n">−0.01</td></tr><tr><td class="n">10%</td><td class="n">7.20</td><td class="n">7.27</td><td class="n">−0.07</td></tr><tr><td class="n">20%</td><td class="n">3.60</td><td class="n">3.80</td><td class="n">−0.20</td></tr></tbody></table></div>
+<p>8% 附近几乎没有误差；利率越低，72 法则把翻倍时间估得越长；利率很高时，它反过来估短了。在几个百分点到十几个百分点之间，它够用；离这个范围越远，越要小心。</p>
+<figure class="pf" id="fig2" aria-labelledby="fig2-t">
+  <figcaption class="pf-hd"><span class="flab">图 2</span><span id="fig2-t">72 法则准不准</span></figcaption>
+  <div class="ctl"><span class="seg f2-rates" role="radiogroup" aria-label="年利率">
+    <button type="button" role="radio" data-r="0">1%</button><button type="button" role="radio" data-r="1">3%</button><button type="button" role="radio" data-r="2">5%</button><button type="button" role="radio" data-r="3">8%</button><button type="button" role="radio" data-r="4">10%</button><button type="button" role="radio" data-r="5">20%</button>
+  </span></div>
+  <div class="pf-stage f2">
+    <div class="f2-row"><span class="k">72 法则</span><span class="trk"><i id="fig2-a"></i></span><b class="v" id="fig2-av"></b></div>
+    <div class="f2-row ex"><span class="k">精确</span><span class="trk"><i id="fig2-b"></i></span><b class="v" id="fig2-bv"></b></div>
+    <p class="f2-out" id="fig2-out" aria-live="polite"></p>
+  </div>
+  <p class="pf-note">精确值按每年计息一次计算</p>
+</figure>
+<p>这个法则也可以倒过来用：想在 n 年里翻倍，大约需要 72 ÷ n 的年利率。</p>
+<p>美国财政部发行的 <strong>EE 储蓄债券</strong>（Series EE savings bond）正好可以拿来试一试。TreasuryDirect 上写着：现在买的 EE 债券，财政部保证 20 年翻倍，哪怕要在第 20 年往里补钱也要做到。20 年翻倍，用 72 法则倒推，大约要每年 3.6%；精确算是每年约 3.53% 的复利。这个保证和每期公布的利率是两回事：例如 TreasuryDirect 公布的、2026 年 11 月 1 日至 2027 年 4 月 30 日发行的 EE 债券利率是 2.90%，按它滚 20 年到不了翻倍，差额靠保证补上。</p>
+<div class="quiz" id="q2" data-answer="0">
+  <p class="qq"><span class="qh">小题 2</span>小林想让一笔钱在 9 年里翻一倍。按 72 法则，他大约需要多高的年利率？</p>
+  <ul class="opts"><li>8%</li><li>9%</li><li>7.2%</li><li>4.5%</li></ul>
+  <p class="qhint" hidden><b>提示：</b>72 法则倒过来用：年利率的百分数 ≈ 72 ÷ 年数。</p>
+  <p class="qans" hidden><b>答案：</b>A。72 ÷ 9 = 8，即约 8%。8% 正好是 72 法则最准的地方：按 8% 复利，精确的翻倍时间约 9.01 年。</p>
+</div>
+</section>
+
+<section id="s5" aria-labelledby="h-s5"><h2 id="h-s5" tabindex="-1"><span class="hn">第 05 节</span>把复利倒过来走</h2>
+<p>到这里，我们一直在问「今天的钱将来变成多少」。可开头那场拍卖问的是反方向：<strong>将来的钱，今天值多少？</strong></p>
+<p>还是从小林开始。假设朋友换了个说法：「明年这个时候，我给你 $100。你看今天给你多少，才算跟它一样？」</p>
+<p>小林能拿到 5%。他要找的是这样一个数：今天拿到它，存一年，正好变成 $100。复利那一节的做法是乘 1.05，现在倒过来，除以 1.05：</p>
+<p>$100 ÷ 1.05 = $95.24</p>
+<p>验算一下：今天的 $95.24 存一年，$95.24 × 1.05 ≈ $100。所以对小林来说，「今天的 $95.24」和「明年的 $100」是一回事：他拿了前者，存一年就变成后者。少于 $95.24，他宁可等明年；多于 $95.24，他会选今天。</p>
+<p>$95.24 叫作明年那 $100 的<strong>现值</strong>（present value），意思是「将来的一笔钱，放在今天值多少」。从终值算现值的过程叫<strong>折现</strong>（discounting），折现时用的那个利率，这里的 5%，叫<strong>折现率</strong>（discount rate）。</p>
+<p>越远的钱，打的折越多。10 年后的 $100，要往回除 10 次 1.05：</p>
+<p>$100 ÷ 1.05¹⁰ = $61.39</p>
+<p>验算的方式一样：今天存 $61.39，按 5% 复利 10 年，约为 $100。</p>
+<p>手算的时候，可以一年一年地往回除。比如 3 年后的 $100，按 5% 折现：</p>
+<ol class="flow"><li>第 3 年末：$100</li><li>往回一年，到第 2 年末：$100 ÷ 1.05 ≈ $95.24</li><li>再往回一年，到第 1 年末：÷ 1.05 ≈ $90.70</li><li>再往回一年，到今天：÷ 1.05 ≈ $86.38</li></ol>
+<p>每一步的意思都很具体：到了那一年，手里要有多少钱，按 5% 再放一年才能变成下一年的数。中间的数最好多留几位小数，最后一步再四舍五入到分，不然每一步的零头会一层层累积。</p>
+<p>把「每年除一次」写短，就是折现的算式：</p>
+<p><strong>现值 = 终值 ÷ (1 + r)ⁿ</strong></p>
+<p>把复利那一节的「本金」换成「现值」，它和复利终值的算式其实是同一个式子：终值 = 现值 × (1 + r)ⁿ。复利是顺着时间往后走，每过一年乘一次 (1 + r)；折现是逆着时间往回走，每退一年除一次 (1 + r)。学会了一个，另一个只是方向相反。</p>
+<figure class="pf" id="fig3" aria-labelledby="fig3-t">
+  <figcaption class="pf-hd"><span class="flab">图 3</span><span id="fig3-t">时间轴上的折现</span></figcaption>
+  <div class="ctl"><span class="seg" role="group" aria-label="从哪一笔开始"><button type="button" data-g="0" aria-pressed="true">1 年后的 $100</button><button type="button" data-g="3" aria-pressed="false">10 年后的 $100</button></span></div>
+  <div class="pf-stage f3">
+    <ol class="f3-axis" id="fig3-axis" aria-hidden="true"></ol>
+    <p class="f3-eq" id="fig3-eq"></p>
+    <div class="f3-static" hidden><p>100 ÷ 1.05 = 95.24</p><p>100 ÷ 1.05¹⁰ = 61.39</p></div>
+  </div>
+  <div class="pf-now" aria-live="polite"></div>
+  <div class="pf-ctrl"><button type="button" data-a="prev">上一步</button><button type="button" class="pri" data-a="next">下一步</button><button type="button" data-a="again">重来</button><span class="cnt"></span></div>
+  <ol class="pf-steps"></ol>
+  <p class="pf-note">按每年 5% 折现</p>
+</figure>
+<p>还有一个名词上的提醒。财政部公布国库券拍卖结果时，也会用到 discount rate 这个词，全称是 bank discount rate，中文一般译作「银行贴现率」。它是国库券的一种报价写法，算法和这里的折现率不同，最后一节会讲。</p>
+<div class="quiz" id="q3" data-answer="3">
+  <p class="qq"><span class="qh">小题 3</span>两年后的 $100，按 5% 折现，今天值多少？</p>
+  <ul class="opts"><li>$90.00</li><li>$95.24</li><li>$110.25</li><li>$90.70</li></ul>
+  <p class="qhint" hidden><b>提示：</b>往回走两年，就要除两次 1.05。</p>
+  <p class="qans" hidden><b>答案：</b>D。$100 ÷ 1.05 ÷ 1.05 = $100 ÷ 1.1025 ≈ $90.70。验算：$90.70 存两年，按复利约等于 $100。A 是每年减掉 $5，忽略了复利；B 只往回走了一年；C 是今天 $100 存两年的终值，方向反了。</p>
+</div>
+</section>
+
+<section id="s6" aria-labelledby="h-s6"><h2 id="h-s6" tabindex="-1"><span class="hn">第 06 节</span>折现率从哪里来</h2>
+<p>上一节有一个地方被轻轻带过了：为什么用 5% 折现，而不是 2%，也不是 10%？</p>
+<p>答案就在小林的选择里。他用 5%，是因为 5% 是他手里那笔钱不等的话本来能挣到的。看一个具体的提议。</p>
+<p>朋友说：「今天给你 $100，或者一年后给你 $104，你挑。」</p>
+<p>如果小林能稳稳拿到 5%，他可以这样比：把一年后的 $104 折回今天，$104 ÷ 1.05 ≈ $99.05，比今天的 $100 少，所以选今天。换个方向想也一样：今天的 $100 存一年是 $105，比 $104 多 $1。</p>
+<p>如果他最好的机会只有 3%，结论就反过来了：$104 ÷ 1.03 ≈ $100.97，比 $100 多，所以等一年更划算；今天的 $100 按 3% 存一年只有 $103，不如朋友给的 $104。</p>
+<p>两种情况的分界在 4%：$100 存一年变成 $104 需要的利率正好是 4%。小林的机会比 4% 好，就选今天；比 4% 差，就选一年后。</p>
+<p>所以折现率不是从哪本书里查出来的常数。它是一种<strong>机会成本</strong>（opportunity cost）：选了一样东西，就放弃了另一样；被放弃的那个选择里最好的一个能带来多少，就是这次选择的成本。用在钱上，折现率就是「这笔钱如果不拿去等这个承诺，本来最多能挣多少」。小林等朋友一年，放弃的是 5% 的利息，所以他用 5% 去衡量朋友的承诺。</p>
+<p>放弃的机会也不一定是存款。假设小林身上还背着一笔年利率 6% 的借款，可以提前还。手里多出 $100，拿去提前还掉这笔借款，一年就少付 $6 利息，这和挣到 $6 是一回事。这时他最好的机会就是 6%，而不是存款的 5%。机会成本要问的是：这笔钱在你手里，眼下最好的用法能带来多少。</p>
+<p>这里有两点容易想错。</p>
+<p>第一，比的是<strong>最好</strong>的那个机会，不是随便哪一个。假设小林手里同时有两个去处，一个每年 3%，一个每年 5%。他如果决定等朋友一年，真正放弃的是 5% 那个，因为 3% 那个本来就不会被选中。拿 3% 去衡量，就把等待的代价算少了。</p>
+<p>第二，机会成本不会出现在任何账单上。朋友晚还一年，小林没有付出任何一笔钱，账户里也看不到一行「少了 $5」。正因为看不见，人们常常觉得「数目一样就没吃亏」。折现做的事，就是把这笔看不见的代价写成一个看得见的数。</p>
+<p>时间拉长，这个代价还会按复利滚。朋友换个提议：今天给 $100，或者两年后给 $110。乍一看，两年多 $10，每年 $5，好像正好是 5%。可小林今天拿 $100，按 5% 复利存两年是 $110.25，比 $110 还多 $0.25；把 $110 按 5% 折回今天，是 $110 ÷ 1.05² ≈ $99.77，不到 $100。所以对他来说，今天的 $100 仍然更好。如果他最好的机会只有 4%，$110 ÷ 1.04² ≈ $101.70，两年后的 $110 就更好。两者的分界不是 5%，而是约 4.88%，也就是两年复利正好把 $100 变成 $110 的那个利率。用单利的眼光看「每年多 $5」，会把这个分界算错。</p>
+<p>这带出两个结果。</p>
+<p>第一，<strong>同一个承诺，对不同的人值不同的钱。</strong> 一年后的 $104，对能拿到 5% 的人今天值 $99.05，对只能拿到 3% 的人值 $100.97。没有一个人人都同意的「正确现值」，现值取决于是谁在用什么机会去比。</p>
+<p>第二，<strong>折现率越高，未来的钱今天越不值钱；时间越长，这种影响越大。</strong></p>
+<div class="tblw"><table class="bs"><thead><tr><th>折现率</th><th>1 年后的 $100，今天值</th><th>10 年后的 $100，今天值</th></tr></thead><tbody><tr><td class="n">0%</td><td class="n">$100.00</td><td class="n">$100.00</td></tr><tr><td class="n">2%</td><td class="n">$98.04</td><td class="n">$82.03</td></tr><tr><td class="n">5%</td><td class="n">$95.24</td><td class="n">$61.39</td></tr><tr><td class="n">10%</td><td class="n">$90.91</td><td class="n">$38.55</td></tr></tbody></table></div>
+<p>折现率从 2% 升到 10%，1 年后那 $100 的现值少了 $7.13；10 年后那 $100 的现值少了 $43.48。原因在算式里：折现率每变一点，近的钱只多除或少除一次，远的钱要多除或少除很多次，影响一层层叠起来。所以越是远期的钱，它今天值多少对折现率越敏感。</p>
+<p>拿来比较的机会还得<strong>条件相当</strong>。小林那个 5% 如果来自一笔可能收不回来的借款，拿它去衡量一个一定兑现的承诺，就不公平：前者多出来的利息里，有一部分是在补偿收不回来的可能。同样，一年期的承诺，要和一年期的机会比。风险不同的钱怎样比较，是第 5 课的问题；本课的例子都假设承诺一定兑现，期限也对得上。</p>
+<div class="quiz" id="q4" data-answer="0">
+  <p class="qq"><span class="qh">小题 4</span>小林最好的机会是每年 5%。朋友提议：今天给他 $100，或者一年后给他 $106。他该选哪个？</p>
+  <ul class="opts"><li>一年后的 $106</li><li>今天的 $100</li><li>两者一样</li></ul>
+  <p class="qhint" hidden><b>提示：</b>把 $106 用 5% 折回今天，再和 $100 比。也可以算今天的 $100 存一年有多少。</p>
+  <p class="qans" hidden><b>答案：</b>A。$106 ÷ 1.05 ≈ $100.95，比 $100 多；换个方向，今天的 $100 存一年只有 $105，比 $106 少 $1。</p>
+</div>
+<div class="quiz" id="q5" data-answer="1">
+  <p class="qq"><span class="qh">小题 5</span>判断：同样是 10 年后的 $100，用 10% 折现得到的现值，比用 5% 折现得到的更高。</p>
+  <ul class="opts"><li class="add">对</li><li class="add">错</li></ul>
+  <p class="qhint" hidden><b>提示：</b>折现率代表放弃的机会。机会越好，愿意为一个远期承诺今天付出的钱是更多还是更少？</p>
+  <p class="qans" hidden><b>答案：</b>错。按 10% 折现是 $38.55，按 5% 是 $61.39。机会越好，等待的代价越大，未来的钱今天就越不值钱。</p>
+</div>
+</section>
+
+<section id="s7" aria-labelledby="h-s7"><h2 id="h-s7" tabindex="-1"><span class="hn">第 07 节</span>回到那场拍卖</h2>
+<p>现在可以用学过的东西重新看开头的国库券了。</p>
+<p><strong>先看买家。</strong> 他每 $100 面值付 $95.662333，364 天后拿回 $100，多出 $4.337667，约 $4.34。拿回的钱比付出的钱多出的比例是：</p>
+<p>$100 ÷ $95.662333 − 1 ≈ 4.534%</p>
+<p>这个数叫<strong>持有期回报</strong>（holding-period return）：从买进到拿回这一整段时间里，钱一共长了多少。这里的「一整段」是 364 天，没有换算成一年。（先把价格四舍五入成 $95.66 再算会得到 4.54%，所以这里用精确价格。）</p>
+<p>把这件事倒过来，就是上一节的折现：把 364 天后的 $100 按这个回报往回折这一段，$100 ÷ 1.0453435 ≈ $95.662333（1.0453435 就是 100 ÷ 95.662333），正好是拍卖价。<strong>拍卖价，就是那 $100 按市场要求的回报折回今天的现值。</strong></p>
+<p>买家为什么不肯付 $100？因为付 $100 换 364 天后的 $100，等于白白把钱借出去将近一年，他放弃了这笔钱在这段时间里能挣到的一切。他肯付多少，取决于他还有什么别的机会：别处能拿到的越多，他肯为这 $100 承诺付的就越少。他交出约 $95.66，放弃的是这笔钱 364 天里的其他用途；如果中途要用钱，他得把国库券卖给别人，能卖多少要看那时的市场。</p>
+<p><strong>再看财政部。</strong> 联邦政府的开支，有一部分靠出售各种证券来筹钱，国库券就是其中之一。财政部今天收进约 $95.66，364 天后付出 $100，多付的约 $4.34 就是它「现在用钱」的代价。对买家是回报，对财政部是成本，是同一笔约 $4.34。放大到整期：这一期发行面值 $540 亿，按拍卖价 $95.662333 算，财政部今天收进约 $516.6 亿，364 天后要付出 $540 亿，多付的约 $23.4 亿，就是它提前用上这笔钱的代价。财政部为什么不坚持按 $100 卖？因为那样买家等一年什么也得不到，他们会把钱拿去别处；财政部要筹到钱，就得给出能让足够多的人放弃别的机会的价格。</p>
+<p><strong>这个价格是怎样定出来的？</strong> 国库券靠拍卖出售，规则写在财政部的发行规章（美国联邦法规第 31 编第 356 部分）里。这一期的发行公告写明，适用经修订的第 356 部分（最近一次修订 2026 年 10 月 15 日生效，拍卖在这之后）。投标分两种：非竞争性投标只报要买多少，接受拍卖产生的利率，每个投标者最多 $1,000 万；竞争性投标还要报出自己愿意接受的利率，国库券报的是下面要讲的银行贴现率。报的利率越低，等于肯付的价格越高。</p>
+<p>拍卖截止后，财政部先满足非竞争性投标，再把竞争性投标按利率从低到高依次接受，直到凑满发行额。比最高中标利率低的投标全额成交；报在最高中标利率上的投标加起来通常比剩下的额度多，于是每一份都按同一个比例部分成交。这一期的最高中标利率是 4.290%，报在这个利率上的投标，每一份得到了所报数量的 65.33%。所有中标者，不论自己报了多少，都按 4.290% 对应的同一个价格 $95.662333 成交，这叫单一价格拍卖。</p>
+<p>65.33% 和另一条 35% 的规定不是一回事。65.33% 是这一次拍卖算出来的比例，只用于报在最高中标利率上的投标；35% 是事先定好的上限：单个竞争性投标者最多获配发行额的 35%，即这一期的 $189 亿，还要扣掉它可报告的这期证券净多头头寸。</p>
+<p>所以价格由凑满 $540 亿所需的最后一批买家决定；报的利率比这更高的人，这一次没有买到。</p>
+<p>用两位假想的买家来看这个过程。他们的另一个机会都按一年算，国库券是 364 天，两者差一天，这里只是近似地放在一起比。第一位手里另有一个机会：把钱放一年，同样一定能收回，回报 5%。对他来说，364 天后的 $100 按 5% 折回今天是 $95.24，他最多只肯付 $95.24，比拍卖价低，所以他报的利率高于最后的中标利率，没有买到。第二位最好的机会只有 4%，$100 按 4% 折回今天是 $96.15，他愿意付到 $96.15；拍卖价约 $95.66，比这低，他买到了，而且比他心里的上限还便宜。两个人看的是同一个承诺，因为机会成本不同，给出的价格也不同。</p>
+<p>换句话说，约 $95.66 这个价格，是很多买家各自拿自己的机会成本去折现、再在拍卖里排出来的结果。至于为什么那一天买家要求的回报在 4.5% 左右，而不是 2% 或 7%，是第 5 课和第 6 课的问题。</p>
+<p><strong>最后看财政部公布的利率。</strong> 拍卖结果里，这一期写着两个利率：4.290% 和 4.496%。加上我们刚算的 4.534%，同一个价格出现了三个数。它们不是谁对谁错，而是在回答不同的问题，用的分母和「一年按几天算」都不一样。</p>
+<p>第一个是 4.290%，叫<strong>银行贴现率</strong>（bank discount rate）。它的算法是：折扣 ÷ 面值 × 360 ÷ 天数，即 $4.337667 ÷ $100 × 360 ÷ 364 ≈ 4.290%。财政部的规章和 TreasuryDirect 都写着反过来由它算价格的公式：价格 = 100 × (1 − 贴现率 × 天数 ÷ 360)。代进去，$100 × (1 − 4.290% × 364 ÷ 360) = $95.662333，和拍卖价分毫不差。通俗地讲，它是一种报价的写法：投标时报的就是它，由它可以直接算出价格。它有两处让数字偏低：折扣拿<strong>面值</strong> $100 去除，而买家真正付出的只有 $95.662333；一年按 <strong>360 天</strong>算。所以 4.290% 不是买家真正拿到的回报，拿它直接和按价格计算的回报比，会把国库券的回报看低。</p>
+<p>第二个是持有期回报 4.534%，分母是<strong>真正付出的价格</strong>，时间就是这 364 天，没有年化。要和别的一年期回报比，可以按天数折成一年：(100 ÷ 95.662333 − 1) × 365 ÷ 364 ≈ 4.547%。这叫单利年化回报：它不是另一笔收益，买家拿到的仍然是 364 天的 4.534%，4.547% 只是把同一笔回报按一年 365 天、不计复利改写成年率，方便和别的年利率放在一起看。</p>
+<p>第三个是 4.496%，财政部称为<strong>投资利率</strong>（investment rate），规章附录 B 在括号里称它为<strong>等价息票收益率</strong>（coupon-equivalent yield），拍卖结果新闻稿的脚注写作 equivalent coupon-issue yield。它是一种标准化的换算：国库券本身不付息票，买家在半年时也收不到任何利息，只在到期时拿回 $100。投资利率假设的是，如果把这笔投资换成一张每半年付一次息的债券来衡量，它相当于多少年利率。它和单利年化回报一样用<strong>价格</strong>作分母、一年按 <strong>365 天</strong>算，对期限超过半年的国库券，还按半年复利计算。通俗地讲，它回答的是：如果这是一张每半年付息一次的债券，年利率要多少，才能让 $95.662333 正好长成 $100？答案是 4.496%。因为它假设了半年复利，有一部分增长由「利息生利息」完成，所需的年利率就比单利折算的 4.547% 略低。</p>
+<p>公式出自 31 CFR Part 356 附录 B 中「到期期限超过半年的国库券」一项：价格 × [1 + (天数 − 365 ÷ 2) × i ÷ 365] × (1 + i ÷ 2) = 100，解出来的 i 就是投资利率。式中 (1 + i ÷ 2) 是假想中前半年按年利率一半增长的部分，另一个括号是超出半年的天数按单利计算；这些都是换算用的假设，不是实际发生的付息。代入 $95.662333 和 364 天，解出 4.496%。这个式子要解二次方程，本课不要求手算。</p>
+<div class="tblw"><table class="bs"><thead><tr><th>写法</th><th>数值</th><th>分母</th><th>一年按几天</th><th>回答的问题</th></tr></thead><tbody><tr><td>银行贴现率</td><td class="n">4.290%</td><td>面值 $100</td><td>360 天</td><td>投标和报价用的数，由它算价格</td></tr><tr><td>持有期回报</td><td class="n">4.534%</td><td>价格 $95.662333</td><td>不年化（364 天）</td><td>这 364 天里钱长了多少</td></tr><tr><td>单利年化回报</td><td class="n">4.547%</td><td>价格</td><td>365 天，单利</td><td>同一笔回报写成年率是多少</td></tr><tr><td>投资利率（等价息票收益率）</td><td class="n">4.496%</td><td>价格</td><td>365 天，假设半年复利</td><td>换成每半年付息的债券来衡量，相当于多少年利率</td></tr></tbody></table></div>
+<figure class="pf" id="fig4" aria-labelledby="fig4-t">
+  <figcaption class="pf-hd"><span class="flab">图 4</span><span id="fig4-t">同一个价格，四种报价与回报口径</span><span class="kind">2026 年 10 月 27 日 · 52 周国库券</span></figcaption>
+  <p class="f4-fix">付 <b>$95.662333</b> <span class="arr">→</span> 364 天后拿回 <b>$100</b></p>
+  <div class="ctl"><span class="seg f4-tabs" role="radiogroup" aria-label="四种口径">
+    <button type="button" role="radio" data-k="0">银行贴现率</button><button type="button" role="radio" data-k="1">持有期回报</button><button type="button" role="radio" data-k="2">单利年化</button><button type="button" role="radio" data-k="3">投资利率</button>
+  </span></div>
+  <div class="pf-stage f4">
+    <div class="f4-den" id="fig4-den"><span class="k">分母</span><span class="chip" data-d="face">面值 $100</span><span class="chip" data-d="price">价格 $95.662333</span></div>
+    <div class="f4-p" data-k="0">
+      <h4>银行贴现率</h4>
+      <p class="eq">$4.337667 ÷ <span class="den">面值 $100</span> × 360 ÷ 364 = <b>4.290%</b></p>
+      <p class="tags"><span>一年按 360 天</span><span>报价与投标用的数，不是买家的回报</span></p>
+    </div>
+    <div class="f4-p" data-k="1" hidden>
+      <h4>持有期回报</h4>
+      <p class="eq">$4.337667 ÷ <span class="den">价格 $95.662333</span> = <b>4.534%</b></p>
+      <p class="tags"><span>364 天，不年化</span><span>买家的持有期回报</span></p>
+    </div>
+    <div class="f4-p" data-k="2" hidden>
+      <h4>单利年化</h4>
+      <p class="eq">4.5344% × 365 ÷ 364 ≈ <b>4.547%</b></p>
+      <p class="sub">4.5344% 是持有期回报（分母是<span class="den">价格 $95.662333</span>）没有四舍五入的值；用 4.534% 去乘只得 4.546%</p>
+      <p class="tags"><span>365 天，单利</span><span>同一笔回报写成年率，不是另一笔收益</span></p>
+    </div>
+    <div class="f4-p" data-k="3" hidden>
+      <h4>投资利率（等价息票收益率，coupon-equivalent yield）</h4>
+      <p class="eq">95.662333 × [1 + (364 − 365 ÷ 2) × i ÷ 365] × (1 + i ÷ 2) = 100</p>
+      <p class="sub">解出 i ≈ <b>4.496%</b>（要解二次方程，不要求手算）· 31 CFR Part 356 附录 B，到期期限超过半年的国库券</p>
+      <div class="f4-tl" role="img" aria-label="假想的两段时间线：前半年 182.5 天按年利率的一半增长，剩下的 181.5 天按单利计算">
+        <div class="seg1"><b>182.5 天</b><span>假想的前半年：按年利率的一半增长，× (1 + i ÷ 2)</span></div>
+        <div class="seg2"><b>181.5 天</b><span>剩下的天数按单利</span></div>
+      </div>
+      <p class="tags"><span>365 天，假设半年复利</span><span>标准化的换算口径，国库券不付息票，半年时没有任何付款</span></p>
+    </div>
+    <div class="f4-line" aria-hidden="true"><div class="f4-ax" id="fig4-ax"></div></div>
+    <p class="sr" id="fig4-out" aria-live="polite"></p>
+  </div>
+  <p class="pf-note">四个数从小到大：4.290% &lt; 4.496% &lt; 4.534% &lt; 4.547%。半年复利让一部分增长由利息生利息完成，所以投资利率低于单利年化的 4.547%</p>
+</figure>
+<p>拿国库券和别的投资比的时候，先问三个问题：这个数的分母是面值还是价格？一年按几天算？有没有假设复利？三个问题对上了，数字才能放在一起比。</p>
+<div class="quiz" id="q6" data-answer="2">
+  <p class="qq"><span class="qh">小题 6</span>同一张国库券：每 $100 面值付 $95.662333，364 天后拿回 $100。下面哪个数是买家在这 364 天里真正拿到的回报（不年化）？</p>
+  <ul class="opts"><li>4.290%</li><li>4.496%</li><li>4.534%</li><li>4.547%</li></ul>
+  <p class="qhint" hidden><b>提示：</b>持有期回报 = 拿回的 ÷ 付出的 − 1，分母是付出的价格，也不要换算成一年。</p>
+  <p class="qans" hidden><b>答案：</b>C。$100 ÷ $95.662333 − 1 ≈ 4.534%。A 是银行贴现率，分母是面值、一年按 360 天，是报价方式，不是买家的回报；B 是投资利率（等价息票收益率），按一年 365 天并假设半年复利的标准化换算；D 是把同一个 4.534% 按 365 天单利改写成的年率。</p>
+</div>
+</section>
+
+<section id="s8" aria-labelledby="h-s8"><h2 id="h-s8" tabindex="-1"><span class="hn">第 08 节</span>两个方向，一个利率</h2>
+<p>回头看，这一课只做了一件事的两个方向。</p>
+<p>顺着时间走，是复利：<strong>终值 = 现值 × (1 + r)ⁿ</strong>。今天的 $100 按 5% 存一年是 $105，存十年是 $162.89，多出来的部分有一块是利息生的利息。</p>
+<p>逆着时间走，是折现：<strong>现值 = 终值 ÷ (1 + r)ⁿ</strong>。明年的 $100 按 5% 今天值 $95.24，十年后的 $100 今天值 $61.39。</p>
+<p>连接两个方向的，是 r。它不是一个固定的常数，而是你为了等这笔钱所放弃的、条件相当的最好机会的回报，也就是你的机会成本。机会越好，未来的钱今天越不值钱；离今天越远，这个差别越大。国库券拍卖把这件事变成了一个真实的价格：许多买家用各自的机会成本去折现，最后排出了约 $95.66。</p>
+<p>这一课所有的数字都只看美元的数目。可小林真正关心的，是这些钱能买到什么。如果这一年里他常买的东西也都变贵了，存一年拿到的 $105，还算多了 $5 吗？下一课从这里接着讲。</p>
+</section>
+
+
+<section id="keys" class="keys" aria-labelledby="h-keys"><h2 id="h-keys" tabindex="-1">本课要点</h2>
+<ul><li>今天的钱可以马上拿去生息，所以同样数额的钱，越早拿到越值钱。这是货币时间价值最基本的来源；物价变化和承诺落空的可能另有课讲。</li><li>复利让利息留在账上继续计息：$100 按 5% 存两年是 $110.25，其中 $0.25 是利息生的利息；存 10 年是 $162.89，单利只有 $150。终值 = 现值 × (1 + r)ⁿ。</li><li>72 法则用 72 ÷ 年利率估算翻倍年数，8% 附近最准；5% 时估 14.4 年，精确约 14.21 年（每年计息一次）。</li><li>折现是复利倒过来：现值 = 终值 ÷ (1 + r)ⁿ。按 5%，明年的 $100 今天值 $95.24，10 年后的 $100 今天值 $61.39。</li><li>折现率是机会成本：放弃的、条件相当的最好机会的回报。它看不见，却会按复利累积；折现率越高、时间越长，未来的钱今天越不值钱。</li><li>2026 年 10 月 27 日的 52 周国库券，每 $100 面值卖 $95.662333，价格就是那 $100 的现值。同一个价格有四种报价与回报口径：银行贴现率 4.290%（面值作分母，一年 360 天，是报价方式，不是买家的回报）；持有期回报 4.534%（价格作分母，364 天不年化）；单利年化回报 4.547%（同一笔回报按 365 天改写成年率）；投资利率 4.496%，即等价息票收益率（价格作分母，一年 365 天，按半年复利换算；国库券本身不付息）。中标利率上的投标按 65.33% 部分成交；35% 是单个竞争性投标者的获配上限，两者不同。</li></ul></section>
+
+<section class="srcs" id="srcs" aria-labelledby="h-srcs"><h2 id="h-srcs" tabindex="-1">来源</h2>
+<ul><li>U.S. Department of the Treasury, Bureau of the Fiscal Service, <em>Treasury Auction Results: 52-Week Bill, CUSIP 912797WT0</em>, auction date October 27, 2026 (TreasuryDirect, R_20261027_1.pdf).</li><li>TreasuryDirect, <em>Treasury Bills</em>.</li><li>TreasuryDirect, <em>Understanding Pricing and Interest Rates</em>.</li><li>31 CFR Part 356, <em>Sale and Issue of Marketable Book-Entry Treasury Bills, Notes, and Bonds</em> (Department of the Treasury Circular, Fiscal Service Series No. 1-93), §§ 356.20–356.22 and Appendix B, Section VI (eCFR, current as of November 16, 2026).</li><li>TreasuryDirect, <em>How Auctions Work</em>.</li><li>TreasuryDirect, <em>About Treasury Marketable Securities</em>.</li><li>TreasuryDirect, <em>EE Bonds</em> (rate for bonds issued November 1, 2026 to April 30, 2027; accessed November 18, 2026).</li></ul></section>
+    </article>
+
+    <aside class="notesR" aria-label="读图说明">
+      <div><b>读图</b><span class="sw" style="border-top:3px solid var(--ink)"></span>墨黑：本金、事实<br><span class="sw" style="border-top:3px solid var(--vio)"></span>紫色：利息、辅助的数<br><span class="sw" style="border-top:8px solid var(--lime)"></span>荧光：此刻这一步<br><span class="sw" style="border-top:2px dashed var(--ink2)"></span>虚线：单利对照、记录</div>
+      <div><b>数字从哪里来</b>图 1 至图 3 按每年 5%、每年计息一次计算，5% 是教学用的利率。图 4 是一场真实拍卖的结果</div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site"><div class="w">
+  <div class="row"><b style="color:var(--ink)">MarketPilot</b><span>S01-03</span></div>
+  <p class="credits"><b>数据</b> 开场与图 4 的国库券数字来自 TreasuryDirect 公布的 2026 年 10 月 27 日 52 周国库券拍卖结果（CUSIP 912797WT0）。课文中的小林和他的朋友是虚构的</p>
+</div></footer>
+
+<button class="totop" id="totop" type="button" aria-label="回到顶部" title="回到顶部（长按可拖动，双击复位）">
+  <svg class="ring" viewBox="0 0 62 62" aria-hidden="true"><circle cx="31" cy="31" r="28"/></svg>
+  <svg class="ico-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  <svg class="ico-move" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3"/></svg>
+</button>
+<div class="totop-tip" id="totop-tip" role="status" aria-live="polite"></div>
+
+<script src="../../assets/totop.js"></script>
+
+<script src="steps.js"></script>
+<script src="lesson.js"></script>
+<script src="../S02-02/reader.js"></script>
+</body>
+</html>

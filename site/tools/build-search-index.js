@@ -34,7 +34,7 @@ function dropHidden(html) {
   }
 }
 /* 去掉图的表格视图（<details class="tbl">）：那是图的数据替代版，只有数字和代号，放进摘要只会是一串数字 */
-const dropTables = html => html.replace(/<details class="tbl[^"]*">[\s\S]*?<\/details>/g, ' ');
+const dropTables = html => html.replace(/<details class="tbl[^"]*"[^>]*>[\s\S]*?<\/details>/g, ' ');
 const pick = (html, re) => { const m = html.match(re); return m ? text(m[1]) : ''; };
 
 function lessonEntries(id, stageLabel) {

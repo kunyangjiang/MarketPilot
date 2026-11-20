@@ -1,5 +1,6 @@
 /* 课程页组装：课文 Markdown + 课程页配置 → site/lessons/<课号>/index.html、lesson.css、steps.js
- * 适用：S02-01、S02-03、S02-04（S02-02 与 S09-03 的页面是手写的，不经过这里）
+ * 适用：S01-01 至 S01-06、S02-01、S02-03、S02-04（S02-02 与 S09-03 的页面是手写的，不经过这里）
+ * 阶段名、层级名从 site/assets/catalog.js 读取
  * 运行：node site/tools/lesson-build/assemble.js <课号> [输出目录]
  *   课文：lessons/<课号>/ 下的课文稿（由配置里的 md 指定）
  *   配置：lessons/<课号>/页面配置/config.js（开场照片、图、读图说明、来源说明）与 figs.css（本课的图的样式）
@@ -20,6 +21,12 @@ if (/<!--FIG/.test(body)) throw new Error('图占位未替换');
 for (const [a, b] of cfg.replace || []) { if (!body.includes(a)) throw new Error('替换目标不存在：' + a); body = body.replace(a, b); }
 const h1 = md.match(/^# (.+)$/m)[1].trim();
 const pad = n => String(n).padStart(2, '0');
+const vm = require('vm'), cat = { window: {} };
+vm.runInNewContext(fs.readFileSync(path.join(ROOT, 'site', 'assets', 'catalog.js'), 'utf8'), cat);
+const lesson = cat.window.MP.lessons.find(l => l.id === id);
+if (!lesson) throw new Error('目录里没有 ' + id);
+const stage = lesson.stage, layer = cat.window.MP.layers[lesson.layer];
+const stageLab = stage.id + ' ' + stage.name, layerLab = '第' + layer.n + '层 ' + layer.name;
 const toc = r.toc.map((t, i) => '        <li><a href="#s' + (i + 1) + '"><span class="n">' + pad(i + 1) + '</span>' + t + '</a></li>').join('\n');
 const html = `<!doctype html>
 <html lang="zh-CN">
@@ -52,11 +59,11 @@ const html = `<!doctype html>
 </header>
 
 <main class="w" id="main">
-  <div class="crumb"><a href="../../#courses">课程</a><span>/</span><a href="../../#layer-1">第一层 货币、市场与资产</a><span>/</span><a href="../../#S02">S02 市场如何运作</a><span>/</span>第 ${cfg.n} 课</div>
+  <div class="crumb"><a href="../../#courses">课程</a><span>/</span><a href="../../#layer-${lesson.layer + 1}">${layerLab}</a><span>/</span><a href="../../#${stage.id}">${stageLab}</a><span>/</span>第 ${cfg.n} 课</div>
 
   <section class="lhero" aria-labelledby="lesson-title">
     <div class="card l">
-      <div class="lab">MarketPilot · S02 市场如何运作 · 第 ${cfg.n} 课</div>
+      <div class="lab">MarketPilot · ${stageLab} · 第 ${cfg.n} 课</div>
       <h1 id="lesson-title">${h1}</h1>
       <p class="q">${cfg.q}</p>
       <p class="goal"><b>学习目标</b>${cfg.goal}</p>

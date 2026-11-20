@@ -1,0 +1,129 @@
+/* 开场：文字排版 */
+figure.tb03{margin:0;position:relative;border-radius:24px;background:var(--card);border:2px solid var(--ink);min-height:340px;display:flex;flex-direction:column;justify-content:center;padding:34px 36px;overflow:hidden;
+  background-image:repeating-linear-gradient(0deg,transparent 0 35px,var(--line) 35px 36px)}
+.tb03 p{margin:0;position:relative}
+.tb03 .tb-big{font:900 clamp(34px,9.6vw,84px)/1.05 var(--sans);letter-spacing:-.02em;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink)}
+.tb03 .tb-big .arr{display:inline-block;margin:0 .22em;color:var(--vio);font-weight:700}
+.tb03 .tb-big .b{box-shadow:inset 0 -.14em 0 var(--lime)}
+.tb03 .tb-days{font:900 clamp(24px,4.2vw,40px)/1.3 var(--serif);margin-top:18px;color:var(--ink)}
+.tb03 .tb-date{font:600 15px/1.6 var(--zh);color:var(--ink2);margin-top:8px;text-wrap:balance}
+.tb03 .tb-src{align-self:flex-start;margin-top:22px;font:500 12.5px/1.5 var(--mono);color:var(--ink2);border:1.5px dashed var(--ink3);border-radius:8px;padding:5px 10px;background:var(--card)}
+@media (min-width:761px){ .tb03 .tb-big{font-size:clamp(40px,5.6vw,84px)} }
+@media (max-width:760px){
+  figure.tb03{min-height:0;padding:24px 18px;order:-1}
+  .tb03 .tb-date{font-size:14px}
+  .tb03 .tb-src{font-size:11.5px}
+}
+
+/* 图 1：复利的台阶 */
+.f1-key{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0 0 8px;font:600 12.5px var(--zh);color:var(--ink2)}
+.f1-key span::before{content:"";display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.f1-key .pr::before{background:var(--ink)}
+.f1-key .in::before{background:var(--vio)}
+.f1-key .hl::before{background:var(--lime);box-shadow:0 0 0 1.5px var(--ink)}
+.f1-key .sl::before{height:0;border-top:2px dashed var(--ink2);border-radius:0;vertical-align:3px}
+.f1 svg{overflow:visible}
+#fig1-svg .g{stroke:var(--line);stroke-width:1}
+#fig1-svg .ax{font:500 11px var(--mono);fill:var(--ink2)}
+#fig1-svg .yl{font:600 12px var(--zh);fill:var(--ink2)}
+#fig1-svg .yl.on{fill:var(--ink);font-weight:800}
+#fig1-svg .pr{fill:var(--ink)}
+#fig1-svg .in{fill:var(--vio)}
+#fig1-svg .hl{fill:none;stroke:var(--lime);stroke-width:4}
+#fig1-svg .ioib{fill:var(--lime);stroke:var(--ink);stroke-width:1}
+#fig1-svg .vl{font:700 12.5px var(--mono);fill:var(--ink)}
+#fig1-svg .vl.on{font-size:14px}
+#fig1-svg .df{font:600 11.5px var(--zh);fill:var(--vio2)}
+#fig1-svg .ioi{font:600 11.5px var(--zh);fill:var(--ink)}
+#fig1-svg .ioi.b{font:700 12.5px var(--mono)}
+#fig1-svg .sl{fill:none;stroke:var(--ink2);stroke-width:1.6;stroke-dasharray:5 4}
+
+/* 图 2：72 法则 */
+.pf .f2-rates button[aria-checked=true]{background:var(--ink);color:var(--lime)}
+.f2{display:flex;flex-direction:column;gap:12px}
+.f2-row{display:grid;grid-template-columns:4.6em minmax(0,1fr) 6.4em;align-items:center;gap:10px}
+.f2-row .k{font:700 13.5px var(--zh)}
+.f2-row .trk{height:22px;background:var(--bg);border-radius:6px;overflow:hidden}
+.f2-row .trk i{display:block;height:100%;background:var(--ink);border-radius:6px;transition:width .25s}
+.f2-row.ex .trk i{background:var(--vio)}
+.f2-row .v{font:700 15px var(--mono);text-align:right;white-space:nowrap}
+.f2-row.ex .v{color:var(--vio2)}
+.f2-out{margin:2px 0 0;font:600 15px/1.7 var(--zh)}
+.f2-out b{background:var(--lime);padding:1px 6px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){.f2-row .trk i{transition:none}}
+
+/* 图 3：时间轴上的折现 */
+.f3-axis{list-style:none;margin:0;padding:6px 0 0;display:grid;grid-template-columns:repeat(11,minmax(0,1fr))}
+.f3-axis li{margin:0;display:flex;flex-direction:column-reverse;align-items:center;gap:8px;min-width:0}
+.f3-axis .tk{align-self:stretch;text-align:center;font:600 12px/1.3 var(--zh);color:var(--ink2);white-space:nowrap;padding-top:8px;border-top:2px solid var(--ink);position:relative}
+.f3-axis .tk::before{content:"";position:absolute;left:50%;top:-6px;height:10px;border-left:2px solid var(--ink)}
+.f3-axis .coin{min-height:26px;font:700 12px/26px var(--mono);white-space:nowrap;color:transparent}
+.f3-axis li.gh .coin{color:var(--ink2);font-size:11px;border-bottom:1.5px dashed var(--ink3)}
+.f3-axis li.on .coin{color:var(--ink);background:var(--lime);border:2px solid var(--ink);border-radius:8px;padding:0 3px;line-height:22px;font-size:12px}
+.f3-axis li.on .tk{color:var(--ink);font-weight:800}
+.f3-eq{margin:16px 0 0;text-align:center;font:700 16px/1.5 var(--mono);color:var(--ink);min-height:1.5em}
+.f3-static{display:none;text-align:center;font:700 15px/1.7 var(--mono);margin-top:10px}
+.f3-static p{margin:0}
+body.static .f3-static{display:block}
+body.static .f3-eq{display:none}
+@media (max-width:640px){
+  .f3-axis{grid-template-columns:1fr;padding:0}
+  .f3-axis li{flex-direction:row;justify-content:flex-start;align-items:stretch;gap:14px;height:36px}
+  .f3-axis .tk{flex:none;width:5em;align-self:stretch;display:flex;align-items:center;justify-content:flex-end;padding:0 14px 0 0;border-top:0;border-right:2px solid var(--ink)}
+  .f3-axis .tk::before{left:auto;right:-6px;top:50%;height:0;width:10px;border-left:0;border-top:2px solid var(--ink)}
+  .f3-axis .coin{align-self:center}
+  .f3-axis li.gh .coin{font-size:12px;line-height:22px}
+  .f3-axis li.on .coin{font-size:13px;padding:0 6px}
+}
+
+/* 图 4：四种口径 */
+.f4-fix{margin:0 0 12px;font:600 16px/1.6 var(--zh)}
+.f4-fix b{font:700 17px var(--mono)}
+.f4-fix .arr{color:var(--vio);font-weight:700;margin:0 4px}
+.pf .f4-tabs{flex-wrap:wrap;border-radius:16px}
+.pf .f4-tabs button[aria-checked=true]{background:var(--ink);color:var(--lime)}
+.f4-den{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 10px}
+.f4-den .k{font:700 12px var(--zh);color:var(--ink2);margin-right:2px}
+.f4-den .chip{font:600 12.5px var(--mono);border:1.5px solid var(--ink3);border-radius:999px;padding:3px 10px;color:var(--ink2)}
+.f4-den .chip.on{background:var(--lime);border-color:var(--ink);color:var(--ink)}
+.f4-p{display:none}
+.f4-p.on{display:block}
+.f4-p h4{margin:0 0 6px;font:800 14px/1.5 var(--zh)}
+.f4-p .eq{margin:0;font:600 15.5px/1.8 var(--mono);overflow-wrap:anywhere}
+.f4-p .eq b{font-size:17px}
+.f4-p .den{border-bottom:3px solid var(--lime);padding:0 2px}
+.f4-p .sub{margin:6px 0 0;font-size:13.5px;line-height:1.7;color:var(--ink2)}
+.f4-p .tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.f4-p .tags span{font:600 12.5px/1.5 var(--zh);background:var(--bg);border-radius:999px;padding:4px 10px}
+.f4-p .tags span+span{color:var(--vio2)}
+.f4-tl{display:grid;grid-template-columns:182.5fr 181.5fr;gap:4px;margin-top:12px}
+.f4-tl>div{border-top:6px solid var(--vio);padding-top:6px;display:flex;flex-direction:column;gap:2px}
+.f4-tl>.seg2{border-top:6px dashed var(--ink2)}
+.f4-tl b{font:700 13px var(--mono)}
+.f4-tl span{font-size:12.5px;line-height:1.55;color:var(--ink2)}
+.f4-line{margin:18px 6px 4px;padding:40px 0 40px}
+.f4-ax{position:relative;border-top:2px solid var(--ink)}
+.f4-ax .pt{position:absolute;top:0}
+.f4-ax .pt i{position:absolute;left:-6px;top:-7px;width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--ink)}
+.f4-ax .pt em{position:absolute;font:700 12.5px/1.25 var(--mono);font-style:normal;white-space:nowrap;color:var(--ink2)}
+.f4-ax .pt em small{display:block;font:600 11px var(--zh)}
+.f4-ax .pt.up em{bottom:12px}
+.f4-ax .pt.dn em{top:12px}
+.f4-ax .pt.c em{transform:translateX(-50%);text-align:center}
+.f4-ax .pt.r em{right:-4px;text-align:right}
+.f4-ax .pt.l em{left:-4px}
+.f4-ax .pt.on i{background:var(--lime);border-color:var(--ink);width:16px;height:16px;left:-8px;top:-9px}
+.f4-ax .pt.on em{color:var(--ink)}
+#fig4.all .f4-p{display:block;padding-top:12px;margin-top:12px;border-top:1px solid var(--line)}
+#fig4.all .f4-p:first-of-type{border-top:0;margin-top:0;padding-top:0}
+#fig4.all .f4-den{display:none}
+#fig4.all .f4-ax .pt i{background:var(--card);border-color:var(--ink);width:12px;height:12px;left:-6px;top:-7px}
+#fig4.all .f4-ax .pt em{color:var(--ink)}
+@media print{
+  .f4-p{display:block!important;margin-top:10px}
+  .f4-den{display:none!important}
+}
+@media (max-width:560px){
+  .f2-row{grid-template-columns:3.8em minmax(0,1fr) 5.6em;gap:8px}
+  .f4-tl{grid-template-columns:1fr 1fr}
+}

@@ -61,6 +61,10 @@ function convert(md) {
       else if (/^\*\*【开场图】/.test(first)) { /* 开场另做 */ }
       else if ((m = first.match(/^\*\*【小题 (\d+)】/))) out.push(quiz(nonEmpty, +m[1]).html);
       else if (/^\*\*【中国对照】/.test(first)) out.push('<aside class="cn" aria-label="中国对照"><b>中国对照</b>' + nonEmpty.slice(1).map(x => '<p>' + inline(x) + '</p>').join('') + '</aside>');
+      else if ((m = first.match(/^\*\*历史补充[：:](.+)\*\*$/))) {
+        const rows = nonEmpty.filter(x => /^\|/.test(x));
+        out.push('<aside class="cn hist" aria-label="历史补充"><b>历史补充 · ' + inline(m[1].trim()) + '</b>' + nonEmpty.slice(1).filter(x => !/^\|/.test(x)).map(x => '<p>' + inline(x) + '</p>').join('') + (rows.length ? table(rows) : '') + '</aside>');
+      }
       else if (/^\|/.test(first)) out.push(table(nonEmpty));
       else throw new Error('未知引用块：' + first);
       continue;

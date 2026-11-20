@@ -18,7 +18,7 @@ const BAD = ['modebtn', '改看静态版', '改看分步', '不会自动播放',
   '《史实时间线》', '《核验记录》', '幕后研究文件', '共用同一个撮合引擎', '暂不能阅读', '只列标题', '图解和互动都在课里',
   '可阅读', '筹备中', '写作中', '开发中', '未公开发布', '档案照片待核实', '现在可读', '暂不能打开', '敬请期待'];
 
-for (const p of ['lessons/S02-01/index.html', 'lessons/S02-02/index.html', 'lessons/S02-03/index.html', 'lessons/S02-04/index.html', 'lessons/S09-03/index.html', 'index.html', '404.html', 'assets/shell.js', 'assets/search.js', 'assets/catalog.js', 'assets/photos.js']) {
+for (const p of ['lessons/S01-01/index.html', 'lessons/S01-02/index.html', 'lessons/S01-03/index.html', 'lessons/S01-04/index.html', 'lessons/S01-05/index.html', 'lessons/S01-06/index.html', 'lessons/S02-01/index.html', 'lessons/S02-02/index.html', 'lessons/S02-03/index.html', 'lessons/S02-04/index.html', 'lessons/S09-03/index.html', 'index.html', '404.html', 'assets/shell.js', 'assets/search.js', 'assets/catalog.js', 'assets/photos.js']) {
   test('没有开发过程的痕迹：' + p, () => {
     const s = strip(rd(p));
     for (const b of BAD) assert.ok(!s.includes(b), p + ' 仍有「' + b + '」');

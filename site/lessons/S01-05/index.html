@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>同一天里，为什么国债、房贷和信用卡的利率差这么多？ · S01-05 · MarketPilot</title>
+<meta name="description" content="MarketPilot S01-05：同一天，国债、优惠利率和信用卡的利率差得很远。期限、通胀、违约风险、流动性和成本怎样让利率不同，以及为什么这些成分拆不成零件。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2212%22 fill=%22%23D4FF3A%22 stroke=%22%23111827%22 stroke-width=%227%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="lesson.css">
+</head>
+<body>
+<a class="skip" href="#lesson-body">跳到正文</a>
+
+<header class="top"><div class="w">
+  <a class="logo" href="../../"><i></i>MarketPilot</a>
+  <nav class="mainnav" aria-label="主导航">
+    <a href="../../">首页</a>
+    <a href="../../#courses" aria-current="page">课程</a>
+    <a href="../../#stories">故事</a>
+  </nav>
+  <a class="sbtn" href="../../?search=" aria-label="搜索"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>搜索</span></a>
+</div>
+<div class="rprog" aria-hidden="true"><i id="rprog"></i></div>
+</header>
+
+<main class="w" id="main">
+  <div class="crumb"><a href="../../#courses">课程</a><span>/</span><a href="../../#layer-1">第一层 货币、市场与资产</a><span>/</span><a href="../../#S01">S01 货币、信用与利率</a><span>/</span>第 5 课</div>
+
+  <section class="lhero" aria-labelledby="lesson-title">
+    <div class="card l">
+      <div class="lab">MarketPilot · S01 货币、信用与利率 · 第 5 课</div>
+      <h1 id="lesson-title">同一天里，为什么国债、房贷和信用卡的利率差这么多？</h1>
+      <p class="q">利率之间的差可以归因于哪些因素？</p>
+      <p class="goal"><b>学习目标</b>能用时间价值、通胀预期、违约风险、期限、流动性解释利率差，并说明这些因素无法从市场利率中精确、唯一地拆分</p>
+    </div>
+    <figure class="s5h" aria-labelledby="s5h-cap">
+      <p class="s5h-d">2026 年 11 月 12 日 · 借一美元，一年的利息</p>
+      <div class="s5h-pair">
+        <p class="s5h-a"><b>4.32<small>%</small></b><span>美国财政部<br>借 3 个月</span></p>
+        <p class="s5h-x" aria-hidden="true">将近<br>五倍</p>
+        <p class="s5h-b"><b><small>约 </small>21<small>%</small></b><span>信用卡<br>2026 年第三季度</span></p>
+      </div>
+      <div class="s5h-ruler" aria-hidden="true">
+        <i class="gap"></i><i class="mk a"></i><i class="mk b"></i>
+        <span style="left:0">0</span><span style="left:22.727%">5</span><span style="left:45.455%">10</span><span style="left:68.182%">15</span><span style="left:90.909%">20%</span>
+      </div>
+      <figcaption id="s5h-cap">同一个美元，最便宜和最贵的两个价钱<br><small>信用卡是季度数，不是同一天的数</small></figcaption>
+    </figure>
+  </section>
+
+  <div class="card reader">
+    <nav class="ltoc" aria-label="本课章节">
+      <div class="lab">本课 10 节</div>
+      <ol id="toc">
+        <li><a href="#s1"><span class="n">01</span>同一个美元，四个价钱</a></li>
+        <li><a href="#s2"><span class="n">02</span>先找一把尺子</a></li>
+        <li><a href="#s3"><span class="n">03</span>借得越久，要得越多？</a></li>
+        <li><a href="#s4"><span class="n">04</span>名义收益率里藏着的通胀</a></li>
+        <li><a href="#s5"><span class="n">05</span>好不好卖，也要价钱</a></li>
+        <li><a href="#s6"><span class="n">06</span>换一个借款人</a></li>
+        <li><a href="#s7"><span class="n">07</span>房贷：风险换了主人</a></li>
+        <li><a href="#s8"><span class="n">08</span>信用卡：不只是风险</a></li>
+        <li><a href="#s9"><span class="n">09</span>为什么拆不成零件</a></li>
+        <li><a href="#s10"><span class="n">10</span>尺子最短的一端</a></li>
+        <li><a href="#keys"><span class="n">··</span>本课要点</a></li>
+        <li><a href="#srcs"><span class="n">··</span>来源</a></li>
+      </ol>
+    </nav>
+
+    <article id="lesson-body" tabindex="-1">
+<section id="s1" aria-labelledby="h-s1"><h2 id="h-s1" tabindex="-1"><span class="hn">第 01 节</span>同一个美元，四个价钱</h2>
+<p>2026 年 11 月 12 日，星期四。这一天，借一美元要付多少利息？</p>
+<div class="tblw"><table class="bs"><thead><tr><th>借款人与期限</th><th>年利率</th><th>说明</th></tr></thead><tbody><tr><td>美国财政部，借 3 个月</td><td class="n">4.32%</td><td>3 个月期国债收益率</td></tr><tr><td>美国财政部，借 10 年</td><td class="n">5.10%</td><td>10 年期国债收益率</td></tr><tr><td>银行挂出的优惠利率</td><td class="n">7.00%</td><td>大银行给企业短期贷款定价的一种基准</td></tr><tr><td>信用卡（2026 年第三季度）</td><td class="n">约 21%</td><td>商业银行信用卡全部账户的平均年利率</td></tr></tbody></table></div><p class="tsrc">来源：联储理事会 H.15（2026 年 11 月 18 日发布版中 11 月 12 日一列）；信用卡为联储 G.19（2026 年 11 月 6 日发布），是季度数，不是同一天的数。</p>
+<p>最低的 4.32%，最高的约 21%，差了将近五倍。借的都是美元，利息也都按年计。差别从哪里来？</p>
+<p>一个直接的想法是：利率高的，风险大。这话不算错，但不够用。财政部借 3 个月和借 10 年，借钱的是同一个政府，利率却差了 0.78 个百分点；信用卡的利率里，除了风险，还有银行的运营成本，也可能有它在定价上的余地。</p>
+<p>这一课要做两件事。第一，找出让利率彼此不同的几个主要因素：借多久、通胀、借款人会不会还不上、能不能方便地卖掉，以及贷款本身的成本。第二，弄清楚这些因素能看到多少。答案会有点出人意料：表上的利率都是观察得到的，可它们里面的「成分」，大多看不见，只能估计；而且不同的估计方法，会给出不同的答案。</p>
+</section>
+
+<section id="s2" aria-labelledby="h-s2"><h2 id="h-s2" tabindex="-1"><span class="hn">第 02 节</span>先找一把尺子</h2>
+<p>要比较，得先有一个基准。本课把<strong>美国国债</strong>当作这把尺子：其他利率都拿来和同一天、期限相近的国债比，看高出多少。</p>
+<p>为什么是国债？因为它的借款人是美国政府。财政部在介绍可交易国债时写明，这些证券由美国政府的<strong>完全信用</strong>（full faith and credit）担保。和第 3 课一样，本课假设财政部一定按时付本付息，把国债当作「还不上」这种风险可以忽略的基准。</p>
+<p>不过要说清楚：「不会还不上」只说的是一种风险，叫<strong>违约风险</strong>，也叫<strong>信用风险</strong>（credit risk），即借款人不能按约定付本付息的风险。买国债的人还面对另外两种风险，它们和违约无关。</p>
+<p><strong>第一种是价格风险。</strong> 国债可以在到期前卖给别人，卖多少要看那时市场要求的利率。用第 3 课的折现来想：设想一张 10 年后一次付 $100 的国债。市场要求每年 5.10% 时，它今天值 $100 ÷ 1.051¹⁰ ≈ $60.81；如果第二天市场要求的利率升到 6.10%，同一张国债就只值约 $55.32。财政部一分钱也没少付，持有人如果当天要卖，却少拿了约 $5.49。利率越高，未来的钱今天越不值钱，期限越长，这种影响越大，这是第 3 课的结论。</p>
+<p>换成一张 3 个月后付 $100 的国债，同样从 5.10% 升到 6.10%（这里沿用上面的两个利率，只为对比；那天 3 个月期国债的收益率是 4.32%），它的价值大约从 $98.76 降到 $98.53，只少了约 $0.23。同样的利率变动，10 年期的价值少了约 9%，3 个月期的只少了约 0.2%。借得越久，价格风险越大，这一点下一节还会用到。</p>
+<p><strong>第二种是通胀风险。</strong> 国债付的是固定的美元。第 4 课讲过，如果物价涨得比预期快，到期拿回的美元能买的东西就少了。</p>
+<p>所以本课不说国债「无风险」。更准确的说法是：拿国债当基准，是为了把「借款人会不会还不上」这个因素尽量从比较里拿掉；价格风险和通胀风险，国债自己也有，而且会出现在下面的比较里。</p>
+<p>本课用的 3 个月国债 4.32%，就是这把尺子最短的一端：本课比较里期限最短的基准。它和联储设定的政策利率是什么关系，下一课再讲。</p>
+</section>
+
+<section id="s3" aria-labelledby="h-s3"><h2 id="h-s3" tabindex="-1"><span class="hn">第 03 节</span>借得越久，要得越多？</h2>
+<p>先看同一个借款人。财政部借 3 个月付 4.32%，借 10 年付 5.10%。对一般的借款人，借得越久，中途还不上的可能也越大；但本课沿用第 3 课的假设，国债按时付款，违约风险可以先放一边。这样，差出来的 0.78 个百分点只能和「借多久」有关。</p>
+<p>想象你手里有一笔钱，准备放 10 年，有两种办法：一是直接买 10 年期国债；二是买 3 个月期国债，到期再买新的 3 个月期，一直滚 10 年。</p>
+<p>如果你选第二种办法，10 年里一共能挣多少，取决于未来每一次续买时 3 个月的利率是多少。这些利率今天还不知道，只能预期。所以 10 年期利率里的第一个成分是：<strong>市场对未来 10 年里短期利率的平均预期</strong>。如果大家普遍认为短期利率会上升，10 年期利率自然要高一些，否则没人愿意现在就锁定 10 年。</p>
+<p>第二个成分来自上一节的价格风险。锁定 10 年的人，在这 10 年里要承受利率变动带来的价格起伏；滚动买 3 个月的人，每 3 个月就能按新的利率重新来过。为承担这种风险，投资者可能要求额外的补偿（多少不一定，有时很小），这叫<strong>期限溢价</strong>（term premium）。联储理事会对它的定义是：收益率减去在债券存续期内预期的平均短期利率。</p>
+<p>于是可以写成：</p>
+<p><strong>10 年期国债收益率 ≈ 未来 10 年短期利率的平均预期 + 期限溢价</strong></p>
+<p>左边是市场上每天都能看到的数。右边两项都看不到：没有哪个市场直接报出「未来 10 年短期利率的平均预期」，期限溢价也一样。要把 5.10% 分成这两块，只能用模型去估计。</p>
+<p>联储系统里有两套公开发布估计的模型，都给出了 2026 年 11 月 12 日这一天的数：</p>
+<div class="tblw"><table class="bs"><thead><tr><th>估计</th><th>预期平均短期利率</th><th>期限溢价</th></tr></thead><tbody><tr><td>纽约联储 ACM 模型</td><td class="n">4.39%</td><td class="n">0.68%</td></tr><tr><td>联储理事会 Kim–Wright 模型</td><td class="n">4.13%</td><td class="n">0.97%</td></tr></tbody></table></div>
+<p>两套模型对同一天、同一个 10 年期国债，给出了两种不同的分法：期限溢价差了 0.29 个百分点，预期的平均短期利率差了 0.26 个百分点。两个模型都不是「错」的，它们用的数据和假设不同。例如，联储理事会说明，Kim–Wright 模型除了国债收益率，还用到了对三个月国库券利率的调查预测；ACM 模型则只从国债收益率本身提取信息。联储理事会还特别注明，Kim–Wright 的估计是研究人员的研究产品，不是官方统计。纽约联储的一篇文章比较过几种期限溢价的估计，结论是它们在较长的时间尺度上大体同向变动，但在某些时期差别可能很大。</p>
+<figure class="pf" id="fig1" aria-labelledby="fig1-t">
+  <figcaption class="pf-hd"><span class="flab">图 1</span><span id="fig1-t">同一个 10 年，两种分法</span><span class="kind model">模型估计</span></figcaption>
+  <p class="pf-desc">2026 年 11 月 12 日的 10 年期国债收益率，被两个联储模型分成两段</p>
+  <div class="ctl"><span class="seg" role="group" aria-label="高亮哪一段" id="fig1-seg"><button type="button" data-v="all" aria-pressed="true">两段都看</button><button type="button" data-v="exp" aria-pressed="false" tabindex="-1">看预期部分</button><button type="button" data-v="tp" aria-pressed="false" tabindex="-1">看期限溢价</button></span></div>
+  <div class="pf-stage f1">
+    <svg id="fig1-svg" viewBox="0 0 320 372" role="img" aria-label="两根竖柱。纽约联储 ACM 模型：预期平均短期利率 4.39%，期限溢价 0.68%。联储理事会 Kim–Wright 模型：预期平均短期利率 4.13%，期限溢价 0.97%。期限溢价相差 0.29 个百分点，预期部分相差 0.26 个百分点"></svg>
+    <div class="f1-cr">
+      <p><b>ACM</b>© 2026 Federal Reserve Bank of New York. Content from the New York Fed subject to the Terms of Use at newyorkfed.org.</p>
+      <p><b>Kim–Wright</b>来源：联储理事会，Kim–Wright 三因子期限结构模型（经 FRED）</p>
+    </div>
+  </div>
+  <p class="verdict" id="fig1-v" aria-live="polite"></p>
+  <p class="pf-note">柱顶是两个模型各自拟合的零息收益率（约 5.07% 和 5.10%），和财政部公布的 5.10% 口径略有不同</p>
+</figure>
+<p>这就是本课的第一个关键结论：<strong>利率是看得见的，利率里的成分大多看不见。</strong> 说「10 年期国债里有 0.7% 左右是期限溢价」，背后一定有一个模型；换一个模型，数字就会变。</p>
+<div class="quiz" id="q1" data-answer="2">
+  <p class="qq"><span class="qh">小题 1</span>同一天，财政部借 10 年的利率比借 3 个月高 0.78 个百分点。下面哪一种说法最准确？</p>
+  <ul class="opts"><li>这 0.78 个百分点全部是期限溢价</li><li>这 0.78 个百分点是违约风险，因为借得越久越可能还不上</li><li>它和对未来短期利率的预期、期限溢价都有关，两者各占多少只能用模型估计</li><li>它是一个计算错误，同一个借款人的利率应该一样</li></ul>
+  <p class="qhint" hidden><b>提示：</b>借款人是同一个，本课假设国债按时付款，违约风险可以先放一边。想想滚动买 3 个月期国债的人，未来 10 年会拿到什么利率。</p>
+  <p class="qans" hidden><b>答案：</b>C。10 年期利率既反映对未来短期利率的平均预期，也包含期限溢价。两套联储模型把同一天的 10 年期利率分得不一样，期限溢价分别约 0.68% 和 0.97%。A 忽略了预期；B 不对：本课假设国债按时付款，同一个借款人借 3 个月和借 10 年，差别不来自违约风险。</p>
+</div>
+</section>
+
+<section id="s4" aria-labelledby="h-s4"><h2 id="h-s4" tabindex="-1"><span class="hn">第 04 节</span>名义收益率里藏着的通胀</h2>
+<p>第 4 课讲过，合同上写的是名义利率，扣除通胀才是实际利率。5.10% 的 10 年期国债，付的是固定的美元，是名义收益率。</p>
+<p>美国财政部还发行另一种国债：<strong>通胀保值国债</strong>（Treasury Inflation-Protected Securities，TIPS），它的本金随 CPI 上调或下调。同一天，10 年期 TIPS 的收益率是 <strong>2.86%</strong>。因为本金已经跟着物价走了，这个收益率是在通胀之上的回报，所以叫<strong>实际收益率</strong>（real yield）。</p>
+<p>两者一比：</p>
+<p>5.10% − 2.86% = 2.24%</p>
+<p>这 2.24 个百分点，常被叫作 10 年期的<strong>盈亏平衡通胀率</strong>（breakeven inflation rate）。意思是：如果未来 10 年的平均通胀正好是这么多，买普通国债和买 TIPS 的结果大致打平；通胀更高，TIPS 更划算；通胀更低，普通国债更划算。联储的研究者更愿意叫它<strong>通胀补偿</strong>（inflation compensation）：普通国债的投资者为承担通胀而要求的那部分收益。</p>
+<p>关于这个数，有两点要分清。</p>
+<p><strong>第一，它是一个近似的读数，不是精确的恒等式。</strong> 5.10% = 2.86% + 2.24% 只是因为 2.24% 本来就是用减法算出来的。第 4 课讲过，名义和实际之间的精确关系是乘除，不是加减：按 (1 + 名义) ÷ (1 + 实际) − 1 来算，结果还要看两个收益率按多长的期间复利。按年算，1.0510 ÷ 1.0286 − 1 ≈ 2.18%；财政部的名义收益率按每半年付息的口径报价，按半年算约 2.21%。两种算法都比减法得到的 2.24% 小一点。所以「名义收益率 = 实际收益率 + 通胀补偿」应当读成一个近似关系，2.24% 是从名义与实际收益率之差得到的近似读数。</p>
+<p><strong>第二，通胀补偿不等于市场的通胀预期。</strong> 联储理事会研究人员的一篇分析把 TIPS 里读出的通胀补偿写成三部分：预期通胀，加上通胀风险溢价，再减去 TIPS 的流动性溢价。通胀风险溢价是投资者为承担「通胀可能出乎意料」而要求的补偿；TIPS 的流动性溢价，来自 TIPS 不如普通国债好买卖。这两项都看不见，所以 2.24% 和人们心里的预期通胀之间，还隔着两个只能估计的东西。</p>
+<p>换一种方法估计，答案就不同。克利夫兰联储用国债收益率、通胀数据、通胀互换和调查预测建了一个模型，它对未来 10 年平均通胀的 2026 年 11 月估计约是 <strong>2.67%</strong>，比 2.24% 高出 0.43 个百分点。（来源：Federal Reserve Bank of Cleveland, <em>Inflation Expectations</em>，https://www.clevelandfed.org/indicators-and-data/inflation-expectations ）</p>
+<p>一个是从市场价格里读出来的补偿，一个是模型的估计，两者都叫「通胀预期」的近似，却差了将近半个百分点。这和期限溢价的情形是一样的：利率看得见，它里面的通胀成分看不见。</p>
+<div class="quiz" id="q2" data-answer="1">
+  <p class="qq"><span class="qh">小题 2</span>判断：2026 年 11 月 12 日，10 年期国债 5.10%，10 年期 TIPS 2.86%，所以市场预期未来 10 年平均通胀正好是 2.24%。</p>
+  <ul class="opts"><li class="add">对</li><li class="add">错</li></ul>
+  <p class="qhint" hidden><b>提示：</b>这 2.24% 是怎样算出来的？它里面除了预期通胀，还可能有什么？</p>
+  <p class="qans" hidden><b>答案：</b>错。2.24% 是两种收益率的差，是一个近似的通胀补偿。它除了预期通胀，还包含通胀风险溢价，并受 TIPS 流动性溢价的影响；用精确的乘除关系算也只有约 2.2%。克利夫兰联储模型的同期估计约 2.67%。</p>
+</div>
+</section>
+
+<section id="s5" aria-labelledby="h-s5"><h2 id="h-s5" tabindex="-1"><span class="hn">第 05 节</span>好不好卖，也要价钱</h2>
+<p>上一节出现了一个新词：流动性。它是利率差别的又一个来源。</p>
+<p>纽约联储经济学家 Fleming 在一篇讨论怎样衡量国债市场流动性的文章里这样定义：在流动性好的市场里，交易几乎可以不花成本地完成；在现实中，交易成本很低的市场被认为流动性好，成本高的被认为流动性差。通俗地讲，<strong>流动性</strong>（liquidity）就是一样东西能不能随时、按接近公道的价格卖掉。</p>
+<p>如果两样东西别的条件都差不多，一样好卖、一样难卖，买的人通常会要求难卖的那样多给一点收益，作为将来可能卖不出好价钱的补偿。这部分补偿就是<strong>流动性溢价</strong>（liquidity premium）。</p>
+<p>国债市场里就有一个常被拿来观察流动性价值的现象。同一种期限的国债，最新发行的那一期叫「新券」（on-the-run），流动性通常更好；早先发行的叫「旧券」（off-the-run）。两者现金流相近，收益率却可以不同。Fleming 指出，新券与旧券的收益率差可以显示流动性的价值，但除了流动性，还有别的因素会让新券更贵，所以这个差并不纯粹是流动性。</p>
+<p>这又是同一个结论：流动性的影响是真实的，但它很少单独出现在某一个可以直接读出的数里。本课不给出「某个利差里有多少是流动性」的数字，因为没有一个方法能把它干净地分离出来。</p>
+</section>
+
+<section id="s6" aria-labelledby="h-s6"><h2 id="h-s6" tabindex="-1"><span class="hn">第 06 节</span>换一个借款人</h2>
+<p>到这里，比较的一直是同一个借款人。现在换人。</p>
+<p><strong>先看企业。</strong> 同一天的<strong>优惠利率</strong>（prime rate）是 7.00%。按联储 H.15 的说明，它是按国内资产排名前 25 家的美国参保特许商业银行中多数银行挂出的利率，是银行给企业短期贷款定价的几种基准之一。它比 3 个月国债高了 2.68 个百分点。</p>
+<p>银行借钱给企业，和投资者借钱给财政部，至少有三点不同。企业可能还不上，银行要为可能的损失做准备，第 2 课讲过，贷款损失最终会吃掉银行的股东权益。银行放贷要审查、要管理，这些都要花钱。银行自己的资金也有成本。所以优惠利率高于国债，不难理解。</p>
+<p>违约风险怎样进入利率？先要分清三个量。</p>
+<p>第一个是<strong>预期信用损失</strong>（expected credit loss）：按违约的可能和违约后的损失，平均下来预计会损失多少。用一个算例来看，下面的数字全是假设。你把 $100 平分借给 100 家公司，每家 $1，期限一年。假设每家在这一年里违约的可能是 1%，这叫<strong>违约概率</strong>（probability of default）；一旦违约，借出的 $1 能收回 40%，损失 60%，损失的比例叫<strong>违约损失率</strong>（loss given default）；违约时欠你的就是这 $1 本金，这叫<strong>违约风险敞口</strong>（exposure at default）。于是：</p>
+<p>预期信用损失 = 1% × 60% × $100 = $0.60</p>
+<p>也就是借出金额的 0.6%。1% 和 40% 都是为了演示随手取的数，不代表任何真实的违约率或回收率；为了简单，算例也不算违约公司没付的利息。第 2 课讲的信用损失拨备，记的就是银行对这类将来可能收不回的部分的估计。</p>
+<p>第二个是<strong>信用利差</strong>（credit spread）：借款人的利率比同期限国债高出的部分。它不等于预期信用损失。0.6% 只是一个平均数，真实的损失可能比它多，放贷的人还可能为这种不确定要一份补偿；损失在一年中什么时候发生、利息怎样计算，也会改变结果。</p>
+<p>第三个是<strong>市场上的贷款利率</strong>。它除了国债利率和对违约风险的补偿，还要覆盖审查和管理贷款的成本、银行自己的资金成本，也受竞争的影响。</p>
+<p>所以，这个算例只说明方向：预计的损失越大，利率通常越高。它不能把一个利差换算成违约风险的份额。优惠利率高出的 2.68 个百分点里，违约风险、成本、银行的利润各占多少，H.15 没有说，本课也给不出一个经过核实的分法。</p>
+<p><strong>再看信用最好的公司。</strong> 美国财政部每月发布一条<strong>高质量公司债收益率曲线</strong>（HQM），用评级为 AAA、AA、A 的公司债构造。它只有月度数，不能和上面同一天的数放在一起比，所以单独看：</p>
+<div class="tblw"><table class="bs"><thead><tr><th>2026 年 10 月月平均</th><th>10 年期</th></tr></thead><tbody><tr><td>高质量公司债（HQM，平价收益率）</td><td class="n">5.92%</td></tr><tr><td>国债（H.15，固定期限收益率）</td><td class="n">5.13%</td></tr><tr><td>高出</td><td>0.79 个百分点</td></tr></tbody></table></div><p class="tsrc">这是 10 月的月平均，不是 11 月 12 日的数。来源：美国财政部 HQM 公司债收益率曲线；联储理事会 H.15。</p>
+<p>信用最好的公司借 10 年，也比政府多付约 0.79 个百分点。可能的原因包括违约风险和流动性：公司终究可能还不上，公司债也未必像国债那样好卖。各占多少，同样只能估计。</p>
+<p>还有一个小插曲。同一条 HQM 曲线、同一个 10 年，10 月的<strong>即期利率</strong>是 6.02%，<strong>平价收益率</strong>是 5.92%。即期利率是一笔 10 年后一次付清的钱的折现率，平价收益率是按期付息、价格正好等于面值的债券的收益率。两个数都可以叫「10 年期高质量公司债利率」，却差了 0.10 个百分点。它们不是同一个价格的两种写法，而是两个不同的量：各个期限的利率不一样，按期付息的债券把各期的利率混在了一起，差多少取决于曲线的形状。道理和第 3 课相通：比较之前，先问清楚是哪一种利率。</p>
+<div class="quiz" id="q3" data-answer="1">
+  <p class="qq"><span class="qh">小题 3</span>同一条 HQM 曲线，2026 年 10 月的 10 年期即期利率 6.02%、平价收益率 5.92%。为什么不一样？</p>
+  <ul class="opts"><li>两个数来自不同的公司</li><li>两种利率针对的现金流不同：一个是到期一次付清，一个是按期付息</li><li>一个是名义利率，一个是实际利率</li><li>其中一个数据有错</li></ul>
+  <p class="qhint" hidden><b>提示：</b>想想两个数各自针对什么样的现金流。</p>
+  <p class="qans" hidden><b>答案：</b>B。即期利率针对 10 年后一次付清的钱，平价收益率针对按期付息、价格等于面值的债券。这是同一条曲线上的两个不同的量，各期利率不一样时，数不同很正常。两者都是名义利率，所以 C 不对。</p>
+</div>
+</section>
+
+<section id="s7" aria-labelledby="h-s7"><h2 id="h-s7" tabindex="-1"><span class="hn">第 07 节</span>房贷：风险换了主人</h2>
+<p>标题里的第二种利率是房贷。房贷利率也高于同期限的国债，但原因和企业贷款不完全一样，因为美国大量房贷的风险，在发放之后就换了主人。</p>
+<p>这个机制可以借一项历史研究来说明：Fuster 等（2012），纽约联储研究人员写的一篇背景文章，分析的是 2012 年前后的美国房贷市场。这里用它解释机制，它的数字反映的是当时的情况，不代表今天的市场。文章写道：美国绝大多数合规房贷都被打包成「机构抵押贷款支持证券」（agency MBS），本金和利息由房利美、房地美或吉利美担保，所以买这些证券的投资者不承担单笔贷款的信用风险，只面对利率风险和<strong>提前还款风险</strong>，也就是借款人在利率走低时再融资、把贷款提前还清的风险。</p>
+<p>这句话把房贷利率里的几个因素分开了。</p>
+<p><strong>违约风险没有消失，而是有人收费承担。</strong> 担保机构要收一笔<strong>担保费</strong>（guarantee fee），按年从贷款利息里扣。借款人还不上时，损失由担保方承担，代价已经算在借款人付的利率里了。</p>
+<p><strong>提前还款风险是房贷特有的。</strong> 利率走低时，借款人可以借一笔新的低利率贷款，把旧贷款提前还清；放贷的一方恰恰在利率最低的时候拿回本金，只能按更低的利率再投出去。利率上升时，借款人则倾向于不提前还。这对持有房贷的一方不利，所以他们会要求额外的收益。这部分不是违约，也不是普通的期限溢价，是借款人手里那份「随时可以还」的选择权的价钱。</p>
+<p><strong>发放与服务也有成本。</strong> 同一篇文章逐项列出了借款人利率和 MBS 收益率之间的部分：担保费、服务费（发放或服务贷款的一方每年收取，文章写的是当时的基准 0.25 个百分点），以及发放机构的成本和利润。文章还讨论了一种可能：当时发放机构的定价能力增强，可能扩大了这一差额。</p>
+<p>所以，房贷利率高于国债，大致有三类原因：违约风险（经由担保费体现）、提前还款风险、发放与服务的成本与利润。和前面一样，这是一个解释的框架，不是一张可以把数字填满的表。</p>
+<p>房贷没有放进开头那张同一天的表。下面这个框只作历史补充。</p>
+<aside class="cn hist" aria-label="历史补充"><b>历史补充 · 一年前新发放的房贷</b><p>2025 年 12 月，美国新发放的常规合规购房贷款，平均合同利率约 6.2%。这是贷款发放时合同上写的利率，按贷款笔数平均，官方只公布到一位小数。同月 10 年期国债收益率的月平均是 4.14%。</p><p>数据来自美国联邦住房金融局（FHFA）的全国抵押贷款数据库（National Mortgage Database），2026 年 9 月 30 日发布。它不是全部贷款的普查，而是从信用报告中抽取的 5% 样本，覆盖全美 50 个州和哥伦比亚特区的第一顺位、封闭式住房抵押贷款；这里只取其中常规合规市场的购房贷款。</p><p>这组贷款里约 7.3% 是浮动利率贷款，其余是固定利率贷款，6.2% 是两类混在一起的平均数，所以不能直接拿来和只统计固定利率贷款的数据比较。它也比本课主表早了约 11 个月，不能和同一天的利率放在一起看。</p></aside>
+</section>
+
+<section id="s8" aria-labelledby="h-s8"><h2 id="h-s8" tabindex="-1"><span class="hn">第 08 节</span>信用卡：不只是风险</h2>
+<p>最后是开头那张表上最高的数。</p>
+<p>联储 G.19 报告的信用卡利率是按法规（Regulation Z）定义的年利率（APR）。2026 年第三季度的初值：商业银行信用卡<strong>全部账户</strong>的平均年利率是 21.19%；<strong>被计息账户</strong>，即当期确实被收了利息的账户，是 22.36%。两个数的统计范围不同，所以不一样。</p>
+<p>拿什么当信用卡的比较基准？消费者金融保护局（CFPB）2024 年的一篇分析认为，优惠利率是银行资金成本的一个好的近似，并把平均 APR 减去优惠利率称为 <strong>APR 利差</strong>。按它的计算，这个利差 2013 年是 9.6%，2023 年升到 14.3%，是近年来最高的。（这篇分析现在放在 CFPB 网站的存档栏目里。）拿今年的数粗略一比：21.19% 比 8 月的优惠利率 6.75% 高出约 14.4 个百分点。这只是一个示意，因为两个数的口径和时期都不完全对得上。</p>
+<p>利差这么大，只是因为持卡人更容易还不上吗？联储每年向国会报告信用卡业务的盈利情况。2025 年的报告给出了样本中的信用卡银行 2024 年的收支，都按占平均季度资产的百分比计：</p>
+<div class="tblw"><table class="bs"><thead><tr><th>项目（报告原文行名）</th><th>占平均季度资产</th></tr></thead><tbody><tr><td>利息收入（Total interest income）</td><td class="n">13.94%</td></tr><tr><td>利息支出（Total interest expenses）</td><td class="n">3.78%</td></tr><tr><td>非利息收入（Total noninterest income）</td><td class="n">6.34%</td></tr><tr><td>非利息支出（Total noninterest expenses）</td><td class="n">9.03%</td></tr><tr><td>贷款损失拨备（Provisions for loan losses）</td><td class="n">3.62%</td></tr><tr><td>税前资产回报率（Return）</td><td>3.87%（全部银行 1.38%）</td></tr></tbody></table></div><p class="tsrc">来源：联储理事会，<em>Report to the Congress on the Profitability of Credit Card Operations of Depository Institutions</em>（2025 年），表 2。</p>
+<p>这里的「贷款损失拨备」和第 2 课的信用损失拨备是同一类费用：为预计收不回的贷款记下的费用。它是 3.62%。比它更大的是非利息支出，9.03%，也就是经营这门生意的各种成本。这说明信用卡利率要覆盖的，远不止违约损失。</p>
+<p>这张表还能说明另一件事。照着表上四舍五入后的数加加减减，得到的是 3.85%，不是报告写的 3.87%。分项和总数之间，总会有表上没有列出的项目和四舍五入的误差。这是一个很小的例子，却和本课的主题一致：把一个利率或一笔收益拆成几块，各块加起来未必正好等于总数。</p>
+<p>报告还写道，发卡机构给付款记录好的持卡人较优惠的利率，对风险较高或常常迟付的持卡人收较高的利率和费用。可见，持卡人的风险确实会进入他们付的利率。</p>
+<p>表的最后一行是税前资产回报率（表中写作 Return，报告正文说明是扣除税收和非常项目之前的净收益）：信用卡银行 2024 年是 3.87%，全部银行是 1.38%。报告还写道，信用卡业务的收益几乎一直高于银行业务的整体水平。也就是说，收入在付清利息支出、经营成本和拨备之后，还剩下比银行整体更高的利润。这份利润有多少来自承担风险的回报，有多少来自发卡机构在定价上的余地，报告没有分析，本课也无法测量。定价能力在这里只是一种可能，不是已经证实的成分。</p>
+<div class="quiz" id="q4" data-answer="1">
+  <p class="qq"><span class="qh">小题 4</span>按联储 2025 年报告，样本中的信用卡银行 2024 年的三项支出里，哪一项最大？</p>
+  <ul class="opts"><li>利息支出</li><li>非利息支出</li><li>贷款损失拨备</li></ul>
+  <p class="qhint" hidden><b>提示：</b>经营信用卡业务本身要花钱。比一比表里三项支出的大小。</p>
+  <p class="qans" hidden><b>答案：</b>B。非利息支出 9.03%，远大于利息支出 3.78% 和贷款损失拨备 3.62%。信用卡利率要覆盖的，不只是违约损失。</p>
+</div>
+</section>
+
+<section id="s9" aria-labelledby="h-s9"><h2 id="h-s9" tabindex="-1"><span class="hn">第 09 节</span>为什么拆不成零件</h2>
+<p>现在把同一天能直接比较的几组数放在一起。</p>
+<figure class="pf" id="fig2" aria-labelledby="fig2-t">
+  <figcaption class="pf-hd"><span class="flab">图 2</span><span id="fig2-t">以国债为尺子：同一天高出多少</span><span class="kind">2026 年 11 月 12 日</span></figcaption>
+  <div class="pf-stage f2">
+    <p class="f2-k">每根条只画「高出」的部分 · 单位：百分点</p>
+    <div class="f2-ax" aria-hidden="true"><span style="left:0">0</span><span style="left:33.333%">1</span><span style="left:66.667%">2</span><span style="left:100%">3</span></div>
+    <ol class="f2-bars">
+      <li data-s="1"><div class="f2-lab"><b>10 年期国债比 3 个月期国债</b><span>5.10% − 4.32%</span></div>
+        <div class="f2-tr"><i style="--w:.26"></i><em>0.78</em></div>
+        <p class="f2-why"><span class="est">这一段的归因是估计</span>可能涉及：期限与预期</p></li>
+      <li data-s="2"><div class="f2-lab"><b>优惠利率比 3 个月期国债</b><span>7.00% − 4.32%</span></div>
+        <div class="f2-tr"><i style="--w:.89333"></i><em>2.68</em></div>
+        <p class="f2-why"><span class="est">这一段的归因是估计</span>可能涉及：违约风险、成本与利润</p></li>
+      <li data-s="3"><div class="f2-lab"><b>10 年期国债比 10 年期 TIPS</b><span>5.10% − 2.86% · 用减法得到的近似值</span></div>
+        <div class="f2-tr"><i style="--w:.74667"></i><em>2.24</em></div>
+        <p class="f2-why"><span class="est">这一段的归因是估计</span>可能涉及：预期通胀、通胀风险溢价与流动性</p></li>
+    </ol>
+  </div>
+  <div class="f2-oth" data-s="4">
+    <p class="f2-ot">各行观察期不同，不与上图同列</p>
+    <div class="f2-ax" aria-hidden="true"><span style="left:0">0</span><span style="left:33.333%">5</span><span style="left:66.667%">10</span><span style="left:100%">15</span></div>
+    <ol class="f2-bars">
+      <li><div class="f2-lab"><b>高质量公司债比 10 年期国债</b><span>2026 年 10 月月平均 · 5.92% − 5.13%</span></div>
+        <div class="f2-tr"><i style="--w:.05267"></i><em>0.79</em></div></li>
+      <li><div class="f2-lab"><b>信用卡全部账户比优惠利率</b><span>2026 年第三季度对 8 月 · 示意</span></div>
+        <div class="f2-tr"><i style="--w:.96"></i><em>约 14.4</em></div></li>
+    </ol>
+    <p class="f2-sc">刻度和上图不同：0 到 15 个百分点</p>
+  </div>
+  <div class="pf-now" aria-live="polite"></div>
+  <div class="pf-ctrl"><button type="button" data-a="prev">上一步</button><button type="button" class="pri" data-a="next">下一步</button><button type="button" data-a="again">重来</button><button type="button" data-a="all">全部显示</button><span class="cnt"></span></div>
+  <ol class="pf-steps"></ol>
+  <details class="tbl"><summary>看数值表</summary>
+    <table class="bs"><caption>同一天：2026 年 11 月 12 日</caption><thead><tr><th>比较</th><th>高出（百分点）</th></tr></thead><tbody>
+      <tr><td>10 年期国债 5.10% − 3 个月期国债 4.32%</td><td class="n">0.78</td></tr>
+      <tr><td>优惠利率 7.00% − 3 个月期国债 4.32%</td><td class="n">2.68</td></tr>
+      <tr><td>10 年期国债 5.10% − 10 年期 TIPS 2.86%（近似值）</td><td class="n">2.24</td></tr>
+    </tbody></table>
+    <table class="bs"><caption>观察期不同的两组</caption><thead><tr><th>比较</th><th>高出（百分点）</th></tr></thead><tbody>
+      <tr><td>高质量公司债 5.92% − 10 年期国债 5.13%（2026 年 10 月月平均）</td><td class="n">0.79</td></tr>
+      <tr><td>信用卡全部账户 21.19% − 优惠利率 6.75%（2026 年第三季度对 8 月，示意）</td><td class="n">约 14.4</td></tr>
+    </tbody></table>
+  </details>
+  <p class="pf-note">来源：联储理事会 H.15、G.19；美国财政部 HQM</p>
+</figure>
+<p>图上每一段「高出」都是直接看得见的：它就是两个市场利率相减。可是一旦要回答「这一段里有多少是违约风险、多少是流动性、多少是成本」，就进入了看不见的部分。</p>
+<p>课程开头说要找出让利率不同的因素。现在可以把它们列出来。最底下是第 3 课讲的<strong>货币的时间价值</strong>：钱借出去，就有一段时间不能用，即使一定能收回也要有回报，国债利率里本来就有它。在它之外：借多久（对未来短期利率的预期、期限溢价）、通胀（预期通胀、通胀风险溢价）、借款人会不会还不上（违约风险）、好不好卖（流动性）、贷款本身的成本，以及可能存在、但难以测量的贷款人定价余地。</p>
+<p>但它们不能像零件一样拆开再相加，原因有三个。</p>
+<p><strong>第一，不同的利率，相关的因素不同。</strong> 国债没有违约风险需要补偿，却有期限溢价；房贷有提前还款风险，信用卡几乎没有；信用卡利率里有大量经营成本，国债没有。没有一张对所有利率都适用的「成分表」。</p>
+<p><strong>第二，因素之间并非简单相加。</strong> 上一节信用卡收支的分项相加不等于总数；更重要的是，因素彼此交织。TIPS 里读出的通胀补偿，同时含有预期通胀、通胀风险溢价和流动性的影响；企业的违约风险往往在经济不好时上升，而那时通胀和利率也在变。把一个利差硬分成「违约多少、流动性多少」，前提是这些因素各自独立，可现实中它们很少独立。</p>
+<p><strong>第三，关键的成分看不见，只能估计，估计方法不同，结果就不同。</strong> 同一天的 10 年期国债，两个联储模型给出的期限溢价是 0.68% 和 0.97%；同一个「未来 10 年的通胀」，盈亏平衡通胀率是 2.24%，克利夫兰联储的模型是 2.67%。</p>
+<p>所以，面对一张利率表，能确定说的是「这个利率比那个高出多少」；至于「为什么高出这么多」，能做的是用这些因素给出一个合理的解释，并且清楚地说明，哪一部分是看到的，哪一部分是估计的。</p>
+<div class="quiz" id="q5" data-answer="2">
+  <p class="qq"><span class="qh">小题 5</span>有人说：「房贷利率比 10 年期国债高 2 个百分点，其中违约风险 0.5、提前还款风险 0.8、流动性 0.3、成本 0.4，加起来正好是 2。」这个说法的主要问题是什么？</p>
+  <ul class="opts"><li>数字加错了</li><li>房贷没有违约风险</li><li>这些成分不能直接观察，也并非各自独立、简单相加；这样的精确拆分没有可靠依据</li><li>应该拿 3 个月期国债作比较</li></ul>
+  <p class="qhint" hidden><b>提示：</b>回想期限溢价的两种分法：同一个数，两个模型给出的成分不同。</p>
+  <p class="qans" hidden><b>答案：</b>C。利差本身看得见，它的成分看不见；不同方法会给出不同的分法，因素之间也会相互影响。数字本身加起来确实是 2，所以 A 不是问题所在；房贷的违约风险经由担保费等方式体现，B 不对。</p>
+</div>
+</section>
+
+<section id="s10" aria-labelledby="h-s10"><h2 id="h-s10" tabindex="-1"><span class="hn">第 10 节</span>尺子最短的一端</h2>
+<p>这一课用国债当尺子，比较了同一天的各种利率。可这把尺子本身也在变：3 个月期国债的利率，昨天是一个数，明天可能是另一个数。整张利率表，都站在这一端上。</p>
+<p>这最短的一端，和美联储每次开会决定的那个利率是什么关系？央行只直接管一个很短的利率，它的影响怎样传到 10 年期国债、房贷和信用卡上？下一课从这里讲起。</p>
+</section>
+
+
+<section id="keys" class="keys" aria-labelledby="h-keys"><h2 id="h-keys" tabindex="-1">本课要点</h2>
+<ul><li>同一天的利率差别很大。2026 年 11 月 12 日：3 个月期国债 4.32%，10 年期国债 5.10%，优惠利率 7.00%；信用卡（2026 年第三季度）全部账户约 21.19%。</li><li>本课用国债作比较的基准：它由美国政府的完全信用担保，本课假设它一定按时付本付息。国债利率里本来就有货币的时间价值，其他利率在此之外还要补偿别的因素。但国债不是「无风险」：到期前卖出有价格风险，固定美元有通胀风险。</li><li>同一个借款人借得更久，利率通常更高：10 年期利率 ≈ 未来短期利率的平均预期 + 期限溢价。两个成分都看不见。同一天，纽约联储 ACM 模型估计期限溢价约 0.68%，联储理事会 Kim–Wright 模型约 0.97%。</li><li>10 年期国债 5.10% 减去 10 年期 TIPS 实际收益率 2.86%，得到 2.24% 的通胀补偿（盈亏平衡通胀率）。这是用减法得到的近似值，不是精确恒等式；它也不等于预期通胀，还含有通胀风险溢价并受 TIPS 流动性溢价影响。克利夫兰联储模型的同期估计约 2.67%。</li><li>流动性指能否随时以接近公道的价格卖出；难卖的资产通常要多给一点收益，但流动性的影响很难单独分离出来。</li><li>企业贷款与公司债高于国债，涉及违约风险、成本、流动性等；房贷还多了提前还款风险，违约风险经由担保费体现；信用卡利率还要覆盖大量经营成本，贷款损失拨备只是其中一项。</li><li>利率之间的差距看得见；差距里的成分大多看不见，只能用模型估计，不同方法结果不同，也不能当作零件简单相加。</li></ul></section>
+
+<section class="srcs" id="srcs" aria-labelledby="h-srcs"><h2 id="h-srcs" tabindex="-1">来源</h2>
+<ul><li>Board of Governors of the Federal Reserve System, <em>H.15 Selected Interest Rates</em> (release of November 18, 2026; column for November 12, 2026), including footnote on the prime rate.</li><li>U.S. Department of the Treasury, <em>Daily Treasury Par Yield Curve Rates</em> (2026).</li><li>TreasuryDirect, <em>Treasury Marketable Securities</em>; <em>Treasury Inflation-Protected Securities (TIPS)</em>.</li><li>Board of Governors of the Federal Reserve System, <em>Three-Factor Nominal Term Structure Model</em> (Kim–Wright); term premium series THREEFYTP10 and fitted yield THREEFY10 (via FRED).</li><li>Federal Reserve Bank of New York, <em>ACM Term Premium</em> data (ACMTermPremium.xls). © 2026 Federal Reserve Bank of New York. Content from the New York Fed subject to the Terms of Use at newyorkfed.org.</li><li>Tobias Adrian, Richard Crump, Benjamin Mills, and Emanuel Moench, "Treasury Term Premia: 1961-Present," <em>Liberty Street Economics</em>, Federal Reserve Bank of New York, May 2014.</li><li>Don H. Kim, Cait Walsh, and Min Wei, "Tips from TIPS: Update and Discussions," <em>FEDS Notes</em>, Board of Governors of the Federal Reserve System, May 21, 2019.</li><li>Federal Reserve Bank of Cleveland, <em>Inflation Expectations</em>, https://www.clevelandfed.org/indicators-and-data/inflation-expectations (estimate for November 2026).</li><li>Michael J. Fleming, "Measuring Treasury Market Liquidity," Federal Reserve Bank of New York <em>Economic Policy Review</em> 9(3), September 2003.</li><li>U.S. Department of the Treasury, <em>Corporate Bond Yield Curve</em> (HQM), monthly average par yields and spot rates, October 2026.</li><li>Andreas Fuster, Laurie Goodman, David Lucca, Laurel Madar, Linsey Molloy, and Paul Willen, "The Rising Gap between Primary and Secondary Mortgage Rates," background paper, Federal Reserve Bank of New York, November 28, 2012 (published in <em>Economic Policy Review</em> 19(2), 2013).</li><li>Federal Housing Finance Agency, <em>National Mortgage Database Aggregate Statistics</em>, New Mortgage Statistics (released September 30, 2026), and Data Dictionary and Technical Notes (2026Q1).</li><li>Board of Governors of the Federal Reserve System, <em>G.19 Consumer Credit</em> (release of November 6, 2026).</li><li>Consumer Financial Protection Bureau, "Credit card interest rate margins at all-time high," February 22, 2024 (archived).</li><li>Board of Governors of the Federal Reserve System, <em>Report to the Congress on the Profitability of Credit Card Operations of Depository Institutions</em> (2025), Table 2.</li></ul></section>
+    </article>
+
+    <aside class="notesR" aria-label="读图说明">
+      <div><b>读图</b><span class="sw" style="background:var(--ink)"></span>墨色：看得见的利率与差<br><span class="sw hatch"></span>斜线：只能估计的部分<br><span class="sw" style="background:var(--lime)"></span>荧光：此刻在看的这一段</div>
+      <div><b>看得见与看不见</b>图上每个「高出」都是两个市场利率直接相减。高出的部分里各种因素各占多少，只能用模型估计，不同模型给出的答案不同</div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site"><div class="w">
+  <div class="row"><b style="color:var(--ink)">MarketPilot</b><span>S01-05</span></div>
+  <p class="credits"><b>图与数据</b> 开场与图均为原创绘制。数据：联储理事会 H.15、G.19；纽约联储 ACM 期限溢价；联储理事会 Kim–Wright 模型（经 FRED）；美国财政部 HQM 公司债收益率曲线</p>
+</div></footer>
+
+<button class="totop" id="totop" type="button" aria-label="回到顶部" title="回到顶部（长按可拖动，双击复位）">
+  <svg class="ring" viewBox="0 0 62 62" aria-hidden="true"><circle cx="31" cy="31" r="28"/></svg>
+  <svg class="ico-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  <svg class="ico-move" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3"/></svg>
+</button>
+<div class="totop-tip" id="totop-tip" role="status" aria-live="polite"></div>
+
+<script src="../../assets/totop.js"></script>
+
+<script src="steps.js"></script>
+<script src="lesson.js"></script>
+<script src="../S02-02/reader.js"></script>
+</body>
+</html>

@@ -146,7 +146,7 @@ test.after(() => { try { ws.close(); } catch (e) {} try { chrome.kill(); } catch
 for (const M of MOUNTS) {
   const tag = M === '/' ? 'root' : 'nested';
   for (const [vw, vh, mob, dev] of [[1280, 900, false, 'desktop'], [390, 844, true, 'mobile']]) {
-    test(`[${tag} ${dev}] 首页：无报错、无失败请求、无横向溢出；主按钮「探索课程」打开课程目录；从 S02-01 开始，另推荐 S09-03`, async () => {
+    test(`[${tag} ${dev}] 首页：无报错、无失败请求、无横向溢出；主按钮「探索课程」打开课程目录；从 S01-01 开始，另推荐 S09-03`, async () => {
       await viewport(vw, vh, mob);
       await load(M);
       assert.deepEqual(errorsSeen(), []); assert.deepEqual(badRequests(), []);
@@ -156,7 +156,7 @@ for (const M of MOUNTS) {
         now:[...document.querySelectorAll('#h-now a')].map(a=>[a.getAttribute('href'),!!a.querySelector('.stat,.st'),a.querySelector('b').textContent]),
         nav:[...document.querySelectorAll('.mainnav a')].map(a=>a.textContent), foot:document.querySelector('[data-screen=home] footer').textContent}`);
       assert.deepEqual(r.pri, [['探索课程 →', '#courses']]);
-      assert.deepEqual(r.now.map(x => x[0]), ['lessons/S02-01/', 'lessons/S09-03/']);
+      assert.deepEqual(r.now.map(x => x[0]), ['lessons/S01-01/', 'lessons/S09-03/']);
       assert.ok(r.now.every(x => x[1] === false), '首页推荐卡片不应挂状态标签');
       assert.deepEqual(r.nav, ['首页', '课程', '故事']);
       const home = await evaluate(`return {txt:document.querySelector('[data-screen=home]').textContent, sum:document.getElementById('h-lsum').textContent}`);
@@ -169,7 +169,7 @@ for (const M of MOUNTS) {
       assert.ok((await here()).endsWith(M + '#courses'));
     });
 
-    test(`[${tag} ${dev}] 课程目录：61 课；S02-01 至 S02-04、S09-03 链接到课程页，其余 56 课只列标题、没有链接；没有任何状态标签；开场和四个层级都有照片`, async () => {
+    test(`[${tag} ${dev}] 课程目录：61 课；S01-01 至 S01-06、S02-01 至 S02-04、S09-03 链接到课程页，其余 50 课只列标题、没有链接；没有任何状态标签；开场和四个层级都有照片`, async () => {
       await viewport(vw, vh, mob);
       await load(M + '#courses');
       assert.equal(await screen(), 'courses');
@@ -183,8 +183,8 @@ for (const M of MOUNTS) {
         stages:[...document.querySelectorAll('.cl-stage')].map(d=>d.id), layers:[...document.querySelectorAll('.cl-layer')].map(s=>s.id),
         legend:!!document.getElementById('c-legend'), all:document.querySelector('[data-screen=courses]').textContent}`);
       assert.equal(r.n, 61);
-      assert.deepEqual(r.on, [['S02-01', 'lessons/S02-01/', false], ['S02-02', 'lessons/S02-02/', false], ['S02-03', 'lessons/S02-03/', false], ['S02-04', 'lessons/S02-04/', false], ['S09-03', 'lessons/S09-03/', false]]);
-      assert.equal(r.plan.length, 56); assert.ok(r.plan.every(s => /^S\d\d-\d\d\S/.test(s) && !/筹备|可阅读|暂不能|写作/.test(s)), r.plan[0]);
+      assert.deepEqual(r.on, [['S01-01', 'lessons/S01-01/', false], ['S01-02', 'lessons/S01-02/', false], ['S01-03', 'lessons/S01-03/', false], ['S01-04', 'lessons/S01-04/', false], ['S01-05', 'lessons/S01-05/', false], ['S01-06', 'lessons/S01-06/', false], ['S02-01', 'lessons/S02-01/', false], ['S02-02', 'lessons/S02-02/', false], ['S02-03', 'lessons/S02-03/', false], ['S02-04', 'lessons/S02-04/', false], ['S09-03', 'lessons/S09-03/', false]]);
+      assert.equal(r.plan.length, 50); assert.ok(r.plan.every(s => /^S\d\d-\d\d\S/.test(s) && !/筹备|可阅读|暂不能|写作/.test(s)), r.plan[0]);
       assert.equal(r.planLinks, 0);
       assert.deepEqual(r.stages, ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09', 'S10', 'S11']);
       assert.deepEqual(r.layers, ['layer-1', 'layer-2', 'layer-3', 'layer-4']);
@@ -230,7 +230,7 @@ for (const M of MOUNTS) {
 
     test(`[${tag} ${dev}] 目录 → 课程页 → 返回：回到该课所在阶段；课程页面包屑回到阶段`, async () => {
       await viewport(vw, vh, mob);
-      for (const [id, stage, layer] of [['S02-02', 'S02', 'layer-1'], ['S09-03', 'S09', 'layer-3']]) {
+      for (const [id, stage, layer] of [['S01-03', 'S01', 'layer-1'], ['S02-02', 'S02', 'layer-1'], ['S09-03', 'S09', 'layer-3']]) {
         await load(M + '#courses');
         await clickNav(`#${id} a`);
         assert.equal(await here(), origin + M + 'lessons/' + id + '/');
@@ -341,7 +341,7 @@ for (const M of MOUNTS) {
 
   test(`[${tag}] 直接打开课程地址：带斜杠与不带斜杠都能到达，脚本与样式全部加载`, async () => {
     await viewport(1280, 900, false);
-    for (const id of ['S02-01', 'S02-02', 'S02-03', 'S02-04', 'S09-03']) {
+    for (const id of ['S01-01', 'S01-02', 'S01-03', 'S01-04', 'S01-05', 'S01-06', 'S02-01', 'S02-02', 'S02-03', 'S02-04', 'S09-03']) {
       for (const u of [M + 'lessons/' + id + '/', M + 'lessons/' + id + '/index.html', M + 'lessons/' + id]) {
         await load(u);
         assert.ok((await here()).startsWith(origin + M + 'lessons/' + id + '/'), u);
@@ -351,9 +351,9 @@ for (const M of MOUNTS) {
     }
   });
 
-  test(`[${tag}] 链接普查：首页、目录、故事、五课里的所有站内链接都能打开，锚点都存在，没有指向样稿的旧链接`, async () => {
+  test(`[${tag}] 链接普查：首页、目录、故事、各课里的所有站内链接都能打开，锚点都存在，没有指向样稿的旧链接`, async () => {
     await viewport(1280, 900, false);
-    const pages = [M, M + 'lessons/S02-01/', M + 'lessons/S02-02/', M + 'lessons/S02-03/', M + 'lessons/S02-04/', M + 'lessons/S09-03/'];
+    const pages = [M, M + 'lessons/S01-01/', M + 'lessons/S01-02/', M + 'lessons/S01-03/', M + 'lessons/S01-04/', M + 'lessons/S01-05/', M + 'lessons/S01-06/', M + 'lessons/S02-01/', M + 'lessons/S02-02/', M + 'lessons/S02-03/', M + 'lessons/S02-04/', M + 'lessons/S09-03/'];
     const seen = new Map();
     for (const pg of pages) {
       await load(pg);
