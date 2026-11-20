@@ -212,13 +212,15 @@ for (const M of MOUNTS) {
       }
     });
 
-    test(`[${tag} ${dev}] 地址片段：#S09、#S05（默认收起）、#S02-02 直接打开并定位到阶段或课`, async () => {
+    test(`[${tag} ${dev}] 地址片段：#S09、#S05（阶段收起）、#S02-02（展开所在阶段）直接打开并定位到阶段或课`, async () => {
       await viewport(vw, vh, mob);
       for (const [h, stage, row] of [['S09', 'S09', null], ['S05', 'S05', null], ['S02-02', 'S02', 'S02-02'], ['S11-04', 'S11', 'S11-04'], ['layer-4', null, null]]) {
         await load(M + '#' + h);
         assert.equal(await screen(), 'courses', '#' + h + ' 没有打开目录');
         const r = await evaluate(`const t=document.getElementById(${JSON.stringify(h)}).getBoundingClientRect(); return {top:t.top, bottom:t.bottom, jb:document.getElementById('c-jump').getBoundingClientRect().bottom, open:${stage ? `document.getElementById('${stage}').open` : 'true'}, hit:[...document.querySelectorAll('li.hit')].map(x=>x.id), vh:innerHeight}`);
-        assert.ok(r.open, '#' + h + ' 的阶段没有展开');
+        // 阶段默认收起；指向某一课的地址才展开它所在的阶段
+        if (row) assert.ok(r.open, '#' + h + ' 的阶段没有展开');
+        else if (stage) assert.ok(!r.open, '#' + h + ' 的阶段不该展开');
         // 目标在吸顶跳转条下方、没有被挡住；页面末尾的目标（S11-04、第四层）滚不到顶部，只要求在视口内
         assert.ok(r.top >= r.jb - 2, '#' + h + ' 被跳转条挡住：' + r.top + ' < ' + r.jb);
         if (h === 'S11-04' || h === 'layer-4') assert.ok(r.bottom <= r.vh || r.top < r.vh * 0.5, '#' + h + ' 不在视口内：' + r.top);
@@ -228,10 +230,42 @@ for (const M of MOUNTS) {
       }
     });
 
+    test(`[${tag} ${dev}] 继续阅读：没有记录时不显示；课程页记下读到的一节，首页给出继续的链接；读完后推荐下一课`, async () => {
+      await viewport(vw, vh, mob);
+      await load(M);
+      await evaluate(`localStorage.removeItem('mp.lastRead'); return 1`);
+      await load(M);
+      assert.equal(await evaluate(`return document.getElementById('h-cont-sec').hidden`), true, '没有阅读记录时不应显示「继续阅读」');
+      await load(M + 'lessons/S01-03/');
+      await evaluate(`document.getElementById('s4').scrollIntoView({block:'start',behavior:'instant'}); return 1`);
+      await sleep(1200);
+      const rec = JSON.parse(await evaluate(`return localStorage.getItem('mp.lastRead')`));
+      assert.equal(rec.id, 'S01-03'); assert.equal(rec.sec, 's4'); assert.ok(rec.p > 0 && rec.p < 0.97, 'p=' + rec.p);
+      await load(M);
+      const c = await evaluate(`const a=document.querySelector('#h-cont a.cont'); return {hidden:document.getElementById('h-cont-sec').hidden, href:a&&a.getAttribute('href'), txt:a&&a.textContent}`);
+      assert.equal(c.hidden, false);
+      assert.equal(c.href, 'lessons/S01-03/#s4');
+      assert.ok(c.txt.includes('读到：' + rec.st) && c.txt.includes('从这里继续'), c.txt);
+      assert.ok(await overflow() <= 0, '首页横向溢出');
+      await evaluate(`localStorage.setItem('mp.lastRead', JSON.stringify({id:'S01-06',sec:'s1',st:'',p:1})); return 1`);
+      await load(M);
+      const d = await evaluate(`const a=document.querySelector('#h-cont a.cont'); return {href:a.getAttribute('href'), txt:a.textContent}`);
+      assert.equal(d.href, 'lessons/S02-01/');
+      assert.ok(d.txt.includes('上次读完了 S01-06') && d.txt.includes('开始下一课'), d.txt);
+      // 坏记录：不报错、不显示
+      await evaluate(`localStorage.setItem('mp.lastRead', '{bad'); return 1`);
+      await load(M);
+      assert.equal(await evaluate(`return document.getElementById('h-cont-sec').hidden`), true);
+      await evaluate(`localStorage.removeItem('mp.lastRead'); return 1`);
+      assert.deepEqual(errorsSeen(), []);
+    });
+
     test(`[${tag} ${dev}] 目录 → 课程页 → 返回：回到该课所在阶段；课程页面包屑回到阶段`, async () => {
       await viewport(vw, vh, mob);
       for (const [id, stage, layer] of [['S01-03', 'S01', 'layer-1'], ['S02-02', 'S02', 'layer-1'], ['S09-03', 'S09', 'layer-3']]) {
         await load(M + '#courses');
+        assert.equal(await evaluate(`return document.querySelectorAll('.cl-stage[open]').length`), 0, '目录的阶段默认应全部收起');
+        await click(`#${stage} > summary`); await sleep(100);
         await clickNav(`#${id} a`);
         assert.equal(await here(), origin + M + 'lessons/' + id + '/');
         assert.deepEqual(errorsSeen(), []); assert.deepEqual(badRequests(), []);
@@ -245,6 +279,7 @@ for (const M of MOUNTS) {
         await cdp('Runtime.evaluate', { expression: 'history.back()' }); await sleep(300); await settle();
         assert.equal(await here(), origin + M + '#' + stage);
         assert.equal(await screen(), 'courses');
+        assert.equal(await evaluate(`return document.querySelectorAll('.cl-stage[open]').length`), 0, '返回后阶段应收起');
         const t = await evaluate(`return document.getElementById('${stage}').getBoundingClientRect().top`);
         assert.ok(t >= 0 && t < vh * 0.6, '返回后没有停在 ' + stage + '：' + t);
         // 面包屑里的阶段链接
@@ -412,7 +447,7 @@ for (const M of MOUNTS) {
     }
   });
 
-  test(`[${tag}] 地址片段全覆盖：11 个阶段、61 个课号，直接打开都进入目录、展开所在阶段、定位正确`, async () => {
+  test(`[${tag}] 地址片段全覆盖：11 个阶段、61 个课号，直接打开都进入目录、定位正确；课号展开所在阶段，阶段号保持收起`, async () => {
     await viewport(1280, 900, false);
     const all = [...CAT.stages.map(s => [s.id, s.id, null]), ...CAT.lessons.map(l => [l.id, l.stage.id, l.id])];
     assert.equal(all.length, 72);
@@ -420,7 +455,7 @@ for (const M of MOUNTS) {
       await load(M + '#' + h);
       const r = await evaluate(`const t=document.getElementById(${JSON.stringify(h)}); const b=t.getBoundingClientRect(); return {scr:[...document.querySelectorAll('[data-screen]')].filter(s=>!s.hidden).map(s=>s.dataset.screen).join(), open:document.getElementById('${stage}').open, hit:[...document.querySelectorAll('li.hit')].map(x=>x.id), top:b.top, bottom:b.bottom, jb:document.getElementById('c-jump').getBoundingClientRect().bottom, vh:innerHeight, title:document.title}`);
       assert.equal(r.scr, 'courses', '#' + h);
-      assert.ok(r.open, '#' + h + ' 的阶段没有展开');
+      assert.equal(r.open, !!row, '#' + h + (row ? ' 的阶段没有展开' : ' 的阶段不该展开'));
       assert.deepEqual(r.hit, row ? [row] : [], '#' + h);
       assert.ok(r.top >= r.jb - 2 && r.top < r.vh, '#' + h + ' 不在可见位置：' + r.top);
       assert.equal(r.title, '课程 · MarketPilot');

@@ -26,6 +26,16 @@
 .sec-h h2{font:900 30px/1.3 var(--zh);margin:4px 0 0}
 .sec-h p{margin:0;color:var(--ink2);font-size:14px}
 .sec-h a.more{font:700 14px var(--zh);color:var(--ink);text-decoration:none;border-bottom:2px solid var(--lime)}
+.cont{display:grid;grid-template-columns:1fr auto;grid-template-areas:"lab go" "t go" "p go" "bar bar";column-gap:24px;align-items:center;text-decoration:none;color:var(--ink);background:var(--card);border-radius:24px;padding:22px 26px}
+.cont .lab{grid-area:lab}
+.cont b{grid-area:t;display:block;font:900 22px/1.45 var(--zh);margin-top:4px}
+.cont p{grid-area:p;margin:6px 0 0;font-size:14px;color:var(--ink2)}
+.cont .go{grid-area:go;align-self:center;font:700 15px/1 var(--zh);background:var(--ink);color:#fff;border-radius:999px;padding:12px 18px;white-space:nowrap}
+.cont .cbar{grid-area:bar;display:block;height:6px;margin-top:16px;border-radius:999px;background:var(--line,#e5e7eb);overflow:hidden}
+.cont .cbar i{display:block;height:100%;background:var(--lime);border-radius:inherit}
+.cont:hover b{text-decoration:underline;text-decoration-color:var(--lime);text-decoration-thickness:4px;text-underline-offset:4px}
+.cont:focus-visible{outline:3px solid var(--vio);outline-offset:3px}
+@media (max-width:640px){.cont{grid-template-columns:1fr;grid-template-areas:"lab" "t" "p" "bar" "go";padding:18px 18px}.cont .go{justify-self:start;margin-top:14px}}
 .now{display:grid;grid-template-columns:7fr 5fr;gap:20px}
 .now>*{min-width:0}
 .now a{display:grid;grid-template-rows:auto 1fr;text-decoration:none;color:var(--ink);background:var(--card);border-radius:24px;overflow:hidden}
